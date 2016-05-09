@@ -1,4 +1,4 @@
-<Insert Game Name Here>
+(Insert really good name here)
 ============
 The Final project for an AP Computer Science class.
 
