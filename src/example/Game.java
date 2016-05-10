@@ -46,12 +46,12 @@ public class Game extends JFrame implements Runnable{
         textures.add(Texture.brick);
         textures.add(Texture.bluestone);
         textures.add(Texture.stone);
-        camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
+        camera = new Camera(4.5, 4.5, 1, 0, 0, -0.66);
         screen = new Screen(map, mapWidth, mapHeight, textures, 800, 600);
         addKeyListener(camera);
         setSize(800, 600);
         setResizable(false);
-        setTitle("3D Engine");
+        this.setTitle("3D Engine");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.black);
         setLocationRelativeTo(null);

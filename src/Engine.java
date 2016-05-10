@@ -11,7 +11,7 @@ public class Engine extents Jframe implements Runnable
     private Thread thread;
     private boolean running;
 
-    private Camera camera;
+    private Player player;
     private Screen screen;
 
     private ArrayList<Texture> textures;
@@ -19,7 +19,7 @@ public class Engine extents Jframe implements Runnable
     private BufferedImage buffImg;
     private int[] pixels;
 
-    public static int[][] map =
+    public static int[][] dungeon =
         {
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
             {1,0,0,0,0,2,0,0,2,0,0,0,0,0,2},
@@ -48,17 +48,19 @@ public class Engine extents Jframe implements Runnable
 
         //TODO add textures
 
-        camera = new Camera(1.5,1.5,1,0,0,0.66);
-        screen = new Screen(map, mapWidth, mapHeight; textures, 800, 600);
-        addKeyListener(camera);
-        setSize(800,600);
-        setResizable(false);
-        this.setTitle("Dank Game");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBackground(Color.black);
+        player = new Player(1.5,1.5,1,0,0,0.66);
+        addKeyListener(player);
+
+        screen = new Screen(dungeon, dungeonWidth, dungeonHeight; textures, 800, 600);
+
+        this.setSize(800,600);
+        this.setResizable(false);
+        this.setTitle("Final Project Game");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBackground(Color.black);
        // setLocationRelativeTo(null);
-        setVisable(true);
-        start();
+        this.setVisable(true);
+        this.start();
     }
 
 
@@ -83,7 +85,7 @@ public class Engine extents Jframe implements Runnable
         }
     }
 
-    public void render()
+    public void blit()
     {
         BufferStrategy bs = getBufferStrategy();
         if (bs == null)
@@ -99,29 +101,29 @@ public class Engine extents Jframe implements Runnable
     public void run()
     {
         long last = System.nanoTime();
+        double difference = 0;
         final double ns = 1000000000.0 / 60.0;
-        double delta = 0;
         requestFocus();
 
         while(running)
         {
-            long now = System.nanoTime();
-            delta += ((now - last) / ns);
-            last = now;
+            long current = System.nanoTime();
+            difference += ((current - last) / ns);
+            last = current;
 
-            while (delta >= 1)
+            while (difference >= 1)
             {
                 //happens at most 60 times a second
                 //TODO update screen
-                //TODO update camera
-                delta--;
+                //TODO update player
+                difference--;
             }
-            render();
+            blit();
         }
     }
 
     public static void main(String[] args)
     {
-        Engine game = new Engine();
+        Engine smiley = new Engine();
     }
 }
