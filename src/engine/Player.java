@@ -23,9 +23,9 @@ public class Player
             double newX = x + xFacing * SPEED;
             double newY = y + yFacing * SPEED;
 
-            if (dungeon[(int)newX][y] == 0)  // These make sure the Player can't move into a wall
+            if (dungeon[(int)newX][(int)y] == 0)  // These make sure the Player can't move into a wall
                 x = newX;
-            if (dungeon[x][newY] == 0)
+            if (dungeon[(int)x][(int)newY] == 0)
                 y = newY;
         }
 
@@ -34,9 +34,9 @@ public class Player
             double newX = x - xFacing * SPEED;
             double newY = y - yFacing * SPEED;
 
-            if (dungeon[(int)newX][y] == 0)
+            if (dungeon[(int)newX][(int)y] == 0)
                 x = newX;
-            if (dungeon[x][newY] == 0)
+            if (dungeon[(int)x][(int)newY] == 0)
                 y = newY;
         }
 
@@ -47,24 +47,24 @@ public class Player
             double tempX = xFacing;
             double tempXView = xView;
 
-            xFacing = xFacing * Math.cos(-ROTATION_SPEED) - yFacing * Math.sin(-ROTATION_SPEED);
-            yFacing = tempX * Math.sin(-ROTATION_SPEED) + yFacing * Math.cos(-ROTATION_SPEED);
+            xFacing = xFacing * Math.cos(-SPEED) - yFacing * Math.sin(-SPEED);
+            yFacing = tempX * Math.sin(-SPEED) + yFacing * Math.cos(-SPEED);
 
-            xView=xView*Math.cos(-ROTATION_SPEED) - yView * Math.sin(-ROTATION_SPEED);
-            yView=tempXView * Math.sin(-ROTATION_SPEED) + yView * Math.cos(-ROTATION_SPEED);
+            xView=xView*Math.cos(-SPEED) - yView * Math.sin(-SPEED);
+            yView=tempXView * Math.sin(-SPEED) + yView * Math.cos(-SPEED);
         }
 
-        // exact same as right only opposite ROTATION_SPEED
+        // exact same as right only opposite SPEED
         if (k.leftKeyDown())
         {
             double tempX = xFacing;
             double tempXView = xView;
 
-            xFacing = xFacing * Math.cos(ROTATION_SPEED) - yFacing * Math.sin(ROTATION_SPEED);
-            yFacing = tempX * Math.sin(ROTATION_SPEED) + yFacing * Math.cos(ROTATION_SPEED);
+            xFacing = xFacing * Math.cos(SPEED) - yFacing * Math.sin(SPEED);
+            yFacing = tempX * Math.sin(SPEED) + yFacing * Math.cos(SPEED);
 
-            xView=xView*Math.cos(ROTATION_SPEED) - yView * Math.sin(ROTATION_SPEED);
-            yView=tempXView * Math.sin(ROTATION_SPEED) + yView * Math.cos(ROTATION_SPEED);
+            xView=xView*Math.cos(SPEED) - yView * Math.sin(SPEED);
+            yView=tempXView * Math.sin(SPEED) + yView * Math.cos(SPEED);
         }
     }
 }

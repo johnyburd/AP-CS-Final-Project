@@ -4,14 +4,19 @@ import java.awt.event.KeyListener;
 public class Keyboard implements KeyListener
 {
     // keep track left, right, forward, back in that order
-    private boolean[] keysStatus = {false, false, false false};
-
-    private int[] keycodes = {keyEvent.VK_LEFT, keyEvent.VK_RIGHT, keyEvent.VK_UP, keyEvent.VK_DOWN};
-d
+    private boolean[] keysStatus;
+    private int[] keycodes;
 
     public Keyboard()
     {
-        // nothin
+        // these should default to false
+        keysStatus = new boolean[4];
+        keycodes = new int[4];
+        keycodes[0] = KeyEvent.VK_LEFT;
+        keycodes[1] = KeyEvent.VK_RIGHT;
+        keycodes[2] = KeyEvent.VK_UP;
+        keycodes[3] = KeyEvent.VK_DOWN;
+       // keycodes = {KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_UP, KeyEvent.VK_DOWN};
     }
 
     // keyPressed keyReleased and keyTyped are all required to implement KeyListener
@@ -25,7 +30,7 @@ d
     public void keyReleased(KeyEvent e)
     {
         for (int i = 0; i < keycodes.length; i++)
-            if (e.getKeyCode() == keycodes.length; i++)
+            if (e.getKeyCode() == keycodes.length)
                 keysStatus[i] = false;
     }
 

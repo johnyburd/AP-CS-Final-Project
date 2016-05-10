@@ -25,10 +25,10 @@ public class Texture {
             e.printStackTrace();
         }
     }
-    
-    public static Texture wood = new Texture("wood.jpg", 64);
-    public static Texture brick = new Texture("redbrick.jpg", 64);
-    public static Texture bluestone = new Texture("bluestone.jpg", 64);
-    public static Texture stone = new Texture("greystone.jpg", 64);
+
+    public static Texture wood = new Texture("../res/wood.jpg", 64);
+    public static Texture brick = new Texture("../res/redbrick.jpg", 64);
+    public static Texture bluestone = new Texture("../res/bluestone.jpg", 64);
+    public static Texture stone = new Texture("../res/greystone.jpg", 64);
 }
 

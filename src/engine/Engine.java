@@ -1,24 +1,27 @@
-import java.awt.Color;
-import java.awt.Graphics
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.Color;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
-public class Engine extents Jframe implements Runnable
+public class Engine extends JFrame implements Runnable
 {
 
     private Thread thread;
     private boolean running;
 
     private Player player;
-    private Screen screen;
-
-    private ArrayList<Texture> textures;
+    private Keyboard keyboard;
+    private Raster raster;
 
     private BufferedImage buffImg;
     private int[] pixels;
 
+    private int dungeonHeight = 15;
+    private int dungeonWidth = 15;
     public static int[][] dungeon =
         {
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
@@ -42,25 +45,24 @@ public class Engine extents Jframe implements Runnable
     {
         thread = new Thread(this);
         buffImg = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
-        pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+        pixels = ((DataBufferInt)buffImg.getRaster().getDataBuffer()).getData();
 
-        textures = new ArrayList<Texture>();
 
-        //TODO add textures
+        keyboard = new Keyboard();
 
         player = new Player(1.5,1.5,1,0,0,0.66);
-        addKeyListener(player);
+        addKeyListener(keyboard);
 
-        screen = new Screen(dungeon, dungeonWidth, dungeonHeight; textures, 800, 600);
+        raster = new Raster(dungeon, dungeonWidth, dungeonHeight, 800, 600);
 
-        this.setSize(800,600);
-        this.setResizable(false);
-        this.setTitle("Final Project Game");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBackground(Color.black);
+        setSize(800,600);
+        setResizable(false);
+        setTitle("Final Project Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBackground(Color.black);
        // setLocationRelativeTo(null);
-        this.setVisable(true);
-        this.start();
+        setVisible(true);
+        start();
     }
 
 
@@ -79,7 +81,7 @@ public class Engine extents Jframe implements Runnable
             thread.join();
 
         }
-        catch(InterruptedExeption e)
+        catch(InterruptedException e)
         {
             e.printStackTrace();
         }
@@ -94,7 +96,7 @@ public class Engine extents Jframe implements Runnable
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+        g.drawImage(buffImg, 0, 0, buffImg.getWidth(), buffImg.getHeight(), null);
         bs.show();
     }
 
@@ -115,7 +117,9 @@ public class Engine extents Jframe implements Runnable
             {
                 //happens at most 60 times a second
                 //TODO update screen
-                //TODO update player
+
+                raster.update(player, pixels);
+                player.update(dungeon, keyboard);
                 difference--;
             }
             blit();
