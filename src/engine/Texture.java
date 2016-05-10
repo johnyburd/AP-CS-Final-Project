@@ -1,25 +1,26 @@
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import java.util.ArrayList;
 
 public class Texture
 {
+    private int size;
     private int[] pixels;
     private String path;
-    public final int SIZE;
 
-    public static ArrayList<Texture> textures;
-    textures.add(new Texture("../../res/wood.jpg", 64));
-    textures.add(new Texture("../../res/redbrick.jpg", 64));
-    textures.add(new Texture("../../res/bluestone.jpg", 64));
-    textures.add(new Texture("../../res/greystone.jpg", 64));
+    public static ArrayList<Texture> textures = new ArrayList<Texture>() {{
+    add(new Texture("../../res/wood.jpg", 64));
+    add(new Texture("../../res/redbrick.jpg", 64));
+    add(new Texture("../../res/bluestone.jpg", 64));
+    add(new Texture("../../res/greystone.jpg", 64));
+    }};
 
     public Texture(String pa, int s)
     {
-        SIZE = s;
-        pixels = new int[SIZE * SIZE];
+        size = s;
+        pixels = new int[s * s];
         path = pa;
         readImg();
     }

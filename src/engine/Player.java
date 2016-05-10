@@ -16,6 +16,31 @@ public class Player
         yView = yv;
     }
 
+    public double getX()
+    {
+        return x;
+    }
+    public double getY()
+    {
+        return y;
+    }
+    public double getXFacing()
+    {
+        return xFacing;
+    }
+    public double getYFacing()
+    {
+        return yFacing;
+    }
+    public double getXView()
+    {
+        return xView;
+    }
+    public double getYView()
+    {
+        return yView;
+    }
+
     public void update(int[][] dungeon, Keyboard k)
     {
         if (k.upKeyDown())

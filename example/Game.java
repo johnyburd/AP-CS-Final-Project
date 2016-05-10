@@ -94,10 +94,15 @@ public class Game extends JFrame implements Runnable{
                 //handles all of the logic restricted time
                 screen.update(camera, pixels);
                 camera.update(map);
+                if (camera.forward)
+                    map[1][1] = 1;
+                else
+                    map[1][1] = 0;
                 delta--;
         
             render();//displays to the screen unrestricted time
         }
+    }
     }
     public static void main(String [] args) {
         Game game = new Game();
