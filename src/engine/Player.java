@@ -4,7 +4,7 @@ public class Player
     private double x, y, xFacing, yFacing, xView, yView;
     
     //this is the player's remaining health
-    private int healthNum;
+    private int healthNum, armorClass;
 
     // movement speed and rotating speed
     private final double SPEED = 0.75, TURN_SPEED = 0.05;
@@ -23,6 +23,11 @@ public class Player
     public int getHealth()
     {
         return healthNum;
+    }
+    
+    public int getArmorClass()
+    {
+        return armorClass;
     }
 
     public double getX()
