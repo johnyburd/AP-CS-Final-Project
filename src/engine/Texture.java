@@ -11,10 +11,10 @@ public class Texture
     private String path;
 
     public static ArrayList<Texture> textures = new ArrayList<Texture>() {{
-    add(new Texture("../../res/wood.jpg", 64));
-    add(new Texture("../../res/redbrick.jpg", 64));
-    add(new Texture("../../res/bluestone.jpg", 64));
-    add(new Texture("../../res/greystone.jpg", 64));
+    add(new Texture("res/wood.jpg", 64));
+    add(new Texture("res/redbrick.jpg", 64));
+    add(new Texture("res/bluestone.jpg", 64));
+    add(new Texture("res/greystone.jpg", 64));
     }};
 
     public Texture(String pa, int s)
@@ -23,6 +23,16 @@ public class Texture
         pixels = new int[s * s];
         path = pa;
         readImg();
+    }
+
+    public int getPixelAt(int p)
+    {
+        return pixels[p];
+    }
+
+    public int getSize()
+    {
+        return size;
     }
 
     private void readImg()

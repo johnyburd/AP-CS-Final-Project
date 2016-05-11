@@ -118,7 +118,7 @@ public class Engine extends JFrame implements Runnable
                 //happens at most 60 times a second
                 //TODO update screen
 
-                raster.update(player, pixels);
+                raster.refresh(dungeon, pixels, player);
                 player.update(dungeon, keyboard);
                 difference--;
             }

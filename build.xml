@@ -10,7 +10,7 @@
 
     <target name="jar">
         <mkdir dir="bin/jar"/>
-        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+        <jar destfile="bin/jar/Game.jar" basedir="bin/classes">
             <manifest>
                 <attribute name="Main-Class" value="Engine"/>
             </manifest>

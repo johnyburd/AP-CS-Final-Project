@@ -30,6 +30,8 @@ public class Raster
     public void refresh(int[][] dungeon, int[] pixels, Player p)
     {
 
+        clearScreen(pixels);
+
         for(int x=0; x<width; x=x+1) {
             double cameraX = 2 * x / (double)(width) -1;
             double rayDirX = p.getXFacing() + p.getXView() * cameraX;
@@ -117,15 +119,15 @@ public class Raster
             }
             wallX-=Math.floor(wallX);
             //x coordinate on the texture
-            int texX = (int)(wallX * (Texture.textures.get(texNum).SIZE));
-            if(side == 0 && rayDirX > 0) texX = Texture.textures.get(texNum).SIZE - texX - 1;
-            if(side == 1 && rayDirY < 0) texX = Texture.textures.get(texNum).SIZE - texX - 1;
+            int texX = (int)(wallX * (Texture.textures.get(texNum).getSize()));
+            if(side == 0 && rayDirX > 0) texX = Texture.textures.get(texNum).getSize() - texX - 1;
+            if(side == 1 && rayDirY < 0) texX = Texture.textures.get(texNum).getSize() - texX - 1;
             //calculate y coordinate on texture
             for(int y=drawStart; y<drawEnd; y++) {
                 int texY = (((y*2 - height + lineHeight) << 6) / lineHeight) / 2;
                 int color;
-                if(side==0) color = Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).SIZE)];
-                else color = (Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).SIZE)]>>1) & 8355711;//Make y sides darker
+                if(side==0) color = Texture.textures.get(texNum).getPixelAt(texX + (texY * Texture.textures.get(texNum).getSize()));
+                else color = (Texture.textures.get(texNum).getPixelAt(texX + (texY * Texture.textures.get(texNum).getSize()))>>1) & 8355711;//Make y sides darker
                 pixels[x + y*(width)] = color;
             }
         };

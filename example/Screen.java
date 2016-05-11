@@ -17,7 +17,7 @@ public class Screen {
     
     public int[] update(Camera camera, int[] pixels) {
         for(int n=0; n<pixels.length/2; n++) {
-            if(pixels[n] != Color.DARK_GRAY.getRGB()) pixels[n] = Color.DARK_GRAY.getRGB();
+            if(pixels[n] != Color.DARK_GRAY.getRGB()) pixels[n] = Color.gray.darker().darker().getRGB();
         }
         for(int i=pixels.length/2; i<pixels.length; i++){
             if(pixels[i] != Color.gray.getRGB()) pixels[i] = Color.gray.getRGB();
