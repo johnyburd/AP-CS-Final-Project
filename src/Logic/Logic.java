@@ -14,9 +14,13 @@ public class Logic
     }
   }
   
-  public void onFight()
+  public void onMonsterHit(Entity e, Player p)
   {
-    
+    if(successfulMonsterAttack)
+    {
+      int damage = e.getDamage - p.getArmorClass;
+      p.setHealth(p.getHealth() - damage);
+    }
   }
   
   public boolean successfulMonsterAttack(Entity e)
