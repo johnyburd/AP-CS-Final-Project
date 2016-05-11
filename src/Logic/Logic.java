@@ -18,4 +18,12 @@ public class Logic
   {
     
   }
+  
+  public boolean successfulMonsterAttack(Entity e)
+  {
+    double x = Math.random()*100;
+    if(x <= e.getHitAccuracy)
+      return true;
+    return false;
+  }
 }
