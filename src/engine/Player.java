@@ -3,9 +3,6 @@ public class Player
     // position on map, facing direction vector, field of view vector`
     private double x, y, xFacing, yFacing, xView, yView;
     
-    //this is the player's remaining health
-    private int healthNum;
-
     // movement speed and rotating speed
     private final double SPEED = 0.75, TURN_SPEED = 0.05;
 
@@ -17,12 +14,6 @@ public class Player
         yFacing = yf;
         xView = xv;
         yView = yv;
-        healthNum = 100;
-    }
-    
-    public int getHealth()
-    {
-        return healthNum;
     }
     
     public double getX()
