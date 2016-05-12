@@ -4,6 +4,8 @@ public abstract class Entity
 {
   private double speed, hitAccuracy; 
   private int health, hitDamage, armorClass;
+  private Armor equippedArmor;
+  private Weapon equippedWeapon;
   
   public double getArmorClass()
   {
@@ -72,8 +74,11 @@ public abstract class Entity
     // signal player's turn
   }
   
-  public void onMonsterHit()
+  public void onMonsterHit(Player p)
   {
-    //to be implemented after Armor and Weapon is fully created
+    int dmg = this.getHitDamage();
+    playerDmg = dmg - p.getArmorClass();
+    p.setHealth(p.getHealth() - playerDmg);
+    // damage the armor and/or sheild appropriately, as well as the monster's weapon
   }
 }
