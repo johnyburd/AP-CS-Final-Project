@@ -4,10 +4,16 @@ import src.logic.armor.Shield.java;
 
 public class Equipment
 {
-	public Weapon primaryWeapon = Weapon[0];
+	public Weapon primaryWeapon = weaponArray[0];
 	public Armor theArmor;
 	public Shield theShield;
 	
+	public Equipment(Weapon weap, Armor arm, Shield shi)
+	{
+		primaryWeapon = weap;
+		theArmor = arm;
+		theShield = shi;
+	}
 	
 	//accessors
 	public Weapon getWeapon()
