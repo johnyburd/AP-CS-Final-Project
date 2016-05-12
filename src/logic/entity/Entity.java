@@ -1,22 +1,30 @@
 package src.logic.entity;
+import src.logic.inventory.Equipment.java;
 
 public abstract class Entity
 {
   private double speed, hitAccuracy; 
   private int health, hitDamage;
+  private Equipment equippedItems;
  
-  public Entity(double spd, double hA, int hlth, int hD)
+  public Entity(double spd, double hA, int hlth, int hD, Equipment equip)
   {
     speed = spd;
     hitAccuracy = hA;
     health = hlth;
     hitDamage = hD;
+    equippedItems = equip;
   }
   
   //expressed as a percentage in the form xx.xx%
   public double getHitAccuracy()
   {
     return hitAccuracy;
+  }
+  
+  public Equipment getEquippedItems()
+  {
+    return equippedItems;
   }
   
   public int getHitDamage()
