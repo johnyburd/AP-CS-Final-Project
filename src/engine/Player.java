@@ -1,24 +1,21 @@
-package src.engine;
-
 public class Player
 {
     // position on map, facing direction vector, field of view vector`
     private double x, y, xFacing, yFacing, xView, yView;
- 
-
+    
     // movement speed and rotating speed
     private final double SPEED = 0.75, TURN_SPEED = 0.05;
 
     public Player(double xc, double yc, double xf, double yf, double xv, double yv)
     {
-        x = xc;
+        x = x;
         y = yc;
         xFacing = xf;
         yFacing = yf;
         xView = xv;
         yView = yv;
     }
-
+    
     public double getX()
     {
         return x;
