@@ -1,0 +1,20 @@
+import java.applet.Applet;
+import java.applet.AudioClip;
+
+public class Sound 
+{
+	  public static final AudioClip BackgroundMusic = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip EnemyFootsteps = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip EnemyGrunting = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip EnemyHit = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip PlayerHit = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip GameOver = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip GameWon = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip EplingFinalBoss = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip YouAreNowEnteringTheSmileZoneBGM = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip MoneyPickUp = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip ItemPickUp = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip EggPickUp = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip QuestComplete = Applet.newAudioClip(Sound.class.getResource(""));
+	  public static final AudioClip  = Applet.newAudioClip(Sound.class.getResource(""));
+}
