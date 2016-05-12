@@ -3,12 +3,14 @@ package src.logic.weapon;
 public class Weapon
 {
   private int weaponDamage, durability;
+  private double length;
   private String name;
   
-  public Weapon(int wD, int dur, String str)
+  public Weapon(int wD, int dur, double len, String str)
   {
     weaponDamage = wD;
     durability = dur;
+    length = len;
     name = str;
   }
   
@@ -33,5 +35,5 @@ public class Weapon
   }
   
   //to be filled
-  public Weapon[] weaponArray = {new Weapon(4, -1, "Fist")};
+  public Weapon[] weaponArray = {new Weapon(4, -1, 0, "Fist")};
 }
