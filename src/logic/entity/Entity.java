@@ -1,4 +1,4 @@
-package src.entity;
+package src.logic.entity;
 
 public abstract class Entity
 {
