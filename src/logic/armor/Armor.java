@@ -5,6 +5,13 @@ public class Armor
   private int durability, armorClass;
   private String name;
   
+  public Armor(int dur, int aC, String str)
+  {
+    durability = dur;
+    armorClass = aC;
+    name = str;
+  }
+  
   public int getDurability()
   {
     return durability;
@@ -15,10 +22,15 @@ public class Armor
     return armorClass;
   }
   
-  public Armor(int dur, int aC, String str)
+  public void setDurability(int dur)
   {
     durability = dur;
-    armorClass = aC;
-    name = str;
   }
+  
+  public void setArmorClass(int aC)
+  {
+    armorClass = aC;
+  }
+  
+  public Armor[] armorArray = {};
 }
