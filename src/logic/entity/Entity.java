@@ -3,13 +3,14 @@ package src.logic.entity;
 public abstract class Entity
 {
   private double speed, hitAccuracy; 
-  private int health, hitDamage, armorClass;
-  private Armor equippedArmor;
-  private Weapon equippedWeapon;
-  
-  public double getArmorClass()
+  private int health, hitDamage;
+ 
+  public Entity(double spd, double hA, int hlth, int hD)
   {
-    return armorClass;
+    speed = spd;
+    hitAccuracy = hA;
+    health = hlth;
+    hitDamage = hD;
   }
   
   //expressed as a percentage in the form xx.xx%
@@ -52,11 +53,6 @@ public abstract class Entity
   public void sethitDamage(hD)
   {
     hitDamage = hD;
-  }
-  
-  public void setArmorClass(int AC)
-  {
-    armorClass = AC;
   }
   
   public boolean monsterHitSuccessful()
