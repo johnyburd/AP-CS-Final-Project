@@ -45,9 +45,24 @@ public class Player
     return reach;
   }
   
-  public final setHealth(int h)
+  public void setHealth(int h)
   {
     health = h;
+  }
+  
+  public void changeEquippedArmor(Armor arm)
+  {
+    equippedItems.switchArmor(arm);
+  }
+  
+  public void changeEquippedWeapon(Weapon weap)
+  {
+    equippedItems.switchWeapon(weap);
+  }
+  
+  public void changeEquippedShield(Shield shield)
+  {
+    equippedItems.switchShield(shield);
   }
   
   public int getTotalArmorClass()
@@ -58,5 +73,10 @@ public class Player
       ac += equippedItems.getShield().getArmorClass();
     }
     return ac;
+  }
+  
+  public double getTotalReach()
+  {
+    return reach + equippedItems.getWeapon().getWeaponLength();
   }
 }
