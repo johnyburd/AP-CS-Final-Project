@@ -1,14 +1,18 @@
+package src.engine;
+
 public class Player
 {
     // position on map, facing direction vector, field of view vector`
     private double x, y, xFacing, yFacing, xView, yView;
     
     // movement speed and rotating speed
-    private final double SPEED = 0.75, TURN_SPEED = 0.05;
+    private final double TURN_SPEED = 0.04, DEFAULT_SPEED = 0.15;
+    private double SPEED = DEFAULT_SPEED;
+
 
     public Player(double xc, double yc, double xf, double yf, double xv, double yv)
     {
-        x = x;
+        x = xc;
         y = yc;
         xFacing = xf;
         yFacing = yf;
@@ -43,6 +47,11 @@ public class Player
 
     public void update(int[][] dungeon, Keyboard k)
     {
+        if (k.qKeyDown())
+            SPEED = DEFAULT_SPEED/2;
+        else
+            SPEED = DEFAULT_SPEED;
+
         if (k.upKeyDown())
         {
             double newX = x + xFacing * SPEED;
@@ -72,11 +81,11 @@ public class Player
             double tempX = xFacing;
             double tempXView = xView;
 
-            xFacing = xFacing * Math.cos(-SPEED) - yFacing * Math.sin(-SPEED);
-            yFacing = tempX * Math.sin(-SPEED) + yFacing * Math.cos(-SPEED);
+            xFacing = xFacing * Math.cos(-TURN_SPEED) - yFacing * Math.sin(-TURN_SPEED);
+            yFacing = tempX * Math.sin(-TURN_SPEED) + yFacing * Math.cos(-TURN_SPEED);
 
-            xView=xView*Math.cos(-SPEED) - yView * Math.sin(-SPEED);
-            yView=tempXView * Math.sin(-SPEED) + yView * Math.cos(-SPEED);
+            xView=xView*Math.cos(-TURN_SPEED) - yView * Math.sin(-TURN_SPEED);
+            yView=tempXView * Math.sin(-TURN_SPEED) + yView * Math.cos(-TURN_SPEED);
         }
 
         // exact same as right only opposite SPEED
@@ -85,11 +94,11 @@ public class Player
             double tempX = xFacing;
             double tempXView = xView;
 
-            xFacing = xFacing * Math.cos(SPEED) - yFacing * Math.sin(SPEED);
-            yFacing = tempX * Math.sin(SPEED) + yFacing * Math.cos(SPEED);
+            xFacing = xFacing * Math.cos(TURN_SPEED) - yFacing * Math.sin(TURN_SPEED);
+            yFacing = tempX * Math.sin(TURN_SPEED) + yFacing * Math.cos(TURN_SPEED);
 
-            xView=xView*Math.cos(SPEED) - yView * Math.sin(SPEED);
-            yView=tempXView * Math.sin(SPEED) + yView * Math.cos(SPEED);
+            xView=xView*Math.cos(TURN_SPEED) - yView * Math.sin(TURN_SPEED);
+            yView=tempXView * Math.sin(TURN_SPEED) + yView * Math.cos(TURN_SPEED);
         }
     }
 }

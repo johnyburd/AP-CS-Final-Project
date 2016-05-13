@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Texture
 {
     private int size;
-    private int[] pixels;
+    public int[] pixels;
     private String path;
 
     public static ArrayList<Texture> textures = new ArrayList<Texture>() {{

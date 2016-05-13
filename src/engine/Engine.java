@@ -1,5 +1,7 @@
 package src.engine;
+
 import src.hud.Hud;
+import src.engine.Player;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -39,19 +41,19 @@ public class Engine extends JFrame implements Runnable
     public static int[][] dungeon =
         {
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,2},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,2},
-            {1,4,4,4,4,2,0,0,2,0,0,0,0,0,2},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,2},
-            {1,0,0,0,0,0,0,0,2,3,3,3,3,3,2},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,4},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,4},
-            {1,3,3,3,3,2,0,0,2,0,0,0,0,0,4},
-            {1,0,0,0,0,2,0,0,0,0,0,0,0,0,4},
-            {1,0,0,0,0,0,0,0,2,0,0,0,0,0,4},
-            {1,0,0,0,0,2,0,0,2,0,0,0,0,0,4},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {3,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
         };
 
@@ -69,10 +71,10 @@ public class Engine extends JFrame implements Runnable
 
         g = null;  // gets defined in blit()
 
-        player = new Player(1.5,1.5,1,0,0,0.66);
+        player = new Player(3,3,1,0,0,-0.66);
         addKeyListener(keyboard);
 
-        raycaster = new Raycaster(dungeon, dungeonWidth, dungeonHeight, SCREEN_WIDTH, SCREEN_HEIGHT);
+        raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, SCREEN_WIDTH, SCREEN_HEIGHT);
 
         hud = new Hud();
 
