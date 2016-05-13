@@ -63,7 +63,7 @@ public abstract class Entity
     health = h;
   }
   
-  public void sethitDamage(hD)
+  public void sethitDamage(int hD)
   {
     hitDamage = hD;
   }
@@ -95,7 +95,7 @@ public abstract class Entity
   
   public void onMonsterHit(Player p)
   {
-    int dmg = this.getHitDamage()
+    int dmg = this.getHitDamage();
     if(getEquippedWeapon() != null)
       dmg += getEquippedWeapon().getWeaponDamage();
     playerDmg = dmg - p.getTotalArmorClass();
