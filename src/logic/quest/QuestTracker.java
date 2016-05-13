@@ -12,7 +12,7 @@
 		private boolean sideQuest = false;
 		
 		
-		
+		//Just prints out things for now rather than putting up a textbox
 	
 		
 		public void giveSidequest()
