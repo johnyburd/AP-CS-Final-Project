@@ -1,6 +1,8 @@
 package src.hud;
 
+import src.engine.Keyboard;
 import src.engine.Engine;
+
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
@@ -11,10 +13,12 @@ import java.util.ArrayList;
 
 public class Hud
 {
+
     private static ArrayList<BufferedImage> hudTextures;
 
     public Hud()
     {
+
         if (hudTextures == null)
             Hud.fillList();
 
