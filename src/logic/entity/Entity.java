@@ -66,9 +66,7 @@ public abstract class Entity
   public boolean monsterHitSuccessful()
   {
     double prob = Math.random() * 100;
-    if(prob >= this.getHitAccuracy)
-      return false;
-    return true;
+    return prob >= this.getHitAccuracy;
   }
   
   public void onMonsterAttack()
@@ -81,8 +79,8 @@ public abstract class Entity
   public void onMonsterHit(Player p)
   {
     int dmg = this.getHitDamage();
-    playerDmg = dmg - p.getArmorClass();
-    p.setHealth(p.getHealth() - playerDmg);
+    playerDmg = dmg - p.getTotalArmorClass();
+    
     // damage the armor and/or sheild appropriately, as well as the monster's weapon
   }
 }
