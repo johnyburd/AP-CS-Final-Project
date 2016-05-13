@@ -15,10 +15,10 @@ and
 This is required to insure that the game can find its resources.
 
 ## Controls
-Arrow keys to move
-A & D - strafe left and right
-Q - block with a shield (if you have one)
-W - attack!
+Arrow keys to move  
+A & D - strafe left and right  
+Q - block with a shield (if you have one)  
+W - attack!  
 
 ## Story
 hahaha, good one.
