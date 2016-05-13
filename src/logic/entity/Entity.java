@@ -22,9 +22,14 @@ public abstract class Entity
     return hitAccuracy;
   }
   
-  public Equipment getEquippedItems()
+  public Equipment getEquippedWeapon()
   {
-    return equippedItems;
+    return equippedItems.getWeapon();
+  }
+  
+  public Equipment getEquippedArmor()
+  {
+    return equippedItems.getArmor();
   }
   
   public int getHitDamage()
@@ -73,14 +78,42 @@ public abstract class Entity
   {
     if(monsterHitSuccessful())
       onMonsterHit();
-    // signal player's turn
+    for(double i = 10.0; i > this.getSpeed(); i -= .5)
+    {
+    }
+  }
+  
+  public void setEquippedWeapon(Weapon weap)
+  {
+    equippedItems.switchWeapon(weap);
+  }
+  
+  public void setEquippedArmor(Armor arm)
+  {
+    equippedItems.switchArmor(arm);
   }
   
   public void onMonsterHit(Player p)
   {
-    int dmg = this.getHitDamage();
+    int dmg = this.getHitDamage()
+    if(getEquippedWeapon() != null)
+      dmg += getEquippedWeapon().getWeaponDamage();
     playerDmg = dmg - p.getTotalArmorClass();
-    
-    // damage the armor and/or sheild appropriately, as well as the monster's weapon
+    dmg -= playerDmg;
+    int armorDmg = dmg, shieldDmg = 0;
+    if(p.getEquippedShield() != null && p.getEquippedShield().isRaised())
+    {
+      armorDmg = dmg - p.getEquippedShield().getArmorClass();
+      shieldDmg = dmg - armorDmg;
+      p.getEquippedShield().setDurability(p.getEquippedShield.getDurability() - shieldDmg);
+    }
+    if(p.getEquippedArmor != null)
+    {
+      p.getEquippedArmor().setDurability(p.getEquippedArmor().getDurability() - armorDmg);
+      if(this.getEquippedWeapon() != false)
+        this.getEquippedWeapon().setDurability(getEquippedWeapon().getDurability() - p.getTotalArmorClass());
+    }
+    else if(this.getEquippedWeapon() != false)
+      this.getEquippedWeapon().setDurability(getEquippedWeapon.getDurability() - 3);
   }
 }
