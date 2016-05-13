@@ -2,7 +2,11 @@
  *Tracks the quest that continues through the dungeon
  *Quest is to gather 12 literal easter eggs and bring them back to the quest giver.
  */
- 
+ package src.logic.quest;
+ import src.logic.Equipment.*;
+ import src.logic.Armor.*;
+ import src.logic.weapon.*;
+ import src.logic.player.*;
  
 	public class QuestTracker
 	{
@@ -15,12 +19,12 @@
 		//Just prints out things for now rather than putting up a textbox
 	
 		
-		public void giveSidequest()
+		public void giveSidequest(Player p)
 		{
 			System.out.println("Come here for a quest!");
 			System.out.println("You are to collect a dozen eggs if you want to escape.");
 			System.out.println("It is dangerous to go alone, take this.");
-			//Equipment.switchWeapon(sword);
+			p.setEquippedWeapon(weaponArray[1]);
 		}
 		
 		//accessors
