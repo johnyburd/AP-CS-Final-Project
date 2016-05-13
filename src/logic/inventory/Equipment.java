@@ -1,4 +1,4 @@
-import src.logic.weapon.Weapon;
+import src.logic.weapon.Weapon.java;
 import src.logic.armor.Armor;
 import src.logic.armor.Shield;
 
