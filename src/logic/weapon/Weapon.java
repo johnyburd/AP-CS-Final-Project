@@ -14,6 +14,11 @@ public class Weapon
     name = str;
   }
   
+  public double getWeaponLength()
+  {
+    return weaponLength;
+  }
+  
   public int getWeaponDamage()
   {
     return weaponDamage;
@@ -34,6 +39,11 @@ public class Weapon
     durability = dur;
   }
   
+  public void setWeaponLength(double WL)
+  {
+    weaponLength = WL;
+  }
+  
   //to be filled
-  public Weapon[] weaponArray = {new Weapon(4, -1, 0, "Fist")};
+  public Weapon[] weaponArray = {new Weapon(4, -1, 0, "Fist"), new Weapon(7, 15, 2, "Dull Sword"), new Weapon(25, 100, 2.1, "Legendary Sword of Amazing")};
 }
