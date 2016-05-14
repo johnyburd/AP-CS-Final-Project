@@ -1,8 +1,9 @@
 package src.logic.entity;
 
-import src.logic.inventory.Equipment.java;
+import src.logic.inventory.Equipment;
 import src.logic.armor.*;
 import src.logic.weapon.*;
+import src.logic.player.*;
 
 public abstract class Entity
 {
