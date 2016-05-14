@@ -18,7 +18,6 @@ public abstract class Entity
     health = hlth;
     hitDamage = hD;
     equippedItems = equip;
-    enchanted = false;
   }
   
   //expressed as a percentage in the form xx.xx%
@@ -76,7 +75,7 @@ public abstract class Entity
   public boolean monsterHitSuccessful()
   {
     double prob = Math.random() * 100;
-    return prob >= this.getHitAccuracy;
+    return prob >= this.getHitAccuracy();
   }
   
   public void onMonsterAttack()
