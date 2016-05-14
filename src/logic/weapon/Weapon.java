@@ -5,6 +5,7 @@ public class Weapon
   private int weaponDamage, durability;
   private double length;
   private String name;
+  private boolean enchanted;
   
   public Weapon(int wD, int dur, double len, String str)
   {
@@ -12,6 +13,12 @@ public class Weapon
     durability = dur;
     length = len;
     name = str;
+    enchanted = false;
+  }
+  
+  public void setEnchanted()
+  {
+    enchanted = true;
   }
   
   public String getName()
