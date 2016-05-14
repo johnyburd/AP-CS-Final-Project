@@ -43,13 +43,13 @@ public class Engine extends JFrame implements Runnable
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,1,1,0,0,2},
+            {1,0,0,0,0,0,0,0,0,0,1,1,0,0,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {1,0,0,0,0,0,2,2,0,0,0,0,0,0,4},
+            {1,0,0,0,0,0,2,2,0,0,0,0,0,0,4},
             {3,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
@@ -76,7 +76,7 @@ public class Engine extends JFrame implements Runnable
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        hud = new Hud();
+        hud = new Hud(this, keyboard);
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         setResizable(false);
@@ -166,7 +166,7 @@ public class Engine extends JFrame implements Runnable
             }
             blit();
 
-            hud.updateHud(this);
+            hud.updateHud();
         }
     }
 
