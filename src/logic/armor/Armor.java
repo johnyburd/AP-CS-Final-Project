@@ -4,12 +4,19 @@ public class Armor
 {
   private int durability, armorClass;
   private String name;
+  private boolean enchanted;
   
   public Armor(int dur, int aC, String str)
   {
     durability = dur;
     armorClass = aC;
     name = str;
+    enchanted = false;
+  }
+  
+  public void setEnchanted()
+  {
+    enchanted = true;
   }
   
   public int getDurability()

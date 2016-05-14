@@ -1,5 +1,8 @@
 package src.logic.entity;
+
 import src.logic.inventory.Equipment.java;
+import src.logic.armor.*;
+import src.logic.weapon.*;
 
 public abstract class Entity
 {
@@ -14,6 +17,7 @@ public abstract class Entity
     health = hlth;
     hitDamage = hD;
     equippedItems = equip;
+    enchanted = false;
   }
   
   //expressed as a percentage in the form xx.xx%
@@ -114,6 +118,11 @@ public abstract class Entity
         this.getEquippedWeapon().setDurability(getEquippedWeapon().getDurability() - p.getTotalArmorClass());
     }
     else if(this.getEquippedWeapon() != false)
-      this.getEquippedWeapon().setDurability(getEquippedWeapon.getDurability() - 3);
+      if(this.getEquippedWeapon.getName() != "Fist")
+      {  
+        this.getEquippedWeapon().setDurability(getEquippedWeapon.getDurability() - 3);
+        if(doesWeaponBreak == true)
+          this.setEquippedWeapon(null);
+      }
   }
 }
