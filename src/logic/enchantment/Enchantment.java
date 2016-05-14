@@ -26,6 +26,7 @@ public class Enchantment
     else if(i == 1)
       weap.setWeaponDamage(weap.getWeaponDamage() + amt)
     weap.setName(weap.getName() + " + " + amt);
+    weap.setEnchanted();
   }
   
   public static void enchantArmor(Armor arm)
@@ -37,6 +38,7 @@ public class Enchantment
     else if(i == 1)
       arm.setArmorClass(arm.getArmorClass() + amt);
     arm.setName(arm.getName() + " + " + amt);
+    arm.setEnchanted();
   }
   
   public static void enchantShield(Shield shi)
