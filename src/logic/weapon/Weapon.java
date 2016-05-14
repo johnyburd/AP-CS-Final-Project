@@ -14,6 +14,11 @@ public class Weapon
     name = str;
   }
   
+  public String getName()
+  {
+    return name;
+  }
+  
   public double getWeaponLength()
   {
     return weaponLength;
@@ -42,6 +47,11 @@ public class Weapon
   public void setWeaponLength(double WL)
   {
     weaponLength = WL;
+  }
+  
+  public void setName(String str)
+  {
+    name = str;
   }
   
   public boolean doesWeaponBreak()
