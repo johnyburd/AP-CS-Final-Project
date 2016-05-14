@@ -48,5 +48,5 @@ public class Armor
   {
     name = str;
   }
-  public Armor[] armorArray = {new Armor(20, 5, "Leather Armor"), new Armor(40, 10, "Chain Mail"), new Armor(80, 20, "Plate Armor")};
+  public Armor[] armorArray = {new Armor(20, 5, "Leather Armor"), new Armor(40, 10, "Chainmail"), new Armor(80, 20, "Plate Armor")};
 }
