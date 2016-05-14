@@ -15,9 +15,14 @@ public class Hud
 {
 
     private static ArrayList<BufferedImage> hudTextures;
+    private Keyboard keyboard;
+    private Engine engine;
 
-    public Hud()
+    public Hud(Engine e, Keyboard k)
     {
+
+        engine = e;
+        keyboard = k;
 
         if (hudTextures == null)
             Hud.fillList();
@@ -31,10 +36,12 @@ public class Hud
         {
             hudTextures.add(ImageIO.read(new File("res/hud/equipmentHud.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/Heart.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/halfHeart.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/armorTemplate.png")));
-            hudTextures.add(ImageIO.read(new File("res/hud/leatherArmor.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/leatherArmor.png"))); // 5
             hudTextures.add(ImageIO.read(new File("res/hud/chainArmor.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/plateArmor.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/shield.png")));
         }
         catch (IOException ioe)
         {
@@ -42,14 +49,15 @@ public class Hud
         }
     }
 
-    public void updateHud(Engine e)
+    public void updateHud()
     {
-        updateEquipment(e);
-        updateHealth(e);
+        updateShield();
+        updateEquipment();
+        updateHealth();
     }
 
     // updates the weapon and armor slots
-    private void updateEquipment(Engine e)
+    private void updateEquipment()
     {
         BufferedImage buffImg = hudTextures.get(0);
 
@@ -58,28 +66,44 @@ public class Hud
 
         int drawWidth = 10;
         int drawHeight = (Engine.SCREEN_HEIGHT - height) - 10;
-        e.blitImage(buffImg, drawWidth, drawHeight);
+        engine.blitImage(buffImg, drawWidth, drawHeight);
 
         boolean noOtherArmor = true;
         if (noOtherArmor)
-            e.blitImage(hudTextures.get(2), 19, Engine.SCREEN_HEIGHT - height + 1);
+            engine.blitImage(hudTextures.get(3), 19, Engine.SCREEN_HEIGHT - height + 1);
+    }
+    
+    private void updateShield()
+    {
+        BufferedImage buffImg = hudTextures.get(7);
+        
+        int width = buffImg.getWidth();
+        int height = buffImg.getHeight();
+
+        if (keyboard.qKeyDown())
+            engine.blitImage(buffImg, 0, Engine.SCREEN_HEIGHT-height);
     }
 
     // updates the health bar
-    private void updateHealth(Engine e)
+    private void updateHealth()
     {
         // get health here
-        int hearts = 10;
+        double hearts = 4.9;
 
         BufferedImage heart = hudTextures.get(1);
+        BufferedImage halfHeart = hudTextures.get(2);
 
         int width = heart.getWidth();
         int height = heart.getHeight();
 
-        for (int i = 0; i < hearts; i++)
+        int i;
+
+        for (i = 0; i < (int)hearts; i++)
         {
-            e.blitImage(heart, Engine.SCREEN_WIDTH - width - 5 - i * width, height + 5);
+            engine.blitImage(heart, Engine.SCREEN_WIDTH - width - 5 - i * width, height + 5);
         }
+        if (hearts % 1 >= 0.5)
+            engine.blitImage(halfHeart, Engine.SCREEN_WIDTH - width - 5 - i * width, height + 5);
     }
 
 
