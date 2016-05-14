@@ -78,6 +78,7 @@ public abstract class Entity
     return prob >= this.getHitAccuracy();
   }
   
+  /*
   public void onMonsterAttack()
   {
     if(monsterHitSuccessful())
@@ -86,6 +87,7 @@ public abstract class Entity
     {
     }
   }
+  */
   
   public void setEquippedWeapon(Weapon weap)
   {
@@ -102,7 +104,7 @@ public abstract class Entity
     int dmg = this.getHitDamage();
     if(getEquippedWeapon() != null)
       dmg += getEquippedWeapon().getWeaponDamage();
-    playerDmg = dmg - p.getTotalArmorClass();
+    int playerDmg = dmg - p.getTotalArmorClass();
     dmg -= playerDmg;
     int armorDmg = dmg, shieldDmg = 0;
     if(p.getEquippedShield() != null && p.getEquippedShield().isRaised())
@@ -118,10 +120,10 @@ public abstract class Entity
         this.getEquippedWeapon().setDurability(getEquippedWeapon().getDurability() - p.getTotalArmorClass());
     }
     else if(this.getEquippedWeapon() != false)
-      if(this.getEquippedWeapon.getName() != "Fist")
+      if(this.getEquippedWeapon().getName() != "Fist")
       {  
         this.getEquippedWeapon().setDurability(getEquippedWeapon.getDurability() - 3);
-        if(doesWeaponBreak == true)
+        if(doesWeaponBreak() == true)
           this.setEquippedWeapon(null);
       }
   }
