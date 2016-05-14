@@ -36,6 +36,8 @@ public class Engine extends JFrame implements Runnable
 
     private Graphics g;
 
+    private Sprite baddie;
+
     private int dungeonHeight = 15;
     private int dungeonWidth = 15;
     public static int[][] dungeon =
@@ -50,7 +52,7 @@ public class Engine extends JFrame implements Runnable
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
             {1,0,0,0,0,0,2,2,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,2,2,0,0,0,0,0,0,4},
-            {3,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+            {3,0,0,0,0,0,0,20,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
@@ -63,7 +65,7 @@ public class Engine extends JFrame implements Runnable
         thread = new Thread(this);
         buffImg = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)buffImg.getRaster().getDataBuffer()).getData();
-
+    
         // to store images qued
         blitImageList = new ArrayList<BlitImage>();
 
@@ -74,9 +76,11 @@ public class Engine extends JFrame implements Runnable
         player = new Player(3,3,1,0,0,-0.66);
         addKeyListener(keyboard);
 
-        raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, SCREEN_WIDTH, SCREEN_HEIGHT);
+        raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, SCREEN_WIDTH, SCREEN_HEIGHT, this, player);
 
         hud = new Hud(this, keyboard);
+        
+        baddie = new Sprite(this, player, "res/baddie.png", 1.6, 1.3, 1.0);
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         setResizable(false);
