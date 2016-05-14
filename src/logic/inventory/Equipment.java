@@ -1,8 +1,7 @@
 package src.logic.inventory;
 
 import src.logic.weapon.Weapon;
-import src.logic.armor.Armor;
-import src.logic.armor.Shield;
+import src.logic.armor.*;
 
 public class Equipment
 {
