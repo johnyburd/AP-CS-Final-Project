@@ -24,7 +24,7 @@ public class Enchantment
     if(i == 0)
       weap.setDurability(weap.getDurability() + amt);
     else if(i == 1)
-      weap.setWeaponDamage(weap.getWeaponDamage() + amt)
+      weap.setWeaponDamage(weap.getWeaponDamage() + amt);
     weap.setName(weap.getName() + " + " + amt);
     weap.setEnchanted();
   }
