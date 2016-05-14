@@ -5,7 +5,7 @@ import src.logic.armor.*;
 
 public class Equipment
 {
-	public Weapon primaryWeapon = weaponArray[0];
+	public Weapon primaryWeapon;
 	public Armor theArmor;
 	public Shield theShield;
 	
