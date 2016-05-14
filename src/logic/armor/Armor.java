@@ -29,6 +29,11 @@ public class Armor
     return armorClass;
   }
   
+  public String getName()
+  {
+    return name;
+  }
+  
   public void setDurability(int dur)
   {
     durability = dur;
@@ -39,5 +44,9 @@ public class Armor
     armorClass = aC;
   }
   
-  public Armor[] armorArray = {};
+  public void setName(String str)
+  {
+    name = str;
+  }
+  public Armor[] armorArray = {new Armor(20, 5, "Leather Armor"), new Armor(40, 10, "Chain Mail"), new Armor(80, 20, "Plate Armor")};
 }
