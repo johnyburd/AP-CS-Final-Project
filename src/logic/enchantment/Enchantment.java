@@ -1,4 +1,6 @@
 package src.logic.Enchantment;
+import src.logic.weapon.*;
+import src.logic.armor.*;
 
 public class Enchantment
 {
@@ -20,7 +22,7 @@ public class Enchantment
   public static void enchantWeapon(Weapon weap)
   {
     int i = (int)(Math.random() * 2);
-    int amt = (int)(Math.ranom() * 4) + 1;
+    int amt = (int)(Math.random() * 4) + 1;
     if(i == 0)
       weap.setDurability(weap.getDurability() + amt);
     else if(i == 1)

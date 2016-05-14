@@ -3,7 +3,7 @@
  *Quest is to gather 12 literal easter eggs and bring them back to the quest giver.
  */
  package src.logic.quest;
- import src.logic.Equipment.*;
+ import src.logic.inventory.*;
  import src.logic.Armor.*;
  import src.logic.weapon.*;
  import src.logic.player.*;
