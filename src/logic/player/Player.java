@@ -82,4 +82,9 @@ public class Player
   {
     return reach + equippedItems.getWeapon().getWeaponLength();
   }
+  
+  public void onPlayerHit()
+  {
+    
+  }
 }
