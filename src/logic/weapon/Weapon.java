@@ -68,7 +68,7 @@ public class Weapon
   
   public boolean doesWeaponBreak()
   {
-    return this.getDurability <= 0;
+    return this.getDurability() <= 0 && name != "Fist";
   }
   
   //to be filled further with some medium level weapons. We can mix up damage and durability and reach for balanced weapons
