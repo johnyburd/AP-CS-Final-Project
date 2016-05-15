@@ -4,21 +4,21 @@ import src.engine.Keyboard;
 
 public class Shield extends Armor
 {
-  private boolean isRaised;
+  private boolean isUp;
   
   public Shield(int dur, int AC, String str)
   {
     super(dur, AC, str);
   }
   
-  public boolean isUp()
+  public boolean isRaised()
   {
-    return isRaised;
+    return isUp;
   }
   
-  public void setShieldUp()
+  public void setShieldRaised()
   {
-    isRaised = true;
+    isUp = true;
   }
   
   public void setShieldDown()
