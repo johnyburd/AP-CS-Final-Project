@@ -7,6 +7,7 @@ public class Jepling extends Entity
     super(1, 88.88, 250, 25, new Equipment();
   }
   
+  @override
   public int getTotalArmorClass()
   {
     return 10;
