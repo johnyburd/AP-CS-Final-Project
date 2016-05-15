@@ -20,6 +20,14 @@ public abstract class Entity
     equippedItems = equip;
   }
   
+  public int getTotalArmorClass()
+  {
+    Armor arm = equippedItems.getArmor();
+    if(arm != null)
+      return arm.getArmorClass();
+    return 0;
+  }
+  
   //expressed as a percentage in the form xx.xx%
   public double getHitAccuracy()
   {
