@@ -24,7 +24,7 @@
 			System.out.println("Come here for a quest!");
 			System.out.println("You are to collect a dozen eggs if you want to escape.");
 			System.out.println("It is dangerous to go alone, take this.");
-			p.setEquippedWeapon(weaponArray[1]);
+			p.setEquippedWeapon(Weapon.weaponArray[1]);
 		}
 		
 		//accessors
