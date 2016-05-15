@@ -23,6 +23,6 @@ public class Shield extends Armor
   
   public void setShieldDown()
   {
-    isRaised = false;
+    isUp = false;
   }
 }
