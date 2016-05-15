@@ -81,7 +81,7 @@ public class Engine extends JFrame implements Runnable
         player = new Player(3,3,1,0,0,-0.66);
         addKeyListener(keyboard);
 
-        raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, SCREEN_WIDTH, SCREEN_HEIGHT, this, player);
+        raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
         hud = new Hud(this, keyboard);
         
@@ -168,7 +168,7 @@ public class Engine extends JFrame implements Runnable
                 //happens at most 60 times a second
                 //TODO update screen
 
-                raycaster.refresh(pixels, player);
+                raycaster.refresh(pixels);
                 player.update(dungeon, keyboard);
                 difference--;
             }

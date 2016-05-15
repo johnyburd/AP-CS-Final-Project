@@ -72,7 +72,6 @@ public class DungeonGenerator
             //System.out.println();
             int randWall = rand.nextInt(walls.size());
             Wall w = walls.get(randWall);
-            System.out.println(w);
 
             boolean before = false, after = false, above = false, below = false;
             if (w.getHorz())
@@ -98,7 +97,6 @@ public class DungeonGenerator
                 {
                     if (before)
                     {
-                        System.out.println("horz before");
                         //removedWalls.add(walls.remove(randWall));
                         dun[w.getRow()][w.getCol()] = 1;
                         dun[w.getRow()][w.getCol() + 1] = 1;
