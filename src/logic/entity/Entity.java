@@ -26,12 +26,12 @@ public abstract class Entity
     return hitAccuracy;
   }
   
-  public Equipment getEquippedWeapon()
+  public Weapon getEquippedWeapon()
   {
     return equippedItems.getWeapon();
   }
   
-  public Equipment getEquippedArmor()
+  public Armor getEquippedArmor()
   {
     return equippedItems.getArmor();
   }
