@@ -69,7 +69,7 @@ public class Player
   public int getTotalArmorClass()
   {
     Armor arm = equippedItems.getArmor();
-    Shield shi = equippedItems.getShield()
+    Shield shi = equippedItems.getShield();
     int ac = arm.getArmorClass();
     if(shi.isRaised() == true)
     {
