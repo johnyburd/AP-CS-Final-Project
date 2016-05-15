@@ -33,7 +33,7 @@ public class Weapon
   
   public double getWeaponLength()
   {
-    return weaponLength;
+    return length;
   }
   
   public int getWeaponDamage()
