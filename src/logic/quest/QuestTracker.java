@@ -19,7 +19,7 @@
 		//Just prints out things for now rather than putting up a textbox
 	
 		
-		public void giveSidequest(Player p)
+		public static void giveSidequest(Player p)
 		{
 			System.out.println("Come here for a quest!");
 			System.out.println("You are to collect a dozen eggs if you want to escape.");
@@ -28,7 +28,7 @@
 		}
 		
 		//accessors
-		public int checkQuest()
+		public static int checkQuest()
 		{
 			return gotEggs;
 		}
@@ -36,14 +36,14 @@
 		
 		
 		//mutators
-		public void getEgg()
+		public static void getEgg()
 		{
 			gotEggs++;
 		}
 		
 		
 		
-		public void completeSidequest()
+		public static void completeSidequest()
 		{
 			if(gotEggs == 12)
 			{
@@ -59,7 +59,7 @@
 		
 		
 		
-		public void openTheDoor()
+		public static void openTheDoor()
 		{
 			if(sideQuest == true)
 			{
