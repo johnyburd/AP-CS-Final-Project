@@ -1,4 +1,5 @@
 package src.logic.Enchantment;
+
 import src.logic.weapon.*;
 import src.logic.armor.*;
 
