@@ -73,5 +73,5 @@ public class Weapon
   
   //to be filled further with some medium level weapons. We can mix up damage and durability and reach for balanced weapons
   //basic weapon, fist, legendary weapon, a sorta ranged weapon. You get the gist.
-  public Weapon[] weaponArray = {new Weapon(4, -1, 0, "Fist"), new Weapon(7, 15, 2, "Dull Sword"), new Weapon(25, 150, 2.1, "Legendary Sword of Awesome"), new Weapon(6, 20, 4, "Spear")};
+  public Weapon[] weaponArray = new Weapon[] {new Weapon(4, -1, 0, "Fist"), new Weapon(7, 15, 2, "Dull Sword"), new Weapon(25, 150, 2.1, "Legendary Sword of Awesome"), new Weapon(6, 20, 4, "Spear")};
 }
