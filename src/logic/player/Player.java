@@ -41,7 +41,7 @@ public class Player
     return health;
   }
   
-  public int getReach()
+  public double getReach()
   {
     return reach;
   }
@@ -68,10 +68,12 @@ public class Player
   
   public int getTotalArmorClass()
   {
-    int ac = equippedItems.getArmor();
-    if(equippedItems.getShield().isRaised() == true)
+    Armor arm = equippedItems.getArmor();
+    Shield shi = equippedItems.getShield()
+    int ac = arm.getArmorClass();
+    if(shi.isRaised() == true)
     {
-      ac += equippedItems.getShield().getArmorClass();
+      ac += shi.getArmorClass();
     }
     return ac;
   }
