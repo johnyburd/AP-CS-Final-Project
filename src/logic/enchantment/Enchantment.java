@@ -37,7 +37,7 @@ public class Enchantment
     int i = (int)(Math.random() * 2);
     int amt = (int)(Math.random() * 4) + 1;
     if(i == 0)
-      arm.setDurability(arm.getDurability + amt);
+      arm.setDurability(arm.getDurability() + amt);
     else if(i == 1)
       arm.setArmorClass(arm.getArmorClass() + amt);
     arm.setName(arm.getName() + " + " + amt);
