@@ -95,4 +95,35 @@ public abstract class Entity
   {
     equippedItems.switchArmor(arm);
   }
+  
+  public void monsterAI(Player p)
+  {
+    findPlayer(p);
+    moveToPlayer(p);
+    if(nextToPlayer())
+    {
+      onMonsterAttack(p);
+    }
+  }
+  
+  public void findPlayer(Player p)
+  {
+    
+  }
+  
+  public void moveToPlayer(Player p)
+  {
+    
+  }
+  
+  public boolean nextToPlayer()
+  {
+    return false;
+  }
+  
+  public void onMonsterAttack(Player p)
+  {
+    if(monsterHitSuccessful())
+      p.onPlayerHit();
+  }
 }
