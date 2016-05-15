@@ -14,6 +14,11 @@ public class Armor
     enchanted = false;
   }
   
+  public boolean isEnchanted()
+  {
+    return enchanted;
+  }
+  
   public void setEnchanted()
   {
     enchanted = true;
