@@ -18,6 +18,8 @@ public class Hud
     private Keyboard keyboard;
     private Engine engine;
 
+    private final int PAD = 10;
+
     public Hud(Engine e, Keyboard k)
     {
 
@@ -34,14 +36,15 @@ public class Hud
         hudTextures = new ArrayList<BufferedImage>();
         try
         {
-            hudTextures.add(ImageIO.read(new File("res/hud/equipmentHud.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/equipmentHud.png"))); // 0
             hudTextures.add(ImageIO.read(new File("res/hud/Heart.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/halfHeart.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/armorTemplate.png")));
-            hudTextures.add(ImageIO.read(new File("res/hud/leatherArmor.png"))); // 5
-            hudTextures.add(ImageIO.read(new File("res/hud/chainArmor.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/leatherArmor.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/chainArmor.png"))); //5
             hudTextures.add(ImageIO.read(new File("res/hud/plateArmor.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/shield.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/egg.png")));
         }
         catch (IOException ioe)
         {
@@ -54,6 +57,7 @@ public class Hud
         updateShield();
         updateEquipment();
         updateHealth();
+        updateEggs();
     }
 
     // updates the weapon and armor slots
@@ -64,19 +68,25 @@ public class Hud
         int width = buffImg.getWidth();
         int height = buffImg.getHeight();
 
-        int drawWidth = 10;
-        int drawHeight = (Engine.SCREEN_HEIGHT - height) - 10;
+        int drawWidth = PAD;
+        int drawHeight = (Engine.SCREEN_HEIGHT - height) - PAD;
         engine.blitImage(buffImg, drawWidth, drawHeight);
 
         boolean noOtherArmor = true;
         if (noOtherArmor)
             engine.blitImage(hudTextures.get(3), 19, Engine.SCREEN_HEIGHT - height + 1);
     }
-    
+    private void updateEggs()
+    {
+        BufferedImage buffImg = hudTextures.get(8);
+
+        int height = buffImg.getHeight();
+        engine.blitImage(buffImg, PAD, height/2 + PAD);
+    }
     private void updateShield()
     {
         BufferedImage buffImg = hudTextures.get(7);
-        
+
         int width = buffImg.getWidth();
         int height = buffImg.getHeight();
 
@@ -88,7 +98,7 @@ public class Hud
     private void updateHealth()
     {
         // get health here
-        double hearts = 4.9;
+        double hearts = 10;
 
         BufferedImage heart = hudTextures.get(1);
         BufferedImage halfHeart = hudTextures.get(2);
