@@ -58,7 +58,7 @@ public class Weapon
   
   public void setWeaponLength(double WL)
   {
-    weaponLength = WL;
+    length = WL;
   }
   
   public void setName(String str)
