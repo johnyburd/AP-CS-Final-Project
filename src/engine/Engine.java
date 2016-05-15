@@ -2,6 +2,7 @@ package src.engine;
 
 import src.hud.Hud;
 import src.engine.Player;
+import src.dungeon.DungeonGenerator;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -36,11 +37,12 @@ public class Engine extends JFrame implements Runnable
 
     private Graphics g;
 
-    private Sprite baddie;
 
     private int dungeonHeight = 15;
     private int dungeonWidth = 15;
-    public static int[][] dungeon =
+    private DungeonGenerator dungeonMaster;
+    public static int[][] dungeon;
+    /**public static int[][] dungeon =
         {
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
@@ -57,7 +59,7 @@ public class Engine extends JFrame implements Runnable
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-        };
+        };**/
 
     public Engine()
     {
@@ -68,6 +70,9 @@ public class Engine extends JFrame implements Runnable
     
         // to store images qued
         blitImageList = new ArrayList<BlitImage>();
+
+        dungeonMaster = new DungeonGenerator(15);
+        dungeon = dungeonMaster.getNewDungeon();
 
         keyboard = new Keyboard();
 
@@ -80,7 +85,6 @@ public class Engine extends JFrame implements Runnable
 
         hud = new Hud(this, keyboard);
         
-        baddie = new Sprite(this, player, "res/baddie.png", 1.6, 1.3, 1.0);
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         setResizable(false);

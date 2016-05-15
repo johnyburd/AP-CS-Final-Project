@@ -6,8 +6,8 @@ public class Player
     private double x, y, xFacing, yFacing, xView, yView;
 
     // movement speed and rotating speed
-    private final double TURN_SPEED = 0.03;
-    private final double DEFAULT_SPEED = 0.08;
+    private final double TURN_SPEED = 0.04;
+    private final double DEFAULT_SPEED = 0.06;
     private double MAX_SPEED = DEFAULT_SPEED;
     private double ACCELERATION = 1/60.0;
     private double speed = 0;
@@ -58,6 +58,10 @@ public class Player
         if (k.aKeyDown())
         { // strafe left
             updateSpeed();
+            if (k.upKeyDown() || k.downKeyDown())
+                MAX_SPEED = DEFAULT_SPEED/2;
+            else if (!k.qKeyDown())
+                MAX_SPEED = DEFAULT_SPEED;
 
             double newX = x + -yFacing * speed;
             double newY = y + xFacing * speed;
@@ -70,6 +74,10 @@ public class Player
         if (k.dKeyDown())
         { // strafe right
             updateSpeed();
+            if (k.upKeyDown() || k.downKeyDown())
+                MAX_SPEED = DEFAULT_SPEED/2;
+            else if (!k.qKeyDown())
+                MAX_SPEED = DEFAULT_SPEED;
 
             double newX = x + yFacing * speed;
             double newY = y + -xFacing * speed;
@@ -134,7 +142,7 @@ public class Player
             yView=tempXView * Math.sin(TURN_SPEED) + yView * Math.cos(TURN_SPEED);
         }
 
-        if (!k.upKeyDown() && !k.downKeyDown())
+        if (!k.upKeyDown() && !k.downKeyDown() && k.aKeyDown() && k.dKeyDown())
             speed = 0;
     }
 

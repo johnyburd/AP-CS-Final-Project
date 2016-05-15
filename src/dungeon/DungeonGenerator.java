@@ -23,9 +23,23 @@ public class DungeonGenerator
         removedWalls = new ArrayList<Wall>();
 
     }
+    public int[][] getNewDungeon()
+    {
+        this.mazeGen();
+        for (int i = 0; i < dun.length; i++)
+            for (int j = 0; j < dun[i].length; j++)
+                if (dun[i][j] == 0)
+                    if (i < dun.length/2)
+                        dun[i][j] = 4;
+                    else
+                        dun[i][j] = 2;
+                else
+                    dun[i][j] = 0;
+        return dun;
+    }
     public static void main(String[] args)
     {
-        DungeonGenerator dungeonMaster = new DungeonGenerator(35);
+        DungeonGenerator dungeonMaster = new DungeonGenerator(20);
 
         dungeonMaster.mazeGen();
         int[][] dungeon = dungeonMaster.dun;
@@ -48,8 +62,8 @@ public class DungeonGenerator
         dun[9][9] = 1;
         walls.add(new Wall(10, 9, false));
         walls.add(new Wall(8, 9, false));
-        walls.add(new Wall(9,8,true));
-        walls.add(new Wall(9,10,true));
+        walls.add(new Wall(9,8, true));
+        walls.add(new Wall(9,10, true));
 
         while (walls.size() > 0)
         {
@@ -58,22 +72,25 @@ public class DungeonGenerator
             //System.out.println();
             int randWall = rand.nextInt(walls.size());
             Wall w = walls.get(randWall);
+            System.out.println(w);
 
-            boolean before = false, after = false;
+            boolean before = false, after = false, above = false, below = false;
             if (w.getHorz())
             {
-                after = (w.getCol() + 1 == 1);
+                after = (dun[w.getRow()][w.getCol() + 1] == 1);
 
-                before = (w.getCol() -1 == 1);
+                before = (dun[w.getRow()][w.getCol() - 1] == 1);
             }
             else
             {
-                after = (w.getRow() + 1 == 1);
+                above = (dun[w.getRow() + 1][w.getCol()] == 1);
 
-                before = (w.getRow() -1 == 1);
+                below = (dun[w.getRow() - 1][w.getCol()] == 1);
             }
 
             if (before && after)
+                removedWalls.add(walls.remove(randWall));
+            else if (above && below)
                 removedWalls.add(walls.remove(randWall));
             else
             {
@@ -81,34 +98,35 @@ public class DungeonGenerator
                 {
                     if (before)
                     {
-                        removedWalls.add(walls.remove(randWall));
+                        System.out.println("horz before");
+                        //removedWalls.add(walls.remove(randWall));
                         dun[w.getRow()][w.getCol()] = 1;
                         dun[w.getRow()][w.getCol() + 1] = 1;
-                        addApplicableWalls(new Wall(w.getRow(), w.getCol() + 2, true));
+                        addApplicableWalls(new Wall(w.getRow(), w.getCol() + 1, true));
                     }
                     else
                     {
                         removedWalls.add(walls.remove(randWall));
                         dun[w.getRow()][w.getCol()] = 1;
                         dun[w.getRow()][w.getCol() - 1] = 1;
-                        addApplicableWalls(new Wall(w.getRow(), w.getCol() - 2, true));
+                        addApplicableWalls(new Wall(w.getRow(), w.getCol() - 1, true));
                     }
                 }
                 else
                 {
-                    if (before)
+                    if (below)
                     {
                         removedWalls.add(walls.remove(randWall));
                         dun[w.getRow()][w.getCol()] = 1;
                         dun[w.getRow() + 1][w.getCol()] = 1;
-                        addApplicableWalls(new Wall(w.getRow()+2, w.getCol(), false));
+                        addApplicableWalls(new Wall(w.getRow()+1, w.getCol(), false));
                     }
                     else
                     {
                         removedWalls.add(walls.remove(randWall));
                         dun[w.getRow()][w.getCol()] = 1;
                         dun[w.getRow() - 1][w.getCol()] = 1;
-                        addApplicableWalls(new Wall(w.getRow()-2, w.getCol(), false));
+                        addApplicableWalls(new Wall(w.getRow()-1, w.getCol(), false));
                     }
                 }
             }
@@ -117,14 +135,14 @@ public class DungeonGenerator
 
     private void addApplicableWalls(Wall w)
     {
-        if (w.getRow() < dun.length && noDup(w)) // -3
+        if (w.getRow() < dun.length -2 && noDup(w)) // -2
             walls.add(new Wall(w.getRow() + 1, w.getCol(), false));
-        if (w.getRow() > 0 && noDup(w)) // 2
+        if (w.getRow() > 2 && noDup(w)) // 2
             walls.add(new Wall(w.getRow() - 1, w.getCol(), false));
 
-        if (w.getCol() < dun[0].length && noDup(w)) // -3
+        if (w.getCol() < dun[0].length - 2 && noDup(w)) // -2
             walls.add(new Wall(w.getRow(), w.getCol() + 1, true));
-        if (w.getCol() > 0 && noDup(w)) // 2
+        if (w.getCol() > 2 && noDup(w)) // 2
             walls.add(new Wall(w.getRow(), w.getCol() -1, true));
     }
     private boolean noDup(Wall w)
@@ -133,9 +151,9 @@ public class DungeonGenerator
         for (int i = 0; i < walls.size(); i++)
             if (walls.get(i).equals(w))
                 result = false;
-        for (int i = 0; i < removedWalls.size(); i++)
-            if (removedWalls.get(i).equals(w));
-                result = false;
+       // for (int i = 0; i < removedWalls.size(); i++)
+         //   if (removedWalls.get(i).equals(w));
+           //     result = false;
         return result;
     }
 }
