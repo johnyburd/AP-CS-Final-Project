@@ -10,6 +10,8 @@ public class Chest
   private Equipment containedItem;
   private boolean isOpened;
   
+  private int xPos, yPos;
+  
   public Chest()
   {
     containedItem = null;
@@ -26,6 +28,26 @@ public class Chest
   {
     containedItem = null;
     isOpened = false;
+  }
+  
+  public void getXCoor()
+  {
+    return xPos;
+  }
+  
+  public void getYCoor()
+  {
+    return yPos;
+  }
+  
+  public void setXCoor(int x)
+  {
+    xPos = x;
+  }
+  
+  public void setYCoor(int y)
+  {
+    yPos = y;
   }
   
   public void onGenRandomChest(Player p)
