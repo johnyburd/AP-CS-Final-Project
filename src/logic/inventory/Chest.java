@@ -32,11 +32,12 @@ public class Chest
     else if(i == 1)
     {
       int a = (int)(Math.random() * Weapon.weaponArray.length);
-      containedItem = new Equipment(a);
+      containedItem = new Equipment(Weapon.weaponArray[a[);
     }
     else if(i == 2)
     {
-      int a = 0;
+      int a = (int)(Math.random() * Armor.armorArray.length)
+      containedItem = new Equipment(Armor.armorArray[a]);
     }
     else if(i == 3)
     {
