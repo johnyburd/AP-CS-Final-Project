@@ -2,6 +2,7 @@ package src.logic.inventory;
 
 import src.logic.player.Player;
 import src.logic.weapon.Weapon;
+import src.logic.inventory.Equipment;
 import src.logic.armor.*;
 
 public class Chest
