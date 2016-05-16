@@ -3,6 +3,7 @@ package src.logic.player;
 import src.logic.inventory.Equipment;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
+import src.logic.entity.*;
 
 public class Player
 {
