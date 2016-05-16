@@ -98,8 +98,13 @@ public class Player
     return reach + equippedItems.getWeapon().getWeaponLength();
   }
   
-  public void onPlayerHit()
+  public void onPlayerHit(Entity e)
   {
+    int pac = this.getTotalArmorClass();
+    int mac = e.getTotalDamage();
+    int playerDmg = 0;
+    if(mac > pac)
+      playerDmg = mac - pac;
     
   }
 }
