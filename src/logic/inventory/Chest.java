@@ -31,7 +31,7 @@ public class Chest
       p.setHealth(100);
     else if(i == 1)
     {
-      int a = (int)(Math.random * Weapon.weaponArray.length);
+      int a = (int)(Math.random() * Weapon.weaponArray.length);
       containedItem = new Equipment(a);
     }
     else if(i == 2)
