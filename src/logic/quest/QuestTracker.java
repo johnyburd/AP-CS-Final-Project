@@ -11,10 +11,10 @@
  
 	public class QuestTracker
 	{
-		int gotEggs = 0;
+		static int gotEggs = 0;
 		
 		
-		private boolean sideQuest = false;
+		private static boolean sideQuest = false;
 		
 		
 		//Just prints out things for now rather than putting up a textbox
