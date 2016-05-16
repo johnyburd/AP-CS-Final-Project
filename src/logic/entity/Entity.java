@@ -124,6 +124,6 @@ public abstract class Entity
   public void onMonsterAttack(Player p)
   {
     if(monsterHitSuccessful())
-      p.onPlayerHit();
+      p.onPlayerHit(this);
   }
 }
