@@ -41,8 +41,8 @@ public class Engine extends JFrame implements Runnable
     private int dungeonHeight = 15;
     private int dungeonWidth = 15;
     private DungeonGenerator dungeonMaster;
-    public static int[][] dungeon;
-    /**public static int[][] dungeon =
+    //public static int[][] dungeon;
+    public static int[][] dungeon =
         {
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
@@ -54,12 +54,12 @@ public class Engine extends JFrame implements Runnable
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
             {1,0,0,0,0,0,2,2,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,2,2,0,0,0,0,0,0,4},
-            {3,0,0,0,0,0,0,20,0,0,0,0,0,0,4},
+            {3,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-        };**/
+        };
 
     public Engine()
     {
@@ -72,7 +72,7 @@ public class Engine extends JFrame implements Runnable
         blitImageList = new ArrayList<BlitImage>();
 
         dungeonMaster = new DungeonGenerator(15);
-        dungeon = dungeonMaster.getNewDungeon();
+        //dungeon = dungeonMaster.getNewDungeon();
 
         keyboard = new Keyboard();
 
