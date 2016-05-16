@@ -36,7 +36,7 @@ public class Chest
     else if(i == 1)
     {
       int a = (int)(Math.random() * Weapon.weaponArray.length);
-      containedItem = new Equipment(Weapon.weaponArray[a[);
+      containedItem = new Equipment(Weapon.weaponArray[a]);
     }
     else if(i == 2)
     {
@@ -59,7 +59,7 @@ public class Chest
     }
     else
       //open gui and give choice to replace equipment
-      //if choice is made, the following code is executed.
+      //if choice is made, something resemling the following code but that actually works in this context is executed.
       /*
         * Equipment temp = containedItem;
         * containedItem = p.getEquippedItems();
