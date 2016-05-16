@@ -71,7 +71,5 @@ public class Weapon
     return this.getDurability() <= 0 && name != "Fist";
   }
   
-  //to be filled further with some medium level weapons. We can mix up damage and durability and reach for balanced weapons
-  //basic weapon, fist, legendary weapon, a sorta ranged weapon. You get the gist.
   public static Weapon[] weaponArray = {new Weapon(4, -1, 0, "Fist"), new Weapon(7, 15, 2, "Dull Sword"), new Weapon(10, 20, 2, "Decent Sword"), new Weapon(13, 25, 2, "Good Sword"), new Weapon(16, 30, 2, "Great Sword"), new Weapon(19, 25, 2.5, "Longsword"), new Weapon(25, 100, 2.1, "Legendary Sword of Awesome")};
 }
