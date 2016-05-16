@@ -25,4 +25,6 @@ public class Shield extends Armor
   {
     isUp = false;
   }
+  
+  public static Shield[] shieldArray = {new Shield(15, 5, "Basic Shield"), new Shield(15, 10, "Medium Shield"), new Shield(20, 15, "Great Shield") ,new Shield(40, 30, "God Shield")};
 }
