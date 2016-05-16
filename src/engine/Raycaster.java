@@ -16,6 +16,9 @@ public class Raycaster
 
     Player player;
 
+    private ArrayList<Sprite> sprites;
+    
+    private double[] distances;
 
     public Raycaster(int[][] d, int dH, int dW, Engine engine, Player p)
     {
@@ -23,6 +26,10 @@ public class Raycaster
         dungeonWidth = dW;
         map = d;
         player = p;
+
+        distances = new double[Engine.SCREEN_WIDTH];
+
+        sprites = new ArrayList<Sprite>();
     }
 
     private void clearScreen(int[] pixels)
@@ -78,8 +85,13 @@ public class Raycaster
                 ray.perpWallDist = Math.abs((ray.playerY - player.getY() + (1 - ray.stepY) / 2) / ray.yComp);
             //Now calculate the height of the wall based on the distance from the camera
             int lineHeight;
-            if(ray.perpWallDist > 0) lineHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / ray.perpWallDist));
-            else lineHeight = Engine.SCREEN_HEIGHT;
+            if(ray.perpWallDist > 0)
+                lineHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / ray.perpWallDist));
+            else
+                lineHeight = Engine.SCREEN_HEIGHT;
+
+            distances[x] = ray.perpWallDist;
+
             //calculate lowest and highest pixel to fill in current stripe
             int drawStart = -lineHeight/2+ Engine.SCREEN_HEIGHT/2;
             if(drawStart < 0)
@@ -109,7 +121,41 @@ public class Raycaster
                 else color = (Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).getSize())]>>1) & 8355711;//Make y sides darker
                 pixels[x + y*(Engine.SCREEN_WIDTH)] = color;
             }
-           }
+        }
+
+        }
+
+        for (Sprite s : sprites) // loop through sorted sprites
+        {
+            for (int x = 0; x < Engine.SCREEN_WIDTH; x++)
+            {
+                double perpVectorX = s.getX() - player.getX();
+                double perpVectorY = s.getY() - player.getY();
+
+
+                Ray ray = new Ray(player, x);
+
+                double distance = s.getDistance() / Math.cos(Math.atan(ray.yComp/ray.xComp));
+
+
+  
+                if (distance < distances[x])
+                {
+                    int lineHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / ray.perpWallDist));
+                    int drawStart = -lineHeight/2+ Engine.SCREEN_HEIGHT/2;
+                    if(drawStart < 0)
+                        drawStart = 0;
+                    int drawEnd = lineHeight/2 + Engine.SCREEN_HEIGHT/2;
+                    if(drawEnd >= Engine.SCREEN_HEIGHT) 
+                        drawEnd = Engine.SCREEN_HEIGHT - 1;
+                    
+                    for (int y = drawStart; y < drawEnd; y++)
+                    {
+                        //texture stuff
+                        pixels[x + y*(Engine.SCREEN_WIDTH)] = Color.DARK_GRAY.getRGB();
+                    }
+                }
+            }
         }
 
 

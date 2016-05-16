@@ -10,16 +10,17 @@ import java.awt.image.BufferedImage;
 import java.awt.Image;
 import java.awt.Graphics2D;
 
-public class Sprite
+public class Sprite implements Comparable<Sprite>
 {
     private BufferedImage image;
     private int width, height;
 
     private double x, y;
 
+    private double distance;
+
     private double speed;
 
-    private double size;
 
     private Engine engine;
 
@@ -46,34 +47,27 @@ public class Sprite
             ioe.printStackTrace();
         }
 
-        height = image.getHeight();
-        width = image.getWidth();
+      //  height = image.getHeight();
+      //  width = image.getWidth();
+
+        calcSize();
     }
 
-    public void drawSprite(int xPx, int yPx)
-    {
-        size = calcSize();
 
-        BufferedImage scaledBufferedImage = resizeImage(image, (int)(width * size), (int)(height * size));
-
-        engine.blitImage(scaledBufferedImage, xPx, yPx);
-    }
-
-    public  BufferedImage resizeImage(BufferedImage img, int w, int h) {
-        int type=0;
-        type = img.getType() == 0? BufferedImage.TYPE_INT_ARGB : img.getType();
-        BufferedImage resizedImage = new BufferedImage(width, height,type);
-        Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(img, 0, 0, w, h, null);
-        g.dispose();
-        return resizedImage;
-     }
-
-     private double calcSize()
+     private void calcSize()
      {
-        double distance = Math.sqrt(Math.pow(x - player.getX(), 2) + Math.pow(y - player.getY(), 2));
+        distance = Math.sqrt(Math.pow(x - player.getX(), 2) + Math.pow(y - player.getY(), 2));
 
-        return 1 / distance;
+        height *= (int) 1/ distance;
+        width *= (int) 1/distance;
+    }
+    public double getDistance()
+    {
+        return distance;
+    }
+    public int compareTo(Sprite s)
+    {
+        return 0;
     }
     public double getX()
     {
