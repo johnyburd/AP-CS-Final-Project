@@ -5,7 +5,7 @@ import src.logic.armor.*;
 import src.logic.weapon.*;
 import src.logic.player.*;
 
-public abstract class Entity
+public class Entity
 {
   private double speed, hitAccuracy; 
   private int health, hitDamage;
@@ -18,6 +18,14 @@ public abstract class Entity
     health = hlth;
     hitDamage = hD;
     equippedItems = equip;
+  }
+  
+  public int getTotalDamage()
+  {
+    int dmg = getHitDamage();
+    Weapon weap = equippedItems.getWeapon();
+    dmg += weap.getWeaponDamage();
+    return dmg;
   }
   
   public int getTotalArmorClass()
