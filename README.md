@@ -12,7 +12,7 @@ then run
 `ant jar`  
 and  
 `ant run`  
-This is required to insure that the game can find its resources.
+This is required to ensure that the game can find its resources.
 
 ## Controls
 Arrow keys to move  
