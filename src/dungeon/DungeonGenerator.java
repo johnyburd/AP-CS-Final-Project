@@ -160,8 +160,14 @@ public class DungeonGenerator
     private void setRandomChest(int numChests)
     {
         for(int i = 0; i < dun.length; i++)
-        {
-            
-        }
+            for(int j = 0; j < dun[i].length; j++)
+            {
+                int a = (int)(Math.random() * 100);
+                if(a < 50 && numChests > 0 && ((dun[i][j-1] == 0 && dun[i+1][j] == 0 && dun[i][j-1] == 0) || (dun[i-1][j] == 0 && dun[i][j+1] == 0 && dun[i+1][j] == 0)))
+                {
+                    numChests--;
+                    //spawn the chest at this point
+                }
+            }
     }
 }
