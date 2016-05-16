@@ -40,12 +40,12 @@ public class Chest
     }
     else if(i == 2)
     {
-      int a = (int)(Math.random() * Armor.armorArray.length)
+      int a = (int)(Math.random() * Armor.armorArray.length);
       containedItem = new Equipment(Armor.armorArray[a]);
     }
     else if(i == 3)
     {
-      int a = (int)(Math.random() * Shield.shieldArray.length)
+      int a = (int)(Math.random() * Shield.shieldArray.length);
       containedItem = new Equipment(Shield.shieldArray[a]);
     }
   }
@@ -58,6 +58,7 @@ public class Chest
       p.setHealth(100);
     }
     else
+      ;
       //open gui and give choice to replace equipment
       //if choice is made, something resemling the following code but that actually works in this context is executed.
       /*
