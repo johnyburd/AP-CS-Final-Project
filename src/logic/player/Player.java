@@ -16,6 +16,16 @@ public class Player
    equippedItems = new Equipment(weapon, armor, shield);
  }
  
+ public boolean hasArmor()
+ {
+   return equippedItems.getArmor() != null;
+ }
+ 
+ public boolean hasSword()
+ {
+   return equippedItems.getWeapon() != Weapon.weaponArray[0];
+ }
+ 
  public boolean hasShield()
  {
    return equippedItems.getShield() != null;

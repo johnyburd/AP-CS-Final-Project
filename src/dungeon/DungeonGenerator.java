@@ -4,6 +4,8 @@
 package src.dungeon;
 
 import src.dungeon.Wall;
+import src.logic.inventory.*;
+import src.logic.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -154,7 +156,12 @@ public class DungeonGenerator
            //     result = false;
         return result;
     }
+    
+    private void setRandomChest(int numChests)
+    {
+        for(int i = 0; i < dun.length; i++)
+        {
+            
+        }
+    }
 }
-
-
-
