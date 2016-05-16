@@ -32,6 +32,28 @@ public class Equipment
 		theShield = shi;
 	}
 	
+	//these remaining constructors are for the chests
+	public Equipment(Weapon weap)
+	{
+		primaryWeapon = weap;
+		theArmor = null;
+		theShield = null;
+	}
+	
+	public Equipment(Armor arm)
+	{
+		primaryWeapon = null;
+		theArmor = arm;
+		theShield = null;
+	}
+	
+	public Equipment(Shield shi)
+	{
+		primaryWeapon = null;
+		theArmor = null;
+		theShield = shi;
+	}
+	
 	//accessors
 	public Weapon getWeapon()
 	{
