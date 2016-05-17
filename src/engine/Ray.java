@@ -37,8 +37,8 @@ public class Ray
 
         cameraX = 2 * screenColumn / (double)(Engine.SCREEN_WIDTH) - 1;
 
-        xComp = player.getXFacing() + player.getXView() * cameraX;
-        yComp = player.getYFacing() + player.getYView() * cameraX;
+        xComp = player.getXDir() + player.getXCameraPlane() * cameraX;
+        yComp = player.getYDir() + player.getYCameraPlane() * cameraX;
 
         playerX = (int)player.getX();
         playerY = (int)player.getY();

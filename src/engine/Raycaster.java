@@ -137,34 +137,32 @@ public class Raycaster
 
         for (Sprite s : sprites) // loop through sorted sprites
         {
-            int w = Engine.SCREEN_WIDTH;
-            int h = Engine.SCREEN_HEIGHT;
 
             double spriteX = s.getX() - player.getX();
             double spriteY = s.getY() - player.getY();
 
-            double invDet = 1.0 / (player.getXView() * player.getYFacing() - player.getXFacing() * player.getYView()); //required for correct matrix multiplication
-            double transformX = invDet * (player.getYFacing() * spriteX - player.getXFacing() * spriteY);
-            double transformY = invDet * (-player.getYView() * spriteX + player.getXView() * spriteY);
+            double invDet = 1.0 / (player.getXCameraPlane() * player.getYDir() - player.getXDir() * player.getYCameraPlane()); //required for correct matrix multiplication
+            double transformX = invDet * (player.getYDir() * spriteX - player.getXDir() * spriteY);
+            double transformY = invDet * (-player.getYCameraPlane() * spriteX + player.getXCameraPlane() * spriteY);
 
-            int spriteScreenX = (int)((w / 2) * (1 + transformX / transformY));
+            int spriteScreenX = (int)((Engine.SCREEN_WIDTH / 2) * (1 + transformX / transformY));
 
-            int spriteHeight = Math.abs((int)(h / (transformY))); //using "transformY" instead of the real distance prevents fisheye
+            int spriteHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / (transformY))); //using "transformY" instead of the real distance prevents fisheye
                   //calculate lowest and highest pixel to fill in current stripe
-            int drawStartY = -spriteHeight / 2 + h / 2;
+            int drawStartY = -spriteHeight / 2 + Engine.SCREEN_HEIGHT / 2;
             if(drawStartY < 0) drawStartY = 0;
-            int drawEndY = spriteHeight / 2 + h / 2;
-            if(drawEndY >= h) drawEndY = h - 1;
+            int drawEndY = spriteHeight / 2 + Engine.SCREEN_HEIGHT / 2;
+            if(drawEndY >= Engine.SCREEN_HEIGHT) drawEndY = Engine.SCREEN_HEIGHT - 1;
 
             //calculate width of the sprite
-            int spriteWidth = Math.abs( (int) (h / (transformY)));
+            int spriteWidth = Math.abs( (int) (Engine.SCREEN_HEIGHT / (transformY)));
             int drawStartX = -spriteWidth / 2 + spriteScreenX;
             if(drawStartX < 0) drawStartX = 0;
             int drawEndX = spriteWidth / 2 + spriteScreenX;
-            if(drawEndX >= w) drawEndX = w - 1;
+            if(drawEndX >= Engine.SCREEN_WIDTH) drawEndX = Engine.SCREEN_WIDTH - 1;
 
                   //loop through every vertical stripe of the sprite on screen
-            for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+            for(int x = drawStartX; x < drawEndX; x++)
             {
                 //int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
                 //the conditions in the if are:
@@ -172,14 +170,14 @@ public class Raycaster
                 //2) it's on the screen (left)
                 //3) it's on the screen (right)
                 //4) ZBuffer, with perpendicular distance
-                if(transformY > 0 && stripe > 0 && stripe < w && transformY < distances[stripe])
+                if(transformY > 0 && x > 0 && x < Engine.SCREEN_WIDTH && transformY < distances[x])
                 for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
                 {
                    // int d = (y) * 256 - h * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
                    // int texY = ((d * texHeight) / spriteHeight) / 256;
                    // Uint32 color = texture[sprite[spriteOrder[i]].texture][texWidth * texY + texX]; //get current color from the texture
                    // if((color & 0x00FFFFFF) != 0) buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
-                    pixels[stripe + y * w] = Color.RED.getRGB();
+                    pixels[x + y * Engine.SCREEN_WIDTH] = Color.RED.getRGB();
                 }
             }
         }

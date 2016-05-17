@@ -2,8 +2,8 @@ package src.engine;
 
 public class Player
 {
-    // position on map, facing direction vector, field of view vector`
-    private double x, y, xFacing, yFacing, xView, yView;
+    // position on map, Dir direction vector, field of CameraPlane vector`
+    private double x, y, xDir, yDir, xCameraPlane, yCameraPlane;
 
     // movement speed and rotating speed
     private final double DEFAULT_TURN_SPEED = 0.04;
@@ -12,7 +12,7 @@ public class Player
 
     private final double DEFAULT_SPEED = 0.06;
     private double MAX_SPEED = DEFAULT_SPEED;
-    private double ACCELERATION = 1/60.0;
+    private double ACCELERATION = 1/70.0;
     private double speed = 0;
 
 
@@ -20,10 +20,10 @@ public class Player
     {
         x = xc;
         y = yc;
-        xFacing = xf;
-        yFacing = yf;
-        xView = xv;
-        yView = yv;
+        xDir = xf;
+        yDir = yf;
+        xCameraPlane = xv;
+        yCameraPlane = yv;
     }
 
 
@@ -42,8 +42,8 @@ public class Player
             else if (!k.qKeyDown())
                 MAX_SPEED = DEFAULT_SPEED;
 
-            double newX = x + -yFacing * speed;
-            double newY = y + xFacing * speed;
+            double newX = x + -yDir * speed;
+            double newY = y + xDir * speed;
 
             if (dungeon[(int)newX][(int)y] == 0)
                 x = newX;
@@ -58,8 +58,8 @@ public class Player
             else if (!k.qKeyDown())
                 MAX_SPEED = DEFAULT_SPEED;
 
-            double newX = x + yFacing * speed;
-            double newY = y + -xFacing * speed;
+            double newX = x + yDir * speed;
+            double newY = y + -xDir * speed;
 
             if (dungeon[(int)newX][(int)y] == 0)
                 x = newX;
@@ -72,8 +72,8 @@ public class Player
         {
             updateSpeed();
 
-            double newX = x + xFacing * speed;
-            double newY = y + yFacing * speed;
+            double newX = x + xDir * speed;
+            double newY = y + yDir * speed;
             if ((int)(newX+0.1) < dungeon.length && (int)(newY + 0.1) < dungeon.length)
             {
             if (dungeon[(int)(newX)][(int)y] == 0)  // These make sure the Player can't move into a wall
@@ -87,8 +87,8 @@ public class Player
         {
             updateSpeed();
 
-            double newX = x - xFacing * speed;
-            double newY = y - yFacing * speed;
+            double newX = x - xDir * speed;
+            double newY = y - yDir * speed;
 
             if (dungeon[(int)newX][(int)y] == 0)
                 x = newX;
@@ -102,14 +102,14 @@ public class Player
         {
             updateTurnSpeed();
 
-            double tempX = xFacing;
-            double tempXView = xView;
+            double tempX = xDir;
+            double tempXCameraPlane = xCameraPlane;
 
-            xFacing = xFacing * Math.cos(-turnSpeed) - yFacing * Math.sin(-turnSpeed);
-            yFacing = tempX * Math.sin(-turnSpeed) + yFacing * Math.cos(-turnSpeed);
+            xDir = xDir * Math.cos(-turnSpeed) - yDir * Math.sin(-turnSpeed);
+            yDir = tempX * Math.sin(-turnSpeed) + yDir * Math.cos(-turnSpeed);
 
-            xView=xView*Math.cos(-turnSpeed) - yView * Math.sin(-turnSpeed);
-            yView=tempXView * Math.sin(-turnSpeed) + yView * Math.cos(-turnSpeed);
+            xCameraPlane=xCameraPlane*Math.cos(-turnSpeed) - yCameraPlane * Math.sin(-turnSpeed);
+            yCameraPlane=tempXCameraPlane * Math.sin(-turnSpeed) + yCameraPlane * Math.cos(-turnSpeed);
         }
 
         // exact same as right only opposite SPEED
@@ -117,17 +117,17 @@ public class Player
         {
             updateTurnSpeed();
 
-            double tempX = xFacing;
-            double tempXView = xView;
+            double tempX = xDir;
+            double tempXCameraPlane = xCameraPlane;
 
-            xFacing = xFacing * Math.cos(turnSpeed) - yFacing * Math.sin(turnSpeed);
-            yFacing = tempX * Math.sin(turnSpeed) + yFacing * Math.cos(turnSpeed);
+            xDir = xDir * Math.cos(turnSpeed) - yDir * Math.sin(turnSpeed);
+            yDir = tempX * Math.sin(turnSpeed) + yDir * Math.cos(turnSpeed);
 
-            xView=xView*Math.cos(turnSpeed) - yView * Math.sin(turnSpeed);
-            yView=tempXView * Math.sin(turnSpeed) + yView * Math.cos(turnSpeed);
+            xCameraPlane=xCameraPlane*Math.cos(turnSpeed) - yCameraPlane * Math.sin(turnSpeed);
+            yCameraPlane=tempXCameraPlane * Math.sin(turnSpeed) + yCameraPlane * Math.cos(turnSpeed);
         }
 
-        if (!k.upKeyDown() && !k.downKeyDown() && k.aKeyDown() && k.dKeyDown())
+        if (!k.upKeyDown() && !k.downKeyDown() && !k.aKeyDown() && !k.dKeyDown())
             speed = 0;
     }
 
@@ -156,20 +156,20 @@ public class Player
     {
         return y;
     }
-    public double getXFacing()
+    public double getXDir()
     {
-        return xFacing;
+        return xDir;
     }
-    public double getYFacing()
+    public double getYDir()
     {
-        return yFacing;
+        return yDir;
     }
-    public double getXView()
+    public double getXCameraPlane()
     {
-        return xView;
+        return xCameraPlane;
     }
-    public double getYView()
+    public double getYCameraPlane()
     {
-        return yView;
+        return yCameraPlane;
     }
 }
