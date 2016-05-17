@@ -1,6 +1,6 @@
 package src.logic.inventory;
 
-import src.logic.character.Character;
+import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
@@ -37,7 +37,7 @@ public class Chest
   }
   
   //call this if it is predefined to regen health;
-  public Chest(Player p)
+  public Chest(Hero p)
   {
     containedItem = null;
     isOpened = false;
@@ -78,7 +78,7 @@ public class Chest
     return isLocked;
   }
   
-  public void randomizeChest(Character p)
+  public void randomizeChest(Hero p)
   {
     int i = (int)(Math.random() * 4);
     if(i == 0)
@@ -100,7 +100,7 @@ public class Chest
     }
   }
   
-  public void onOpenChest(Player p)
+  public void onOpenChest(Hero p)
   {
     if(isLocked != true)
       if(containedItem == null)
@@ -123,7 +123,7 @@ public class Chest
   // hope the player chooses wisely on these
   // honestly, pick the sword, every other weapon will shatter ridiculously early in the boss match
   // don't fight the boss with just your fist, it will take forever
-  public void onOpenBossChest(Player p, Chest[] others)
+  public void onOpenBossChest(Hero p, Chest[] others)
   {
     this.onOpenChest();
     Chest.setAllLocked(others);
