@@ -1,25 +1,25 @@
-package src.logic.character;
+package src.logic.hero;
 
 import src.logic.inventory.Equipment;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 import src.logic.entity.*;
 
-public class Character
+public class Hero
 {
   private int health;
   private final double reach = 1.5;
   private Equipment equippedItems;
  
  //for actual gameplay
- public Character(Weapon weap)
+ public Hero(Weapon weap)
  {
    health = 100;
    equippedItems = new Equipment(weap, null, null);
  }
  
  //test constructor
- public Character(Weapon weapon, Armor armor, Shield shield)
+ public Hero(Weapon weapon, Armor armor, Shield shield)
  {
    health = 100;
    equippedItems = new Equipment(weapon, armor, shield);
@@ -114,7 +114,7 @@ public class Character
     int playerDmg = 0;
     if(mac > pac)
       playerDmg = mac - pac;
-    if(this.hasShield)
+    if(this.hasShield())
       {}
   }
 }

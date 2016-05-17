@@ -98,5 +98,6 @@ public class Equipment
 			str = str + theShield.toString() + "\n";
 		if(str.equals(""))
 			str += "There is nothing equipped.";
+        return str;
 	}
 }

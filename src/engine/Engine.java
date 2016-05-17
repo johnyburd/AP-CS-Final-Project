@@ -4,6 +4,10 @@ import src.hud.Hud;
 import src.engine.Player;
 import src.dungeon.DungeonGenerator;
 
+import src.logic.hero.Hero;
+import src.logic.weapon.Weapon;
+import src.logic.armor.*;
+
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.Color;
@@ -60,6 +64,9 @@ public class Engine extends JFrame implements Runnable
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
         };
+    // LOGIC STUFF
+
+    private Hero dooby;
 
     public Engine()
     {
@@ -83,8 +90,10 @@ public class Engine extends JFrame implements Runnable
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
-        hud = new Hud(this, keyboard);
-        
+
+        dooby = new Hero(Weapon.weaponArray[0]);
+        hud = new Hud(this, keyboard, dooby);
+
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         setResizable(false);

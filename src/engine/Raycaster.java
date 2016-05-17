@@ -17,7 +17,7 @@ public class Raycaster
     Player player;
 
     private ArrayList<Sprite> sprites;
-    
+
     private double[] distances;
 
     private Engine engine;
@@ -35,8 +35,7 @@ public class Raycaster
 
         sprites = new ArrayList<Sprite>();
 
-
-        Sprite sprite = new Sprite(engine, player, "res/sprites/chest.png", 9, 9, 1);
+        Sprite sprite = new Sprite(engine, player, "res/sprites/chest.png", 1, 9, 1);
         sprites.add(sprite);
     }
 
@@ -60,15 +59,17 @@ public class Raycaster
        // for(int i = 2; i < pixels.length; i+=Engine.SCREEN_WIDTH)
          //   if (i/Engine.SCREEN_WIDTH > 30 && i/Engine.SCREEN_WIDTH < 400)
            //   pixels[i] = Color.black.getRGB();
-        for(int x=0; x<Engine.SCREEN_WIDTH; x=x+1) {
-            boolean hit = false;
-            int side=0;//was the wall vertical or horizontal
+        for(int x = 0; x < Engine.SCREEN_WIDTH; x++)
+        {
+            boolean hitWall = false;
+            // vertical or horz wall
+            int side=0;
 
             Ray ray = new Ray(player, x);
-            //Loop to find where the ray hits a wall
-            while(!hit) {
 
-                //Jump to next square
+            // check for wall at every grid border
+            while(!hitWall)
+            {
                 if (ray.sideDistX < ray.sideDistY)
                 {
                     ray.sideDistX += ray.deltaDistX;
@@ -81,59 +82,69 @@ public class Raycaster
                     ray.playerY += ray.stepY;
                     side = 1;
                 }
-                //Check if ray has hit a wall
-                //System.out.println(mapX + ", " + mapY + ", " + map[mapX][mapY]);
+
                 if(map[ray.playerX][ray.playerY] > 0)
-                    hit = true;
+                    hitWall = true;
             }{
-                //Calculate distance to the point of impact
+                // calculate distance
             if(side==0)
                 ray.perpWallDist = Math.abs((ray.playerX - player.getX() + (1 - ray.stepX) / 2) / ray.xComp);
             else
                 ray.perpWallDist = Math.abs((ray.playerY - player.getY() + (1 - ray.stepY) / 2) / ray.yComp);
-            //Now calculate the height of the wall based on the distance from the camera
+
+            // calc height based on distance
             int lineHeight;
             if(ray.perpWallDist > 0)
                 lineHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / ray.perpWallDist));
             else
                 lineHeight = Engine.SCREEN_HEIGHT;
 
+            // record distances to compare to sprites below
             distances[x] = ray.perpWallDist;
 
-            //calculate lowest and highest pixel to fill in current stripe
+
             int drawStart = -lineHeight/2+ Engine.SCREEN_HEIGHT/2;
             if(drawStart < 0)
                 drawStart = 0;
             int drawEnd = lineHeight/2 + Engine.SCREEN_HEIGHT/2;
             if(drawEnd >= Engine.SCREEN_HEIGHT)
                 drawEnd = Engine.SCREEN_HEIGHT - 1;
-            //add a texture
+
+            // calc textures
             int texNum = map[ray.playerX][ray.playerY] - 1;
-            double wallX;//Exact position of where wall was hit
-            if(side==1) {//If its a y-axis wall
+
+            // position on the wall where the ray hit
+            double wallX;
+
+            if(side==1) {  // y-axis
                 wallX = (player.getX() + ((ray.playerY - player.getY() + (1 - ray.stepY) / 2) / ray.yComp) * ray.xComp);
-            } else {//X-axis wall
+            } else {    // x-axis
                 wallX = (player.getY() + ((ray.playerX - player.getX() + (1 - ray.stepX) / 2) / ray.xComp) * ray.yComp);
             }
             wallX-=Math.floor(wallX);
-            //x coordinate on the texture
-            int texX = (int)(wallX * (Texture.textures.get(texNum).getSize()));
-            if(side == 0 && ray.xComp > 0) texX = Texture.textures.get(texNum).getSize() - texX - 1;
-            if(side == 1 && ray.yComp < 0) texX = Texture.textures.get(texNum).getSize() - texX - 1;
-            //calculate y coordinate on texture
-            for(int y=drawStart; y<drawEnd; y++) {
 
-                int texY = (((y*2 - Engine.SCREEN_HEIGHT + lineHeight) << 6) / lineHeight) / 2;
+            int texX = (int)(wallX * (Texture.textures.get(texNum).getSize()));
+            if(side == 0 && ray.xComp > 0)
+                texX = Texture.textures.get(texNum).getSize() - texX - 1;
+            if(side == 1 && ray.yComp < 0)
+                texX = Texture.textures.get(texNum).getSize() - texX - 1;
+
+            for(int y = drawStart; y < drawEnd; y++)
+            {
+
+                int texY = (((y * 2 - Engine.SCREEN_HEIGHT + lineHeight) << 6) / lineHeight) / 2;
                 int color;
-                if(side==0) color = Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).getSize())];
-                else color = (Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).getSize())]>>1) & 8355711;//Make y sides darker
+                if(side==0)
+                    color = Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).getSize())];
+                else
+                    color = (Texture.textures.get(texNum).pixels[texX + (texY * Texture.textures.get(texNum).getSize())]>>1) & 8355711;//Make y sides darker
                 pixels[x + y*(Engine.SCREEN_WIDTH)] = color;
             }
         }
 
         }
 
-
+        // TODO sort spites here
 
         for (Sprite s : sprites) // loop through sorted sprites
         {
@@ -150,20 +161,25 @@ public class Raycaster
             int spriteHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / (transformY))); //using "transformY" instead of the real distance prevents fisheye
                   //calculate lowest and highest pixel to fill in current stripe
             int drawStartY = -spriteHeight / 2 + Engine.SCREEN_HEIGHT / 2;
-            if(drawStartY < 0) drawStartY = 0;
+            if(drawStartY < 0)
+                drawStartY = 0;
             int drawEndY = spriteHeight / 2 + Engine.SCREEN_HEIGHT / 2;
-            if(drawEndY >= Engine.SCREEN_HEIGHT) drawEndY = Engine.SCREEN_HEIGHT - 1;
+            if(drawEndY >= Engine.SCREEN_HEIGHT)
+                drawEndY = Engine.SCREEN_HEIGHT - 1;
 
             //calculate width of the sprite
-            int spriteWidth = Math.abs( (int) (Engine.SCREEN_HEIGHT / (transformY)));
+            int spriteWidth = Math.abs((int)(Engine.SCREEN_HEIGHT / (transformY)));
             int drawStartX = -spriteWidth / 2 + spriteScreenX;
-            if(drawStartX < 0) drawStartX = 0;
+            if(drawStartX < 0)
+                drawStartX = 0;
             int drawEndX = spriteWidth / 2 + spriteScreenX;
-            if(drawEndX >= Engine.SCREEN_WIDTH) drawEndX = Engine.SCREEN_WIDTH - 1;
+            if(drawEndX >= Engine.SCREEN_WIDTH)
+                drawEndX = Engine.SCREEN_WIDTH - 1;
 
                   //loop through every vertical stripe of the sprite on screen
             for(int x = drawStartX; x < drawEndX; x++)
             {
+                int texX = (int)(x * (Texture.textures.get(3).getSize()));
                 //int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
                 //the conditions in the if are:
                 //1) it's in front of camera plane so you don't see things behind you
@@ -171,13 +187,17 @@ public class Raycaster
                 //3) it's on the screen (right)
                 //4) ZBuffer, with perpendicular distance
                 if(transformY > 0 && x > 0 && x < Engine.SCREEN_WIDTH && transformY < distances[x])
-                for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+                for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current column
                 {
+                    int texY = (((y * 2 - Engine.SCREEN_HEIGHT + spriteHeight) << 6) / spriteHeight) / 2;
                    // int d = (y) * 256 - h * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
                    // int texY = ((d * texHeight) / spriteHeight) / 256;
                    // Uint32 color = texture[sprite[spriteOrder[i]].texture][texWidth * texY + texX]; //get current color from the texture
                    // if((color & 0x00FFFFFF) != 0) buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
-                    pixels[x + y * Engine.SCREEN_WIDTH] = Color.RED.getRGB();
+                   //int color = Texture.textures.get(3).pixels[texX + (texX + (exY * Texture.textures.get(3).getSize())];
+                   int color = Color.RED.getRGB();
+
+                    pixels[x + y * Engine.SCREEN_WIDTH] = color;//Color.RED.getRGB();
                 }
             }
         }

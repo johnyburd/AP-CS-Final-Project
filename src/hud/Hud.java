@@ -3,6 +3,10 @@ package src.hud;
 import src.engine.Keyboard;
 import src.engine.Engine;
 
+import src.logic.hero.Hero;
+import src.logic.weapon.Weapon;
+import src.logic.armor.*;
+
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
@@ -18,13 +22,16 @@ public class Hud
     private Keyboard keyboard;
     private Engine engine;
 
+    private Hero hero;
+
     private final int PAD = 10;
 
-    public Hud(Engine e, Keyboard k)
+    public Hud(Engine e, Keyboard k, Hero h)
     {
 
         engine = e;
         keyboard = k;
+        hero = h;
 
         if (hudTextures == null)
             Hud.fillList();
@@ -65,6 +72,20 @@ public class Hud
     {
         BufferedImage buffImg = hudTextures.get(0);
 
+        int armorImg = 0;
+
+        Armor current = hero.getEquippedArmor();
+        String type = current.toString();
+        if (type.indexOf("Plate") != -1)
+            armorImg = 6;
+        else if (type.indexOf("Leather") != -1)
+            armorImg = 4;
+        else if (type.indexOf("Chain") != -1)
+            armorImg = 5;
+        else
+            armorImg = 3;
+
+
         int width = buffImg.getWidth();
         int height = buffImg.getHeight();
 
@@ -72,9 +93,8 @@ public class Hud
         int drawHeight = (Engine.SCREEN_HEIGHT - height) - PAD;
         engine.blitImage(buffImg, drawWidth, drawHeight);
 
-        boolean noOtherArmor = true;
-        if (noOtherArmor)
-            engine.blitImage(hudTextures.get(3), 19, Engine.SCREEN_HEIGHT - height + 1);
+        // draw armor
+        engine.blitImage(hudTextures.get(armorImg), 19, Engine.SCREEN_HEIGHT - height + 1);
     }
     private void updateEggs()
     {
@@ -97,8 +117,9 @@ public class Hud
     // updates the health bar
     private void updateHealth()
     {
-        // get health here
-        double hearts = 10;
+
+        // converts 100pt health system into 20pt
+        double hearts = hero.getHealth() / 5.0;
 
         BufferedImage heart = hudTextures.get(1);
         BufferedImage halfHeart = hudTextures.get(2);
