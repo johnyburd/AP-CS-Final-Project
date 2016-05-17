@@ -3,7 +3,7 @@ package src.logic.entity;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
 import src.logic.weapon.*;
-import src.logic.player.*;
+import src.logic.character.*;
 
 public class Entity
 {
