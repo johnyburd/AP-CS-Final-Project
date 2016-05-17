@@ -73,9 +73,17 @@ public class Hud
         BufferedImage buffImg = hudTextures.get(0);
 
         int armorImg = 0;
+        String type = "";
 
-        Armor current = hero.getEquippedArmor();
-        String type = current.toString();
+        if (hero.hasArmor())
+        {
+            Armor current = hero.getEquippedArmor();
+
+            type = current.toString();
+        }
+        else
+            type = "other";
+
         if (type.indexOf("Plate") != -1)
             armorImg = 6;
         else if (type.indexOf("Leather") != -1)
@@ -119,7 +127,7 @@ public class Hud
     {
 
         // converts 100pt health system into 20pt
-        double hearts = hero.getHealth() / 5.0;
+        double hearts = hero.getHealth() / 10.0;
 
         BufferedImage heart = hudTextures.get(1);
         BufferedImage halfHeart = hudTextures.get(2);

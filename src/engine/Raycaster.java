@@ -35,7 +35,7 @@ public class Raycaster
 
         sprites = new ArrayList<Sprite>();
 
-        Sprite sprite = new Sprite(engine, player, "res/sprites/chest.png", 1, 9, 1);
+        Sprite sprite = new Sprite(engine, player, "res/sprites/shortChest.png", 1, 9, 1);
         sprites.add(sprite);
     }
 
