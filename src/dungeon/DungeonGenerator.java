@@ -168,7 +168,7 @@ public class DungeonGenerator
                 {
                     numChests--;
                     dun[i][j] = 15;
-                    Chest chest = new Chest;
+                    Chest chest = new Chest();
                     chest.randomizeChest();
                     chests.add(chest);
                 }

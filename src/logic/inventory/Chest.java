@@ -8,7 +8,7 @@ import src.logic.armor.*;
 public class Chest
 {
   private Equipment containedItem;
-  private boolean isOpened; isLocked = false;
+  private boolean isOpened, isLocked = false;
   
   //choose this one if it is random
   public Chest()
