@@ -11,6 +11,14 @@ public class Character
   private final double reach = 1.5;
   private Equipment equippedItems;
  
+ //for actual gameplay
+ public Character(Weapon weap)
+ {
+   health = 100;
+   equippedItems = new Equipment(weap, null, null);
+ }
+ 
+ //test constructor
  public Character(Weapon weapon, Armor armor, Shield shield)
  {
    health = 100;
@@ -107,5 +115,6 @@ public class Character
     if(mac > pac)
       playerDmg = mac - pac;
     if(this.hasShield)
+      
   }
 }
