@@ -5,7 +5,7 @@ import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 import src.logic.entity.*;
 
-public class Player
+public class Character
 {
   private int health;
   private final double reach = 1.5;
