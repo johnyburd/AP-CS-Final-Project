@@ -1,4 +1,4 @@
-package src.logic.player;
+package src.logic.character;
 
 import src.logic.inventory.Equipment;
 import src.logic.weapon.Weapon;
