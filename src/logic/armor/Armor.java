@@ -54,4 +54,9 @@ public class Armor
     name = str;
   }
   public static Armor[] armorArray = {new Armor(20, 5, "Leather Armor"), new Armor(40, 10, "Chainmail"), new Armor(80, 20, "Plate Armor")};
+
+  public String toString()
+  {
+   return this.name;
+  }
 }
