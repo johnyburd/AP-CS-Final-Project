@@ -11,9 +11,9 @@ public class Character
   private final double reach = 1.5;
   private Equipment equippedItems;
  
- public Character(int hlt, Weapon weapon, Armor armor, Shield shield)
+ public Character(Weapon weapon, Armor armor, Shield shield)
  {
-   health = hlt;
+   health = 100;
    equippedItems = new Equipment(weapon, armor, shield);
  }
  
