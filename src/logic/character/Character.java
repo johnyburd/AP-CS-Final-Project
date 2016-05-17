@@ -115,6 +115,6 @@ public class Character
     if(mac > pac)
       playerDmg = mac - pac;
     if(this.hasShield)
-      
+      {}
   }
 }
