@@ -1,5 +1,6 @@
 package src.logic.inventory;
 
+import java.util.ArrayList;
 import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
@@ -10,7 +11,7 @@ public class Chest
   private Equipment containedItem;
   private boolean isOpened, isLocked = false;
   
-  //choose this one if it is random
+  //choose this one if it is random or if it is going to pregened to contain health
   public Chest()
   {
     containedItem = null;
@@ -33,13 +34,6 @@ public class Chest
   public Chest(Shield shi)
   {
     containedItem = new Equipment(shi);
-    isOpened = false;
-  }
-  
-  //call this if it is predefined to regen health;
-  public Chest(Hero p)
-  {
-    containedItem = null;
     isOpened = false;
   }
   
@@ -78,7 +72,7 @@ public class Chest
     return isLocked;
   }
   
-  public void randomizeChest(Hero p)
+  public void randomizeChest()
   {
     int i = (int)(Math.random() * 4);
     if(i == 0)
@@ -125,10 +119,10 @@ public class Chest
   // don't fight the boss with just your fist, it will take forever
   public void onOpenBossChest(Hero p, Chest[] others)
   {
-    this.onOpenChest();
+    this.onOpenChest(p);
     Chest.setAllLocked(others);
   }
   
   //the predefined choices for the final boss battle
-  public Chest[] chestArray = {new Chest(null), new Chest(Weapon.weaponArray[weaponArray.length - 1]), new Chest(Armor.armorArray[2]), new Chest(Shield.shieldArray[Shield.shieldArray.length - 1])};
+  public Chest[] chestArray = {new Chest(), new Chest(Weapon.weaponArray[Weapon.weaponArray.length - 1]), new Chest(Armor.armorArray[2]), new Chest(Shield.shieldArray[Shield.shieldArray.length - 1])};
 }
