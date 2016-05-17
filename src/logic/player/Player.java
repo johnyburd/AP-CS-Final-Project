@@ -106,6 +106,6 @@ public class Player
     int playerDmg = 0;
     if(mac > pac)
       playerDmg = mac - pac;
-    
+    if(this.hasShield)
   }
 }
