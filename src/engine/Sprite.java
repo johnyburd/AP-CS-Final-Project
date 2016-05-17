@@ -67,7 +67,12 @@ public class Sprite implements Comparable<Sprite>
     }
     public int compareTo(Sprite s)
     {
-        return 0;
+        if(this.getDistance() > s.getDistance())
+            return -1;
+        else if(this.getDistance() == s.getDistance())
+            return 0;
+        else
+            return 1;
     }
     public double getX()
     {
