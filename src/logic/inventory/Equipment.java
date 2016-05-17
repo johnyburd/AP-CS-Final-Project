@@ -95,7 +95,7 @@ public class Equipment
 		if(theArmor != null)
 			str = str + theArmor.toString() + "\n";
 		if(theShield != null)
-			str = str + theShield.toString() + "\n";
+			str = str + theShield.toString()) + "\n";
 		if(str.equals("")
 			str += "There is nothing equipped."
 	}
