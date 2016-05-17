@@ -86,4 +86,17 @@ public class Equipment
 	{
 		theShield = other;
 	}
+	
+	public String toString()
+	{
+		String str = "";
+		if(primaryWeapon != null)
+			str = str + primaryWeapon.toString() + "\n";
+		if(theArmor != null)
+			str = str + theArmor.toString() + "\n";
+		if(theShield != null)
+			str = str + theShield.toString() + "\n";
+		if(str.equals("")
+			str += "There is nothing equipped."
+	}
 }
