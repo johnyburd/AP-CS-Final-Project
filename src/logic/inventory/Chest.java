@@ -1,6 +1,6 @@
 package src.logic.inventory;
 
-import src.logic.player.Player;
+import src.logic.character.Character;
 import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
@@ -78,7 +78,7 @@ public class Chest
     return isLocked;
   }
   
-  public void randomizeChest(Player p)
+  public void randomizeChest(Character p)
   {
     int i = (int)(Math.random() * 4);
     if(i == 0)
