@@ -14,7 +14,8 @@ public class DungeonGenerator
 {
     private ArrayList<Wall> walls;
     private ArrayList<Wall> removedWalls;
-
+    private ArrayList<Chest> chests;
+    
     private static int[][] dun; //geon
 
     public DungeonGenerator(int size)
@@ -166,7 +167,10 @@ public class DungeonGenerator
                 if(a < 50 && numChests > 0 && ((dun[i][j-1] == 0 && dun[i+1][j] == 0 && dun[i][j-1] == 0) || (dun[i-1][j] == 0 && dun[i][j+1] == 0 && dun[i+1][j] == 0)))
                 {
                     numChests--;
-                    //spawn the chest at this point
+                    dun[i][j] = 15;
+                    Chest chest = new Chest;
+                    chest.randomizeChest();
+                    chests.add(chest);
                 }
             }
     }
