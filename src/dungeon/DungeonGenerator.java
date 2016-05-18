@@ -5,7 +5,7 @@ package src.dungeon;
 
 import src.dungeon.Wall;
 import src.logic.inventory.*;
-import src.logic.player.Player;
+import src.engine.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
