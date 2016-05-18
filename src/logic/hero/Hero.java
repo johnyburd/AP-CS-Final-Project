@@ -113,6 +113,7 @@ public class Hero
     return reach + equippedItems.getWeapon().getWeaponLength();
   }
   
+  //this is called when the player gets hit
   public void onPlayerHit(Entity e)
   {
     int pac = this.getTotalArmorClass();
@@ -148,11 +149,11 @@ public class Hero
     if(this.hasShield())
       this.getEquippedShield().setDurability(this.getEquippedShield().getDurability() - shieldDmg);
     //this part here assigns damage to the weapon then sees if it breaks
-    int monarmclass = e.getTotalArmorClass();
-    Weapon weap = this.getEquippedWeapon();
-    weap.setDurability(weap.getDurability() - monarmclass);
+    int armclass = this.getTotalArmorClass();
+    Weapon weap = e.getEquippedWeapon();
+    weap.setDurability(weap.getDurability() - armclass);
     if(weap.doesWeaponBreak())
-      this.changeEquippedWeapon(Weapon.weaponArray[0]);
+      e.changeEquippedWeapon(null);
   }
   
   public void onPlayerAttack(Entity e)
