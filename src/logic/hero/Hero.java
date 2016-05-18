@@ -157,6 +157,11 @@ public class Hero
       weap.setDurability(weap.getDurability() - 3);
     if(weap.doesWeaponBreak())
       e.changeEquippedWeapon(null);
+      
+    //this section sees if the ARMOR breaks
+    
+    if(this.getEquippedArmor.getDurability() <= 0)
+      this.changeEquippedArmor(null);
   }
   
   public void onPlayerAttack(Entity e)
