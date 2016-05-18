@@ -68,12 +68,22 @@ public class Entity
   {
     return equippedItems.getWeapon();
   }
-
+  
+  public void changeEquippedWeapon(Weapon weap)
+  {
+    equippedItems.switchWeapon(weap);
+  }
+  
   public Armor getEquippedArmor()
   {
     return equippedItems.getArmor();
   }
 
+  public void changeEquippedArmor(Armor arm)
+  {
+    equippedItems.switchArmor(arm);
+  }
+  
   public int getHitDamage()
   {
     return hitDamage;
