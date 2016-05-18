@@ -85,7 +85,7 @@ public class Engine extends JFrame implements Runnable
 
         g = null;  // gets defined in blit()
 
-        player = new Player(3,3,1,0,0,-0.66);
+        player = new Player(3,3,1,0,0,-0.66, dungeon);
         addKeyListener(keyboard);
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
