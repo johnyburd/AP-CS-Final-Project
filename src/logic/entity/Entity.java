@@ -180,5 +180,8 @@ public class Entity
       weap.setDurability(weap.getDurability() - mDef)
     else
       weap.setDurability(weap.getDurability() - 3);
+    
+    if(weap.doesWeaponBreak())
+      p.changeWeapon(Weapon.weaponArray[0]);
   }
 }
