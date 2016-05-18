@@ -71,15 +71,27 @@ public class TextBox
   	
   	public BufferedImage getBufferedImage()
   	{
-
-  		graphics.setFont(new Font("Arial Black", Font.BOLD, 15));
+		if(isChanged)
+  		{
+  			graphics.setFont(new Font("Arial Black", Font.BOLD, 15));
 		
-		for(int n = list.size()-1; n >= 0; n--)
-		{
-			graphics.drawString(list.get(n), x, y);
-			y-=15;
-		}
-		please.drawImage(textbox, null , 0,0 );
+			for(int n = list.size()-1; n >= 0; n--)
+			{
+				graphics.drawString(list.get(n), x, y);
+				y-=15;
+			}
+			please.drawImage(textbox, null , 0,0 );
+			isChanged = false;
+			int width = textbox.getWidth();
+        		int height = textbox.getHeight();
+
+        		for (int i = 0; i < width; i++)
+            		    for (int j = 0; j < height; j++)
+                		if (textbox.getRGB(i, j) == Color.LIGHT_GRAY.getRGB())
+                	           textbox.setRGB(i, j, 00000000);
+  						
+  			        return textbox;
+  		}
 
         int width = textbox.getWidth();
         int height = textbox.getHeight();
