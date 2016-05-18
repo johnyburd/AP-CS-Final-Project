@@ -162,7 +162,7 @@ public class Entity
     
     //damage the weapon appropriately
     if(mDef > 0)
-      weap.setDurability(weap.getDurability() - mDef)
+      weap.setDurability(weap.getDurability() - mDef);
     else
       weap.setDurability(weap.getDurability() - 3);
     
