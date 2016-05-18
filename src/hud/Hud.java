@@ -7,6 +7,8 @@ import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 
+import src.hud.TextBox;
+
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
@@ -23,15 +25,17 @@ public class Hud
     private Engine engine;
 
     private Hero hero;
+    private TextBox textbox;
 
     private final int PAD = 10;
 
-    public Hud(Engine e, Keyboard k, Hero h)
+    public Hud(Engine e, Keyboard k, Hero h, TextBox t)
     {
 
         engine = e;
         keyboard = k;
         hero = h;
+        textbox = t;
 
         if (hudTextures == null)
             Hud.fillList();
@@ -61,6 +65,7 @@ public class Hud
 
     public void updateHud()
     {
+        updateTextBox();
         updateShield();
         updateEquipment();
         updateHealth();
@@ -122,6 +127,15 @@ public class Hud
             engine.blitImage(buffImg, 0, Engine.SCREEN_HEIGHT-height);
     }
 
+    private void updateTextBox()
+    {
+        //filter out grey
+        BufferedImage textImg = textbox.getBufferedImage();
+        int width = textImg.getWidth();
+        int height = textImg.getHeight();
+
+        engine.blitImage(textImg, Engine.SCREEN_WIDTH - width, Engine.SCREEN_HEIGHT - height);
+    }
     // updates the health bar
     private void updateHealth()
     {

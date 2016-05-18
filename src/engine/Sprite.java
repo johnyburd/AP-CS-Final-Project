@@ -22,6 +22,8 @@ public class Sprite implements Comparable<Sprite>
 
     private double speed;
 
+    public static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+
 
 
     private Player player;

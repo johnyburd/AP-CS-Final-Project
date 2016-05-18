@@ -1,3 +1,5 @@
+package src.hud;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -23,7 +25,7 @@ public class TextBox
 	
 	public TextBox()
 	{
-		textbox = new BufferedImage(400, 200, BufferedImage.TYPE_INT_RGB);
+		textbox = new BufferedImage(400, 200, BufferedImage.TYPE_INT_ARGB);
 		graphics = textbox.getGraphics();
 
 		graphics.setColor(Color.LIGHT_GRAY);
@@ -65,6 +67,7 @@ public class TextBox
   	
   	public BufferedImage getBufferedImage()
   	{
+
   		graphics.setFont(new Font("Arial Black", Font.BOLD, 15));
 		
 		for(int n = 0; n < list.size(); n++)
@@ -73,6 +76,14 @@ public class TextBox
 			y+=15;
 		}
 		please.drawImage(textbox, null , 0,0 );
+
+        int width = textbox.getWidth();
+        int height = textbox.getHeight();
+
+        for (int i = 0; i < width; i++)
+            for (int j = 0; j < height; j++)
+                if (textbox.getRGB(i, j) == Color.LIGHT_GRAY.getRGB())
+                    textbox.setRGB(i, j, 00000000);
 		
   		return textbox;
   	}

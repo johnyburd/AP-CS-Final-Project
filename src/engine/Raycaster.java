@@ -17,8 +17,6 @@ public class Raycaster
 
     Player player;
 
-    private ArrayList<Sprite> sprites;
-
     private double[] distances;
 
     private Engine engine;
@@ -34,14 +32,7 @@ public class Raycaster
 
         distances = new double[Engine.SCREEN_WIDTH];
 
-        sprites = new ArrayList<Sprite>();
 
-        Sprite sprite = new Sprite(engine, player, "res/sprites/baddie.png", 3, 9, 1);
-        Sprite test = new Sprite(engine, player, "res/sprites/longChest.png", 3.5,8,1);
-        Sprite test2 = new Sprite(engine, player, "res/sprites/longChest.png", 2.5, 6, 1);
-        sprites.add(sprite);
-        sprites.add(test);
-        sprites.add(test2);
     }
 
     private void clearScreen(int[] pixels)
@@ -150,9 +141,9 @@ public class Raycaster
         }
 
         // puts them in order furthest to closest so they render in the right order
-        Collections.sort(sprites);
+        Collections.sort(Sprite.sprites);
 
-        for (Sprite s : sprites) // loop through sorted sprites
+        for (Sprite s : Sprite.sprites) // loop through sorted sprites
         {
 
             double spriteX = s.getX() - player.getX();

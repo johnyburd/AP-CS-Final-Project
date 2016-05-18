@@ -1,6 +1,8 @@
 package src.engine;
 
 import src.hud.Hud;
+import src.hud.TextBox;
+
 import src.engine.Player;
 import src.dungeon.DungeonGenerator;
 
@@ -28,6 +30,8 @@ public class Engine extends JFrame implements Runnable
 
     private Thread thread;
     private boolean running;
+
+    private TextBox textbox;
 
     private Player player;
     private Keyboard keyboard;
@@ -85,6 +89,11 @@ public class Engine extends JFrame implements Runnable
 
         g = null;  // gets defined in blit()
 
+        textbox = new TextBox();
+        textbox.addMessage("looks super good");
+        //textbox.addMessage("testing");
+        //textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
+
         player = new Player(2,7.5,1,0,0,-0.66, dungeon);
         addKeyListener(keyboard);
 
@@ -92,7 +101,7 @@ public class Engine extends JFrame implements Runnable
 
 
         hero = new Hero(Weapon.weaponArray[0]);
-        hud = new Hud(this, keyboard, hero);
+        hud = new Hud(this, keyboard, hero, textbox);
 
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
