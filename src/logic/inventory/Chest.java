@@ -5,14 +5,17 @@ import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
-import src.engine.Player;
 
+import src.engine.Player;
 import src.engine.Sprite;
+
+import src.hud.TextBox;
 
 public class Chest
 {
   private Equipment containedItem;
   private boolean isOpened, isLocked = false;
+  private TextBox text;
 
   public static ArrayList<Chest> chests = new ArrayList<Chest>();
 
@@ -20,33 +23,37 @@ public class Chest
   private Sprite sprite;
   
   //choose this one if it is random or if it is going to pregened to contain health
-  public Chest(double x, double y, Player player)
+  public Chest(double x, double y, Player player, TextBox textb)
   {
     containedItem = null;
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
+    text = textb;
   }
   
   //call these three if it contains predefined equipment;
-  public Chest(int x, int y, Weapon weap, Player player)
+  public Chest(int x, int y, Weapon weap, Player player, TextBox textb)
   {
     containedItem = new Equipment(weap);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
+    text = textb;
   }
   
-  public Chest(int x, int y, Armor arm, Player player)
+  public Chest(int x, int y, Armor arm, Player player, TextBox textb)
   {
     containedItem = new Equipment(arm);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
+    text = textb;
   }
   
-  public Chest(int x, int y, Shield shi, Player player)
+  public Chest(int x, int y, Shield shi, Player player, TextBox textb)
   {
     containedItem = new Equipment(shi);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
+    text = textb;
   }
   
   public Sprite getSprite()
@@ -111,7 +118,7 @@ public class Chest
     }
   }
   
-  public void onOpenChest(Hero p)
+  public void onOpenChest(Hero p, Player play)
   {
     if(isLocked != true)
       if(containedItem == null)
@@ -120,23 +127,18 @@ public class Chest
         p.setHealth(100);
       }
       else
-        ;
-        //open gui and give choice to replace equipment
-        //if choice is made, something resembling the following code but that actually works in this context is executed.
-        /*
-          * Equipment temp = containedItem;
-          * containedItem = p.getEquippedItems();
-          * p.setEquippedItems(temp);
-        */
+      {
+        text.addMessage("You found " + containedItem.toString());
+      }
   }
   
   // gets the contents of the opened chest, and locks out the others. no other chest in the game will be locked
   // hope the player chooses wisely on these
   // honestly, pick the sword, every other weapon will shatter ridiculously early in the boss match
   // don't fight the boss with just your fist, it will take forever
-  public void onOpenBossChest(Hero p, Chest[] others)
+  public void onOpenBossChest(Hero p, Player play Chest[] others)
   {
-    this.onOpenChest(p);
+    this.onOpenChest(p, play);
     Chest.setAllLocked(others);
   }
 }
