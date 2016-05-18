@@ -112,9 +112,46 @@ public class Hero
     int pac = this.getTotalArmorClass();
     int mac = e.getTotalDamage();
     int playerDmg = 0;
+    int armorDmg = 0;
+    int shieldDmg = 0;
     if(mac > pac)
+    { 
       playerDmg = mac - pac;
+      mac -= pac;
+    }
+    if(this.hasShield() && this.getEquippedShield().isRaised())
+      {
+        if(this.hasArmor())
+          {
+          armorDmg = mac - this.getEquippedShield().getArmorClass();
+          if(armorDmg < 0)
+            armorDmg = 0;
+          }
+        shieldDmg = mac - this.getEquippedShield().getArmorClass();
+        if(shieldDmg < 0)
+          shieldDmg = mac;
+        mac -= this.getEquippedShield().getArmorClass();
+      }
+    else if(this.hasArmor())
+    {
+      armorDmg = mac;
+    }
+    this.setHealth(this.getHealth() - playerDmg);
+    if(this.hasArmor())
+      this.getEquippedArmor().setDurability(this.getEquippedArmor().getDurability() - armorDmg);
     if(this.hasShield())
-      {}
+      this.getEquippedShield().setDurability(this.getEquippedShield().getDurability() - shieldDmg);
+    //this part here assigns damage to the weapon then sees if it breaks
+    int monarmclass = e.getTotalArmorClass();
+    Weapon weap = this.getEquippedWeapon();
+    weap.setDurability(weap.getDurability() - monarmclass);
+    if(weap.doesWeaponBreak())
+      this.changeEquippedWeapon(Weapon.weaponArray[0]);
+  }
+  
+  public void onPlayerAttack(Entity e)
+  {
+    //calc the distance from e and see if it's within reach
+    e.onMonsterHit(this);
   }
 }
