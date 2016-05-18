@@ -6,6 +6,7 @@ package src.dungeon;
 import src.dungeon.Wall;
 import src.logic.inventory.*;
 import src.engine.Player;
+import src.engine.Sprite;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -172,6 +173,7 @@ public class DungeonGenerator
                     Chest chest = new Chest(i, j, p);
                     chest.randomizeChest();
                     chests.add(chest);
+                    Sprite.sprites.add(new Sprite(chest.getSprite()));
                 }
             }
     }
