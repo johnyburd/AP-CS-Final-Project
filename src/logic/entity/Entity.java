@@ -8,16 +8,38 @@ import src.logic.hero.*;
 public class Entity
 {
   private double speed, hitAccuracy;
-  private int health, hitDamage;
+  private int health, hitDamage, x, y;
   private Equipment equippedItems;
 
-  public Entity(double spd, double hA, int hlth, int hD, Equipment equip)
+  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos)
   {
     speed = spd;
     hitAccuracy = hA;
     health = hlth;
     hitDamage = hD;
     equippedItems = equip;
+    x = xPos;
+    y = yPos;
+  }
+  
+  public void updateXCoord(int newX)
+  {
+    x = newX;
+  }
+  
+  public void updateYCoord(int newY)
+  {
+    y = newY;
+  }
+  
+  public int getXCoord()
+  {
+    return x;
+  }
+  
+  public int getYCoord()
+  {
+    return y;
   }
 
   public int getTotalDamage()
@@ -133,5 +155,30 @@ public class Entity
   {
     if(monsterHitSuccessful())
       p.onPlayerHit(this);
+  }
+  
+  // this is what happens when the monster gets hit
+  public void onMonsterHit(Hero p)
+  {
+    //these two lines will shorten the code
+    Armor arm = this.getEquippedArmor();
+    Weapon weap = p.getEquippedWeapon();
+    
+    int pDmg = p.getTotalDamage();
+    int mDef = this.getTotalArmorClass();
+    
+    int mDmg = 0;
+    int armDmg = 0;
+    
+    if(this.getEquippedArmor() != null)
+      armDmg = pDmg - mDef;
+    pDmg -= armDmg;
+    this.setHealth(this.getHealth() - pDmg);
+    
+    //damage the weapon appropriately
+    if(mDef > 0)
+      weap.setDurability(weap.getDurability() - mDef)
+    else
+      weap.setDurability(weap.getDurability() - 3);
   }
 }
