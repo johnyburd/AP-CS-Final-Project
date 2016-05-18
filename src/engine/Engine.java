@@ -78,24 +78,24 @@ public class Engine extends JFrame implements Runnable
         thread = new Thread(this);
         buffImg = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)buffImg.getRaster().getDataBuffer()).getData();
+
+        keyboard = new Keyboard();
     
+        player = new Player(2,7.5,1,0,0,-0.66, dungeon);
+        addKeyListener(keyboard);
+
         // to store images qued
         blitImageList = new ArrayList<BlitImage>();
 
-        dungeonMaster = new DungeonGenerator(15);
+        dungeonMaster = new DungeonGenerator(15, player);
         dungeon = dungeonMaster.getNewDungeon();
-
-        keyboard = new Keyboard();
-
-        g = null;  // gets defined in blit()
+        player.updateDungeon(dungeon); // player requires dungeon
 
         textbox = new TextBox();
-        textbox.addMessage("looks super good");
+        //textbox.addMessage("looks super good");
         //textbox.addMessage("testing");
         //textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
 
-        player = new Player(2,7.5,1,0,0,-0.66, dungeon);
-        addKeyListener(keyboard);
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 

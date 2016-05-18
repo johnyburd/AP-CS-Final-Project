@@ -189,4 +189,8 @@ public class Player
     {
         return yCameraPlane;
     }
+    public void updateDungeon(int[][] d)
+    {
+        dungeon = d;
+    }
 }

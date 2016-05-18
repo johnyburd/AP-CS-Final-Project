@@ -49,9 +49,9 @@ public class Chest
     sprite = new Sprite(player, PATH, x, y, 0);
   }
   
-  public Srite getSprite()
+  public Sprite getSprite()
   {
-    return Sprite;
+    return sprite;
   }
   
   public void setIsOpened()

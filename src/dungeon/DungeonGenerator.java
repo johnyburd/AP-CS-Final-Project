@@ -19,12 +19,16 @@ public class DungeonGenerator
     
     private static int[][] dun; //geon
 
-    public DungeonGenerator(int size)
+    private Player player;
+
+    public DungeonGenerator(int size, Player p)
     {
         dun = new int[size][size];
 
         walls = new ArrayList<Wall>();
         removedWalls = new ArrayList<Wall>();
+
+        player = p;
 
     }
     public int[][] getNewDungeon()
@@ -39,23 +43,8 @@ public class DungeonGenerator
                         dun[i][j] = 2;
                 else
                     dun[i][j] = 0;
+        setRandomChest(10);
         return dun;
-    }
-    public static void main(String[] args)
-    {
-        DungeonGenerator dungeonMaster = new DungeonGenerator(20);
-
-        dungeonMaster.mazeGen();
-        int[][] dungeon = dungeonMaster.dun;
-
-        for (int i = 0; i < dungeon.length; i++)
-        {
-            for (int j = 0; j < dungeon[i].length; j++)
-            {
-                System.out.print(dungeon[i][j] + " ");
-            }
-            System.out.println();
-        }
     }
 
     private void mazeGen()
@@ -160,7 +149,7 @@ public class DungeonGenerator
         return result;
     }
     
-    private void setRandomChest(int numChests, Player p)
+    private void setRandomChest(int numChests)
     {
         for(int i = 0; i < dun.length; i++)
             for(int j = 0; j < dun[i].length; j++)
@@ -169,11 +158,12 @@ public class DungeonGenerator
                 if(a < 50 && numChests > 0 && dun[i][j] == 1 && ((dun[i][j-1] == 0 && dun[i+1][j] == 0 && dun[i][j-1] == 0) || (dun[i-1][j] == 0 && dun[i][j+1] == 0 && dun[i+1][j] == 0)))
                 {
                     numChests--;
-                    dun[i][j] = 15;
-                    Chest chest = new Chest(i, j, p);
+                   // dun[i][j] = 15;
+                    Chest chest = new Chest(i, j, player);
                     chest.randomizeChest();
                     chests.add(chest);
-                    Sprite.sprites.add(new Sprite(chest.getSprite()));
+                    Sprite.sprites.add(chest.getSprite());
+                    System.out.println("chest added");
                 }
             }
     }
