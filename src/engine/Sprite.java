@@ -23,13 +23,11 @@ public class Sprite implements Comparable<Sprite>
     private double speed;
 
 
-    private Engine engine;
 
     private Player player;
 
-    public Sprite(Engine e, Player p, String path, double xPos, double yPos, double s)
+    public Sprite(Player p, String path, double xPos, double yPos, double s)
     {
-        engine = e;
         player = p;
 
         speed = s;

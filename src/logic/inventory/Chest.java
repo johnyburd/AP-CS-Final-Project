@@ -6,35 +6,46 @@ import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
 
+import src.engine.Sprite;
+
 public class Chest
 {
   private Equipment containedItem;
   private boolean isOpened, isLocked = false;
+
+  public static ArrayList<Chest> chests = new ArrayList<Chest>();
+
+  private final String PATH = "res/sprites/longChest.png";
+  private Sprite sprite;
   
   //choose this one if it is random or if it is going to pregened to contain health
-  public Chest()
+  public Chest(int x, int y)
   {
     containedItem = null;
     isOpened = false;
+    sprite = new Sprite(player, PATH, x, y, 0);
   }
   
   //call these three if it contains predefined equipment;
-  public Chest(Weapon weap)
+  public Chest(int x, int y, Weapon weap)
   {
     containedItem = new Equipment(weap);
     isOpened = false;
+    sprite = new Sprite(player, PATH, x, y, 0);
   }
   
-  public Chest(Armor arm)
+  public Chest(int x, int y, Armor arm)
   {
     containedItem = new Equipment(arm);
     isOpened = false;
+    sprite = new Sprite(player, PATH, x, y, 0);
   }
   
-  public Chest(Shield shi)
+  public Chest(int x, int y, Shield shi)
   {
     containedItem = new Equipment(shi);
     isOpened = false;
+    sprite = new Sprite(player, PATH, x, y, 0);
   }
   
   public void setIsOpened()

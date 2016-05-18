@@ -45,8 +45,8 @@ public class Engine extends JFrame implements Runnable
     private int dungeonHeight = 15;
     private int dungeonWidth = 15;
     private DungeonGenerator dungeonMaster;
-    //public static int[][] dungeon;
-    public static int[][] dungeon =
+    public static int[][] dungeon;
+   /** public static int[][] dungeon =
         {
             {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
@@ -63,10 +63,10 @@ public class Engine extends JFrame implements Runnable
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
             {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-        };
+        };**/
     // LOGIC STUFF
 
-    private Hero dooby;
+    private Hero hero;
 
     public Engine()
     {
@@ -79,20 +79,20 @@ public class Engine extends JFrame implements Runnable
         blitImageList = new ArrayList<BlitImage>();
 
         dungeonMaster = new DungeonGenerator(15);
-        //dungeon = dungeonMaster.getNewDungeon();
+        dungeon = dungeonMaster.getNewDungeon();
 
         keyboard = new Keyboard();
 
         g = null;  // gets defined in blit()
 
-        player = new Player(3,3,1,0,0,-0.66, dungeon);
+        player = new Player(2,7.5,1,0,0,-0.66, dungeon);
         addKeyListener(keyboard);
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
 
-        dooby = new Hero(Weapon.weaponArray[0]);
-        hud = new Hud(this, keyboard, dooby);
+        hero = new Hero(Weapon.weaponArray[0]);
+        hud = new Hud(this, keyboard, hero);
 
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);

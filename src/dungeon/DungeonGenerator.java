@@ -62,11 +62,12 @@ public class DungeonGenerator
         Random rand = new Random();
         // at this point 1 will be air and 0 walls
 
-        dun[9][9] = 1;
-        walls.add(new Wall(10, 9, false));
-        walls.add(new Wall(8, 9, false));
-        walls.add(new Wall(9,8, true));
-        walls.add(new Wall(9,10, true));
+        dun[1][dun.length/2] = 1;
+        //walls.add(new Wall(10, 9, false));
+        //walls.add(new Wall(8, 9, false));
+        //walls.add(new Wall(9,8, true));
+        //walls.add(new Wall(9,10, true));
+        walls.add(new Wall(2,dun.length/2, false));
 
         while (walls.size() > 0)
         {
