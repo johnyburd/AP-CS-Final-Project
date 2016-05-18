@@ -159,7 +159,7 @@ public class DungeonGenerator
         return result;
     }
     
-    private void setRandomChest(int numChests)
+    private void setRandomChest(int numChests, Player p)
     {
         for(int i = 0; i < dun.length; i++)
             for(int j = 0; j < dun[i].length; j++)
@@ -169,7 +169,7 @@ public class DungeonGenerator
                 {
                     numChests--;
                     dun[i][j] = 15;
-                    Chest chest = new Chest();
+                    Chest chest = new Chest(i, j, p);
                     chest.randomizeChest();
                     chests.add(chest);
                 }
