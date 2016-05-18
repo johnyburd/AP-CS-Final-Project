@@ -8,7 +8,7 @@ public class Jepling extends Entity
 {
   public Jepling()
   {
-    super(1, 88.88, 250, 25, new Equipment());
+    super(1, 88.88, 250, 25, new Equipment(), 25, 25);
   }
   
   public int getTotalDamage()
