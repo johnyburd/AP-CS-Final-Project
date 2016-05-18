@@ -5,6 +5,7 @@ import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
+import src.engine.Player
 
 import src.engine.Sprite;
 
@@ -19,7 +20,7 @@ public class Chest
   private Sprite sprite;
   
   //choose this one if it is random or if it is going to pregened to contain health
-  public Chest(int x, int y)
+  public Chest(int x, int y, Player player)
   {
     containedItem = null;
     isOpened = false;
@@ -27,21 +28,21 @@ public class Chest
   }
   
   //call these three if it contains predefined equipment;
-  public Chest(int x, int y, Weapon weap)
+  public Chest(int x, int y, Weapon weap, Player player)
   {
     containedItem = new Equipment(weap);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
   }
   
-  public Chest(int x, int y, Armor arm)
+  public Chest(int x, int y, Armor arm, Player player)
   {
     containedItem = new Equipment(arm);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
   }
   
-  public Chest(int x, int y, Shield shi)
+  public Chest(int x, int y, Shield shi, Player player)
   {
     containedItem = new Equipment(shi);
     isOpened = false;
