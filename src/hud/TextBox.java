@@ -68,6 +68,7 @@ public class TextBox
 		{
 			list.remove(0);
 		}
+		isChanged = true;
 	}
   	
   	public BufferedImage getBufferedImage()
