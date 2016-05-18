@@ -11,6 +11,13 @@ public class Jepling extends Entity
     super(1, 88.88, 250, 25, new Equipment());
   }
   
+  public int getTotalDamage()
+  {
+    int a = (int)(Math.random() * 10);
+    a += 15;
+    return a;
+  }
+  
   public int getTotalArmorClass()
   {
     return 10;
