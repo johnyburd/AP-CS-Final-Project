@@ -38,19 +38,23 @@ public class TextBox
 	
 	public void addMessage(String text)
 	{
-		if(text.length() > 30)
+		if(text.length() > 45)
 		{
 			int z = 0;
-			for(int i = 0; i < text.length()/30.0; i++)
+			
+			while(z < text.length())
 			{
-				if((z + 30) > text.length())
+				
+				if((z + 45) >= text.length())
 				{
 					list.add(text.substring(z,text.length()));
+					z+=45;
 				}
 				else
 				{
-					list.add(text.substring(z,z+30));
-					z+=30;
+					int stop = text.lastIndexOf(" ", (z + 40));
+					list.add(text.substring(z,stop +1));
+					z+=(stop+1);
 				}
 			}
 		}
@@ -70,10 +74,10 @@ public class TextBox
 
   		graphics.setFont(new Font("Arial Black", Font.BOLD, 15));
 		
-		for(int n = 0; n < list.size(); n++)
+		for(int n = list.size()-1; n >= 0; n--)
 		{
 			graphics.drawString(list.get(n), x, y);
-			y+=15;
+			y-=15;
 		}
 		please.drawImage(textbox, null , 0,0 );
 
