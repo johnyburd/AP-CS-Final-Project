@@ -155,12 +155,14 @@ public class DungeonGenerator
             for(int j = 0; j < dun[i].length; j++)
             {
                 int a = (int)(Math.random() * 100);
-                if(a < 50 && numChests > 0 && dun[i][j] == 1 && ((dun[i][j-1] == 0 && dun[i+1][j] == 0 && dun[i][j-1] == 0) || (dun[i-1][j] == 0 && dun[i][j+1] == 0 && dun[i+1][j] == 0)))
+                if(a < 500 && numChests > 0 && dun[i][j] == 0 )//&& ((dun[i][j-1] == 0 && dun[i+1][j] == 0 && dun[i][j-1] == 0) || (dun[i-1][j] == 0 && dun[i][j+1] == 0 && dun[i+1][j] == 0)))
                 {
                     numChests--;
                    // dun[i][j] = 15;
                     Chest chest = new Chest(i, j, player);
                     chest.randomizeChest();
+                    if (chest == null)
+                        System.out.println("NULL");
                     chests.add(chest);
                     Sprite.sprites.add(chest.getSprite());
                     System.out.println("chest added");
