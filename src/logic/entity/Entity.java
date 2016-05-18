@@ -169,8 +169,8 @@ public class Entity
     if(weap.doesWeaponBreak())
       p.changeWeapon(Weapon.weaponArray[0]);
       
-    if(this.getEquippedArmor != null)  
-      if(this.getEquippedArmor.getDurability() <= 0)
+    if(this.getEquippedArmor() != null)  
+      if(this.getEquippedArmor().getDurability() <= 0)
         this.changeEquippedArmor(null);
   }
 }
