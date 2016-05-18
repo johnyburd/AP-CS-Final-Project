@@ -92,14 +92,15 @@ public class Engine extends JFrame implements Runnable
         player.updateDungeon(dungeon); // player requires dungeon
 
         textbox = new TextBox();
-        //textbox.addMessage("looks super good");
-        //textbox.addMessage("testing");
-        //textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
+        textbox.addMessage("looks super good");
+        textbox.addMessage("testing");
+        textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
+        System.out.println("test");
 
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
-
+        // LOGIC STUFF HERE
         hero = new Hero(Weapon.weaponArray[0]);
         hud = new Hud(this, keyboard, hero, textbox);
 
