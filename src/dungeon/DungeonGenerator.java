@@ -155,7 +155,7 @@ public class DungeonGenerator
             for(int j = 0; j < dun[i].length; j++)
             {
                 int a = (int)(Math.random() * 100);
-                if(a < 500 && numChests > 0 && dun[i][j] == 0 )//&& ((dun[i][j-1] == 0 && dun[i+1][j] == 0 && dun[i][j-1] == 0) || (dun[i-1][j] == 0 && dun[i][j+1] == 0 && dun[i+1][j] == 0)))
+                if(a < 500 && numChests > 0 && dun[i][j] == 0 ) && ((dun[i][j-1] > 0 && dun[i+1][j] > 0 && dun[i][j-1] > 0) || (dun[i-1][j] > 0 && dun[i][j+1] > 0 && dun[i+1][j] > 0)))
                 {
                     numChests--;
                    // dun[i][j] = 15;
