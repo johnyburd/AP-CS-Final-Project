@@ -29,7 +29,7 @@ public class TextBox
 		graphics.setColor(Color.LIGHT_GRAY);
 		graphics.fillRect(0, 0, 400, 200);
 		graphics.setColor(Color.BLACK);
-    	please = (Graphics2D) graphics;
+    		please = (Graphics2D) graphics;
 		please.drawImage(textbox, null , 0,0 );
 	}
 	
