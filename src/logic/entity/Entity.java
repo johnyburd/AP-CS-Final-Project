@@ -126,31 +126,6 @@ public class Entity
     equippedItems.switchArmor(arm);
   }
 
-  public void monsterAI(Hero p)
-  {
-    findPlayer(p);
-    moveToPlayer(p);
-    if(nextToPlayer())
-    {
-      onMonsterAttack(p);
-    }
-  }
-
-  public void findPlayer(Hero p)
-  {
-
-  }
-
-  public void moveToPlayer(Hero p)
-  {
-
-  }
-
-  public boolean nextToPlayer()
-  {
-    return false;
-  }
-
   public void onMonsterAttack(Hero p)
   {
     if(monsterHitSuccessful())
