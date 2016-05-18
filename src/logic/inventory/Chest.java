@@ -134,7 +134,4 @@ public class Chest
     this.onOpenChest(p);
     Chest.setAllLocked(others);
   }
-  
-  //the predefined choices for the final boss battle
-  public Chest[] chestArray = {new Chest(), new Chest(Weapon.weaponArray[Weapon.weaponArray.length - 1]), new Chest(Armor.armorArray[2]), new Chest(Shield.shieldArray[Shield.shieldArray.length - 1])};
 }
