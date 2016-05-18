@@ -160,7 +160,7 @@ public class Hero
       
     //this section sees if the ARMOR breaks
     
-    if(this.getEquippedArmor != null && this.getEquippedArmor.getDurability() <= 0)
+    if(this.getEquippedArmor() != null && this.getEquippedArmor().getDurability() <= 0)
       this.changeEquippedArmor(null);
   }
   
