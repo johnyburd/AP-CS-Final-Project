@@ -19,6 +19,7 @@ public class TextBox
 	public static int x = 0;
 	public int y = 15;
 	public ArrayList<String> list = new ArrayList<String>();
+	public boolean isChanged = false;
 	//Max is 195 
 	//Min is 15
 	//Max x is 385
