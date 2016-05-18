@@ -4,6 +4,7 @@ import src.logic.inventory.Equipment;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 import src.logic.entity.*;
+import src.engine.Player;
 
 public class Hero
 {
@@ -73,6 +74,11 @@ public class Hero
   public void setHealth(int h)
   {
     health = h;
+  }
+  
+  public int getTotalDamage()
+  {
+    return this.getEquippedWeapon().getWeaponDamage();
   }
   
   public void changeEquippedArmor(Armor arm)
