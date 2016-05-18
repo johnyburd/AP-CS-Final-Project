@@ -5,7 +5,7 @@ import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.inventory.Equipment;
 import src.logic.armor.*;
-import src.engine.Player
+import src.engine.Player;
 
 import src.engine.Sprite;
 
