@@ -20,7 +20,7 @@ public class Chest
   private Sprite sprite;
   
   //choose this one if it is random or if it is going to pregened to contain health
-  public Chest(int x, int y, Player player)
+  public Chest(double x, double y, Player player)
   {
     containedItem = null;
     isOpened = false;
