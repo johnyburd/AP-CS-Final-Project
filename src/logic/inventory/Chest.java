@@ -49,6 +49,11 @@ public class Chest
     sprite = new Sprite(player, PATH, x, y, 0);
   }
   
+  public Srite getSprite()
+  {
+    return Sprite;
+  }
+  
   public void setIsOpened()
   {
     isOpened = true;
