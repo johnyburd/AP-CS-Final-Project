@@ -167,7 +167,7 @@ public class Entity
       weap.setDurability(weap.getDurability() - 3);
     
     if(weap.doesWeaponBreak())
-      p.changeWeapon(Weapon.weaponArray[0]);
+      p.changeEquippedWeapon(Weapon.weaponArray[0]);
       
     if(this.getEquippedArmor() != null)  
       if(this.getEquippedArmor().getDurability() <= 0)
