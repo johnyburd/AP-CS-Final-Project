@@ -151,7 +151,10 @@ public class Hero
     //this part here assigns damage to the weapon then sees if it breaks
     int armclass = this.getTotalArmorClass();
     Weapon weap = e.getEquippedWeapon();
-    weap.setDurability(weap.getDurability() - armclass);
+    if(armclass > 0)
+      weap.setDurability(weap.getDurability() - armclass);
+    else
+      weap.setDurability(weap.getDurability() - 3);
     if(weap.doesWeaponBreak())
       e.changeEquippedWeapon(null);
   }
