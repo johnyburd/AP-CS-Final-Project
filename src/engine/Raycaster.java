@@ -7,6 +7,7 @@ import src.engine.Ray;
 import src.engine.Keyboard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.awt.Color;
 
 public class Raycaster
@@ -35,8 +36,12 @@ public class Raycaster
 
         sprites = new ArrayList<Sprite>();
 
-        Sprite sprite = new Sprite(engine, player, "res/sprites/shortChest.png", 1, 9, 1);
+        Sprite sprite = new Sprite(engine, player, "res/sprites/baddie.png", 3, 9, 1);
+        Sprite test = new Sprite(engine, player, "res/sprites/longChest.png", 3.5,8,1);
+        Sprite test2 = new Sprite(engine, player, "res/sprites/longChest.png", 2.5, 6, 1);
         sprites.add(sprite);
+        sprites.add(test);
+        sprites.add(test2);
     }
 
     private void clearScreen(int[] pixels)
@@ -144,7 +149,8 @@ public class Raycaster
 
         }
 
-        // TODO sort spites here
+        // puts them in order furthest to closest so they render in the right order
+        Collections.sort(sprites);
 
         for (Sprite s : sprites) // loop through sorted sprites
         {
@@ -158,8 +164,9 @@ public class Raycaster
 
             int spriteScreenX = (int)((Engine.SCREEN_WIDTH / 2) * (1 + transformX / transformY));
 
-            int spriteHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / (transformY))); //using "transformY" instead of the real distance prevents fisheye
-                  //calculate lowest and highest pixel to fill in current stripe
+            int spriteHeight = Math.abs((int)(Engine.SCREEN_HEIGHT / (transformY)));
+            //using "transformY" instead of the real distance prevents fisheye
+
             int drawStartY = -spriteHeight / 2 + Engine.SCREEN_HEIGHT / 2;
             if(drawStartY < 0)
                 drawStartY = 0;
@@ -179,8 +186,8 @@ public class Raycaster
                   //loop through every vertical stripe of the sprite on screen
             for(int x = drawStartX; x < drawEndX; x++)
             {
-                int texX = (int)(x * (Texture.textures.get(3).getSize()));
-                //int texX = int(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * texWidth / spriteWidth) / 256;
+                //int texX = (int)(x * (Texture.textures.get(3).getSize()));
+                int texX = (int)( (x - (-spriteWidth / 2 + spriteScreenX)) * s.getWidth() / spriteWidth);
                 //the conditions in the if are:
                 //1) it's in front of camera plane so you don't see things behind you
                 //2) it's on the screen (left)
@@ -189,15 +196,15 @@ public class Raycaster
                 if(transformY > 0 && x > 0 && x < Engine.SCREEN_WIDTH && transformY < distances[x])
                 for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current column
                 {
-                    int texY = (((y * 2 - Engine.SCREEN_HEIGHT + spriteHeight) << 6) / spriteHeight) / 2;
-                   // int d = (y) * 256 - h * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-                   // int texY = ((d * texHeight) / spriteHeight) / 256;
+                    int texY = (((y * 2 - Engine.SCREEN_HEIGHT + spriteHeight) * s.getHeight()) / spriteHeight) / 2;
+                    //int d = (y) * 256 - Engine.SCREEN_HEIGHT * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
+                    //int texY = ((d * s.getHeight()) / spriteHeight) / 256;
                    // Uint32 color = texture[sprite[spriteOrder[i]].texture][texWidth * texY + texX]; //get current color from the texture
                    // if((color & 0x00FFFFFF) != 0) buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
-                   //int color = Texture.textures.get(3).pixels[texX + (texX + (exY * Texture.textures.get(3).getSize())];
-                   int color = Color.RED.getRGB();
-
-                    pixels[x + y * Engine.SCREEN_WIDTH] = color;//Color.RED.getRGB();
+                    int color = s.pixels[texX + (texX + (texY * s.getHeight()))];
+                   //int color = Color.RED.getRGB();
+                    if (color != Color.BLACK.getRGB())
+                        pixels[x + y * Engine.SCREEN_WIDTH] = color;//Color.RED.getRGB();
                 }
             }
         }
