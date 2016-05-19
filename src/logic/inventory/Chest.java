@@ -136,7 +136,7 @@ public class Chest
   // hope the player chooses wisely on these
   // honestly, pick the sword, every other weapon will shatter ridiculously early in the boss match
   // don't fight the boss with just your fist, it will take forever
-  public void onOpenBossChest(Hero p, Player play Chest[] others)
+  public void onOpenBossChest(Hero p, Player play, ArrayList<Chest> others)
   {
     this.onOpenChest(p, play);
     Chest.setAllLocked(others);
