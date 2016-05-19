@@ -36,7 +36,7 @@ public class Entity
   
   public Sprite getSprite()
   {
-    return sprite;
+    return spriteObj;
   }
   
   public void updateXCoord(int newX)
