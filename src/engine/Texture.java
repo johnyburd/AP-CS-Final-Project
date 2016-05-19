@@ -19,6 +19,7 @@ public class Texture
     add(new Texture("res/walls/brownwall2.png", 64));
     add(new Texture("res/walls/redwall1.png", 64));
     add(new Texture("res/walls/redwall2.png", 64));
+    add(new Texture("res/walls/door.png", 64));
 
     }};
 
