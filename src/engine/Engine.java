@@ -10,6 +10,8 @@ import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 
+import src.sound.Sound;
+
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.Color;
