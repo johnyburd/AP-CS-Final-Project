@@ -237,7 +237,7 @@ public class Entity
     else
     {
       weap.setDurability(weap.getDurability() - 3);
-      textbox.add("Your weapon took 3 damage");
+      textbox.addMessage("Your weapon took 3 damage");
     }
     if(weap.doesWeaponBreak())
     {  
