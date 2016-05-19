@@ -28,7 +28,7 @@ public class TextBoxEggs
 	
 	public TextBoxEggs()
 	{
-		textbox = new BufferedImage(400, 200, BufferedImage.TYPE_INT_ARGB);
+		textboxEggs = new BufferedImage(400, 200, BufferedImage.TYPE_INT_ARGB);
 		graphics = textboxEggs.getGraphics();
 
 		graphics.setColor(Color.LIGHT_GRAY);
