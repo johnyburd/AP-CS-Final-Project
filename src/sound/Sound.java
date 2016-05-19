@@ -41,7 +41,7 @@ public class Sound
             {
 		        try 
    	 	        {
-    		        File file = new File(res/sounds/footsteps.wav");
+    		        File file = new File("res/sounds/footsteps.wav");
          
      	   	        Clip clip = AudioSystem.getClip();
         	        clip.open(AudioSystem.getAudioInputStream(file));
@@ -165,7 +165,7 @@ public class Sound
 	
 	public static void playEnterSmileZone()
 	{
-		tnew Thread(new Runnable()
+		new Thread(new Runnable()
         {
             public void run()
             {
@@ -188,5 +188,4 @@ public class Sound
             }
         }).start();
 	}
-
 }
