@@ -7,7 +7,7 @@
  import src.logic.inventory.*;
  import src.logic.armor.*;
  import src.logic.weapon.*;
- import src.logic.player.*;
+ import src.logic.hero.*;
  
 	public class QuestTracker
 	{
@@ -20,7 +20,7 @@
 		//Just prints out things for now rather than putting up a textbox
 	
 		
-		public static void giveSidequest(Player p)
+		public static void giveSidequest(Hero p)
 		{
 			System.out.println("Come here for a quest!");
 			System.out.println("You are to collect a dozen eggs if you want to escape.");
