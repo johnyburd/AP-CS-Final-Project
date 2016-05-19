@@ -7,30 +7,37 @@ import javax.sound.sampled.*;
 
 public class Sound
 {//sounds
-	public static void playPlayerHit()
+	public static synchronized void playPlayerHit()
 	{
-		try 
-   	 	{
-    		File file = new File("/res/sounds/playerhit.wav");
+        new Thread(new Runnable()
+        {
+            public void run()
+            {
+		        try 
+   	 	        {
+    		        File file = new File("res/sounds/playerhit.wav");
          
-     	   	Clip clip = AudioSystem.getClip();
-        	clip.open(AudioSystem.getAudioInputStream(file));
-        	clip.start();
+     	   	        Clip clip = AudioSystem.getClip();
+        	        clip.open(AudioSystem.getAudioInputStream(file));
+        	        clip.start();
         
-        	Thread.sleep(clip.getMicrosecondLength()/1000);
-   		} 
-    	catch(Exception ex) 
-    	{
-        	System.out.println("Error with playing sound.");
-        	ex.printStackTrace();
-   		}
+        	        Thread.sleep(clip.getMicrosecondLength()/1000);
+   		        } 
+
+    	        catch(Exception ex) 
+    	        {
+        	        System.out.println("Error with playing sound.");
+        	        ex.printStackTrace();
+   		        }
+            }
+        }).start();
 	}
 	
 	public static void playWalking()
 	{
 		try 
    	 	{
-    		File file2 = new File("/res/sounds/footsteps.wav");
+    		File file2 = new File("res/sounds/footsteps.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file2));
@@ -49,7 +56,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file3 = new File("/res/sounds/enemygrunt.wav");
+    		File file3 = new File("res/sounds/enemygrunt.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file3));
@@ -68,7 +75,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file4 = new File("/res/sounds/enemyhit.wav");
+    		File file4 = new File("res/sounds/enemyhit.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file4));
@@ -87,7 +94,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file5 = new File("/res/soundsgameover.wav");
+    		File file5 = new File("res/soundsgameover.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file5));
@@ -106,7 +113,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file6 = new File("/res/sounds/gamewon.wav");
+    		File file6 = new File("res/sounds/gamewon.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file6));
@@ -125,7 +132,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file7 = new File("/res/sounds/smilezoneenter.wav");
+    		File file7 = new File("res/sounds/smilezoneenter.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file7));

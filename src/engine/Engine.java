@@ -98,9 +98,6 @@ public class Engine extends JFrame implements Runnable
         //textbox.addMessage("looks super good");
         //textbox.addMessage("testing");
         //textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
-        
-        Sound.playPlayerHit();
-
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
 
@@ -188,7 +185,6 @@ public class Engine extends JFrame implements Runnable
             while (difference >= 1)
             {
                 //happens at most 60 times a second
-                //TODO update screen
 
                 raycaster.refresh(pixels);
                 player.update(dungeon, keyboard);
