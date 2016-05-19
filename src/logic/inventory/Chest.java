@@ -117,7 +117,7 @@ public class Chest
 
   public boolean equals(Chest other)
   {
-    return (spriteChest.xCoord - other.xCoord == 0) && (spriteChest.yCoord - other.yCoord == 0);
+    return (xCoord - other.xCoord == 0) && (yCoord - other.yCoord == 0);
   }
   
   public void randomizeChest()
