@@ -11,6 +11,9 @@ import src.engine.Sprite;
 import java.util.ArrayList;
 import java.util.Random;
 
+import src.hud.TextBox;
+import src.engine.Engine;
+
 public class DungeonGenerator
 {
     private ArrayList<Wall> walls;
@@ -159,7 +162,7 @@ public class DungeonGenerator
                 {
                     numChests--;
                    // dun[i][j] = 15;
-                    Chest chest = new Chest(((double)i + 0.5), j + 0.5, player, textbox);
+                    Chest chest = new Chest(((double)i + 0.5), j + 0.5, player, new TextBox());
                     chest.randomizeChest();
                     if (chest == null)
                         System.out.println("NULL");
