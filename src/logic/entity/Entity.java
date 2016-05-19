@@ -48,12 +48,12 @@ public class Entity
     y = newY;
   }
   
-  public int getXCoord()
+  public double getXCoord()
   {
     return x;
   }
   
-  public int getYCoord()
+  public double getYCoord()
   {
     return y;
   }
