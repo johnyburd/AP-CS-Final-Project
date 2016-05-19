@@ -79,6 +79,7 @@ public class Engine extends JFrame implements Runnable
 
     public Engine()
     {
+        Sound.playBackground();
 
         thread = new Thread(this);
 
@@ -98,7 +99,7 @@ public class Engine extends JFrame implements Runnable
         blitImageList = new ArrayList<BlitImage>();
 
         dungeonMaster = new DungeonGenerator(15, player, textbox);
-        dungeon = dungeonMaster.getNewDungeon(1);
+        dungeon = dungeonMaster.getNewDungeon((int)(Math.random())*3+1);
         player.updateDungeon(dungeon); // player requires dungeon
 
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);

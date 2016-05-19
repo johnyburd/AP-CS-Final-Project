@@ -62,8 +62,9 @@ public class Entity
         updateYCoord(y+ speed);
 
      //hit
-    if (Math.sqrt(dist(x,y)) < 2 && monsterHitSuccessful())
-        Engine.staticHero.onPlayerHit(this);
+    if (Math.sqrt(dist(x,y)) < 2)
+        //Engine.staticHero.onPlayerHit(this);
+        onMonsterAttack(Engine.staticHero);
 
 
   }

@@ -33,7 +33,7 @@ public class Sound
         }).start();
 	}
 	
-	public static void playWalking()
+	public static synchronized void playWalking()
 	{
 		new Thread(new Runnable()
         {
@@ -59,7 +59,7 @@ public class Sound
         }).start();
 	}
 	
-	public static void playEnemyGrunt()
+	public static synchronized void playEnemyGrunt()
 	{
 	new Thread(new Runnable()
         {
@@ -85,7 +85,7 @@ public class Sound
         }).start();
 	}
 	
-	public static void playEnemyHit()
+	public static synchronized void playEnemyHit()
 	{
 		new Thread(new Runnable()
         {
@@ -111,7 +111,7 @@ public class Sound
         }).start();
 	}
 	
-	public static void playGameOver()
+	public static synchronized void playGameOver()
 	{
 		new Thread(new Runnable()
         {
@@ -137,7 +137,7 @@ public class Sound
         }).start();
 	}
 	
-	public static void playGameWon()
+	public static synchronized void playGameWon()
 	{
 		new Thread(new Runnable()
         {
@@ -163,7 +163,7 @@ public class Sound
         }).start();
 	}
 	
-	public static void playEnterSmileZone()
+	public static synchronized void playEnterSmileZone()
 	{
 		new Thread(new Runnable()
         {
@@ -176,6 +176,33 @@ public class Sound
      	   	        Clip clip = AudioSystem.getClip();
         	        clip.open(AudioSystem.getAudioInputStream(file));
         	        clip.start();
+        
+        	        Thread.sleep(clip.getMicrosecondLength()/1000);
+   		        } 
+
+    	        catch(Exception ex) 
+    	        {
+        	        System.out.println("Error with playing sound.");
+        	        ex.printStackTrace();
+   		        }
+            }
+        }).start();
+	}
+
+	public static synchronized void playBackground()
+	{
+		new Thread(new Runnable()
+        {
+            public void run()
+            {
+		        try 
+   	 	        {
+    		        File file = new File("res/sounds/LavenderTownSlowforgame.wav");
+         
+     	   	        Clip clip = AudioSystem.getClip();
+        	        clip.open(AudioSystem.getAudioInputStream(file));
+        	        //clip.start();
+                    clip.loop(Clip.LOOP_CONTINUOUSLY);
         
         	        Thread.sleep(clip.getMicrosecondLength()/1000);
    		        } 
