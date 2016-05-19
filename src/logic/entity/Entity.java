@@ -108,7 +108,9 @@ public class Entity
 
   public int getTotalArmorClass()
   {
-    Armor arm = equippedItems.getArmor();
+    Armor arm = null;
+    if(equippedItems != null)
+      arm = equippedItems.getArmor();
     if(arm != null)
       return arm.getArmorClass();
     return 0;
