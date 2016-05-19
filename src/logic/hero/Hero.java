@@ -5,6 +5,8 @@ import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 import src.logic.entity.*;
 
+import src.sound.Sound;
+
 import src.engine.Player;
 
 import src.hud.TextBox;
