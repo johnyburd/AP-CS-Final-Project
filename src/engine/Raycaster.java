@@ -79,7 +79,7 @@ public class Raycaster
                     side = 1;
                 }
 
-                if(map[ray.playerX][ray.playerY] > 0)
+                if(map[ray.playerX][ray.playerY] > 0 && map[ray.playerX][ray.playerY] < 15)
                     hitWall = true;
             }{
                 // calculate distance

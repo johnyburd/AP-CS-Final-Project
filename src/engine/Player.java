@@ -131,20 +131,29 @@ public class Player
         {
             if (dungeon[(int)(newX + MAX_DIST)][(int)y] == 0 && dungeon[(int)newX][(int)y] == 0)
                 x = newX;
+            if (dungeon[(int)(newX + MAX_DIST)][(int)y] > 14 && dungeon[(int)newX][(int)y] > 14)
+                x = newX;
         }
         else
         {
             if (dungeon[(int)(newX - MAX_DIST)][(int)y] == 0 && dungeon[(int)newX][(int)y] == 0)
+                x = newX;
+            if (dungeon[(int)(newX - MAX_DIST)][(int)y] > 14 && dungeon[(int)newX][(int)y] > 14)
                 x = newX;
         }
         if (newY > y)
         {
             if (dungeon[(int)x][(int)(newY + MAX_DIST)] == 0 && dungeon[(int)x][(int)newY] == 0)
                 y = newY;
+            if (dungeon[(int)x][(int)(newY + MAX_DIST)] > 14 && dungeon[(int)x][(int)newY] > 14)
+                y = newY;
         }
         else
         {
+
             if (dungeon[(int)x][(int)(newY - MAX_DIST)] == 0 && dungeon[(int)x][(int)newY] == 0)
+                y = newY;
+            if (dungeon[(int)x][(int)(newY - MAX_DIST)] > 14 && dungeon[(int)x][(int)newY] == 0)
                 y = newY;
         }
     }
