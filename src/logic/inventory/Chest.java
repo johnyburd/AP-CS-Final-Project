@@ -115,7 +115,7 @@ public class Chest
     return isLocked;
   }
 
-  public bolean equals(Chest other)
+  public boolean equals(Chest other)
   {
     return (spriteChest.xCoord - other.xCoord == 0) && (spriteChest.yCoord - other.yCoord == 0);
   }
