@@ -56,6 +56,9 @@ public class Hud
             hudTextures.add(ImageIO.read(new File("res/hud/plateArmor.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/shield.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/egg.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/fist.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/sword0.png"))); // 10
+            hudTextures.add(ImageIO.read(new File("res/hud/sword1.png")));
         }
         catch (IOException ioe)
         {
@@ -76,6 +79,16 @@ public class Hud
     private void updateEquipment()
     {
         BufferedImage buffImg = hudTextures.get(0);
+        BufferedImage weaponImg = null;
+
+        if (hero.hasSword())
+            if (keyboard.wKeyDown())
+                weaponImg = hudTextures.get(11);
+            else
+                weaponImg = hudTextures.get(10);
+        else
+            weaponImg = hudTextures.get(9);
+
 
         int armorImg = 0;
         String type = "";
@@ -104,6 +117,8 @@ public class Hud
 
         int drawWidth = PAD;
         int drawHeight = (Engine.SCREEN_HEIGHT - height) - PAD;
+
+        engine.blitImage(weaponImg, weaponImg.getWidth(), weaponImg.getHeight());
         engine.blitImage(buffImg, drawWidth, drawHeight);
 
         // draw armor

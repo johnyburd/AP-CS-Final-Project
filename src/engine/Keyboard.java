@@ -12,8 +12,8 @@ public class Keyboard implements KeyListener
     public Keyboard()
     {
         // these should default to false
-        keysStatus = new boolean[10];
-        keycodes = new int[10];
+        keysStatus = new boolean[11];
+        keycodes = new int[11];
         keycodes[0] = KeyEvent.VK_LEFT;
         keycodes[1] = KeyEvent.VK_RIGHT;
         keycodes[2] = KeyEvent.VK_UP;
@@ -24,7 +24,7 @@ public class Keyboard implements KeyListener
         keycodes[7] = KeyEvent.VK_E;
         keycodes[8] = KeyEvent.VK_Y;
         keycodes[9] = KeyEvent.VK_N;
-       // keycodes = {KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_UP, KeyEvent.VK_DOWN};
+        keycodes[10] = KeyEvent.VK_W;
     }
 
     // keyPressed keyReleased and keyTyped are all required to implement KeyListener
@@ -45,7 +45,10 @@ public class Keyboard implements KeyListener
                 keysStatus[i] = false;
             }
     }
-
+    public boolean wKeyDown()
+    {
+        return keysStatus[10];
+    }
     public boolean yKeyDown()
     {
         return keysStatus[8];
