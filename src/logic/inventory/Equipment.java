@@ -136,5 +136,6 @@ public class Equipment
 			else if(d == 1)
 				return randomMonsterSword(level);
 		}
+		return null;
 	}
 }
