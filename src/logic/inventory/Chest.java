@@ -23,37 +23,37 @@ public class Chest
   private Sprite sprite;
   
   //choose this one if it is random or if it is going to pregened to contain health
-  public Chest(double x, double y, Player player, TextBox textb)
+  public Chest(double x, double y, Player player, TextBox textbox)
   {
     containedItem = null;
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
-    text = textb;
+    text = textbox;
   }
   
   //call these three if it contains predefined equipment;
-  public Chest(int x, int y, Weapon weap, Player player, TextBox textb)
+  public Chest(int x, int y, Weapon weap, Player player, TextBox textbox)
   {
     containedItem = new Equipment(weap);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
-    text = textb;
+    text = textbox;
   }
   
-  public Chest(int x, int y, Armor arm, Player player, TextBox textb)
+  public Chest(int x, int y, Armor arm, Player player, TextBox textbox)
   {
     containedItem = new Equipment(arm);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
-    text = textb;
+    text = textbox;
   }
   
-  public Chest(int x, int y, Shield shi, Player player, TextBox textb)
+  public Chest(int x, int y, Shield shi, Player player, TextBox textbox)
   {
     containedItem = new Equipment(shi);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
-    text = textb;
+    text = textbox;
   }
   
   public Sprite getSprite()
