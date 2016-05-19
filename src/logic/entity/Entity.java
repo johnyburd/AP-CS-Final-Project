@@ -9,15 +9,15 @@ import src.hud.TextBox;
 
 public class Entity
 {
-  private double speed, hitAccuracy;
-  private int health, hitDamage, x, y;
+  private double speed, hitAccuracy, x, y;
+  private int health, hitDamage;
   private Equipment equippedItems;
   private TextBox textbox;
 
   private final String PATH = "res/sprites/baddie.png";
   private Sprite sprite;
 
-  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos, TextBox t)
+  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, double xPos, double yPos, TextBox t)
   {
     speed = spd;
     hitAccuracy = hA;
