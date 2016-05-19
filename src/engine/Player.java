@@ -1,5 +1,6 @@
 package src.engine;
 
+
 public class Player
 {
     // position on map, Dir direction vector, field of CameraPlane vector`
@@ -37,7 +38,9 @@ public class Player
     {
 
         if (k.qKeyDown())
+        {
             MAX_SPEED = DEFAULT_SPEED/2;
+        }
         else
             MAX_SPEED = DEFAULT_SPEED;
 

@@ -8,6 +8,8 @@ import src.logic.armor.*;
 
 import src.engine.Player;
 import src.engine.Sprite;
+import src.engine.Engine;
+import src.engine.Keyboard;
 
 import src.hud.TextBox;
 
@@ -18,6 +20,7 @@ public class Chest
   private Equipment containedItem;
   private boolean isOpened, isLocked = false;
   private TextBox text;
+  private Keyboard keyboard = Engine.staticKeyboard;
 
   public static ArrayList<Chest> chests = new ArrayList<Chest>();
 
@@ -130,20 +133,16 @@ public class Chest
       }
       else
       {
-        Scanner kb = new Scanner(System.in);
+        //Scanner kb = new Scanner(System.in);
         Equipment temp = new Equipment(containedItem);
         text.addMessage("You found " + containedItem.toString());
         text.addMessage("Do you wish to exchange your current item for this?");
-        text.addMessage("Enter y or n");
+        text.addMessage("Enter (y/n)");
         String st = containedItem.toString();
         if(st.indexOf("Sword") != -1 || st.toString().indexOf("sword") != -1)
         {
-          do
-          {
-            String str = kb.nextString();
-          }
-          while(str != "y" && str != "n");
-          if(str = "y")
+          while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
+          if(keyboard.yKeyDown())
           {
             containedItem = p.getEquippedSword();
             p.changeEquippedWeapon(temp.getWeapon());
@@ -152,12 +151,8 @@ public class Chest
         
         else if(st.indexOf("armor") != -1 || st.indexOf("mail") != -1)
         {
-          do
-          {
-            String str = kb.nextString();
-          }
-          while(str != "y" && str != "n");
-          if(str = "y")
+          while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
+          if(keyboard.yKeyDown())
           {
             containedItem = p.getEquippedArmor();
             p.changeEquippedArmor(temp.getArmor());
@@ -166,12 +161,8 @@ public class Chest
         
         else if(st.indexOf("Shield") != -1)
         {
-          do
-          {
-            String str = kb.nextString();
-          }
-          while(str != "y" && str != "n");
-          if(str = "y")
+          while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
+          if(keyboard.yKeyDown())
           {
             containedItem = p.getEquippedShield();
             p.changeEquippedWeapon(temp.getShield());

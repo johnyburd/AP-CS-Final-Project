@@ -37,6 +37,7 @@ public class Engine extends JFrame implements Runnable
 
     private Player player;
     private Keyboard keyboard;
+    public static Keyboard staticKeyboard;
     private Raycaster raycaster;
     private Hud hud;
 
@@ -79,12 +80,13 @@ public class Engine extends JFrame implements Runnable
 
         thread = new Thread(this);
 
+        keyboard = new Keyboard();
+        Engine.staticKeyboard = keyboard;
+
         textbox = new TextBox();
         buffImg = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)buffImg.getRaster().getDataBuffer()).getData();
 
-        keyboard = new Keyboard();
-    
         player = new Player(2,7.5,1,0,0,-0.66, dungeon);
         addKeyListener(keyboard);
 
@@ -95,9 +97,6 @@ public class Engine extends JFrame implements Runnable
         dungeon = dungeonMaster.getNewDungeon(1);
         player.updateDungeon(dungeon); // player requires dungeon
 
-        //textbox.addMessage("looks super good");
-        //textbox.addMessage("testing");
-        //textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
 
