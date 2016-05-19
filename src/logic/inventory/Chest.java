@@ -17,8 +17,8 @@ import java.util.Scanner;
 
 public class Chest
 {
-  private double xCoord;
-  private double yCoord;
+  public double xCoord;
+  public double yCoord;
   private Equipment containedItem;
   private boolean isOpened, isLocked = false;
   private TextBox text;
