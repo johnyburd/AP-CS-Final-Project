@@ -52,7 +52,7 @@ public class Keyboard implements KeyListener
     }
     public boolean nKeyDown()
     {
-        return keyStatus[9];
+        return keysStatus[9];
     }
     public boolean qKeyDown()
     { // block
