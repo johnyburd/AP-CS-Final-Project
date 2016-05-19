@@ -160,7 +160,6 @@ public class Chest
         String st = containedItem.toString();
         if(st.indexOf("Sword") != -1 || st.toString().indexOf("sword") != -1)
         {
-          while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
           if(keyboard.yKeyDown())
           {
             Equipment equip = new Equipment(p.getEquippedWeapon());
@@ -171,7 +170,6 @@ public class Chest
         
         else if(st.indexOf("armor") != -1 || st.indexOf("mail") != -1)
         {
-          while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
           if(keyboard.yKeyDown())
           {
             Equipment equip = new Equipment(p.getEquippedArmor());
@@ -182,7 +180,6 @@ public class Chest
         
         else if(st.indexOf("Shield") != -1)
         {
-          while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
           if(keyboard.yKeyDown())
           {
             Equipment equip = new Equipment(p.getEquippedShield());

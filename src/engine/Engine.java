@@ -105,7 +105,7 @@ public class Engine extends JFrame implements Runnable
 
 
         hud = new Hud(this, keyboard, hero, textbox);
-        //textbox.addMessage("test");
+        textbox.addMessage("test");
 
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);

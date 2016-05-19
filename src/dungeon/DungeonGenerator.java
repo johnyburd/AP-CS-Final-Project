@@ -193,7 +193,7 @@ public class DungeonGenerator
                 if((a < 500 && numChests > 0 && dun[i][j] == 0 ) && ((dun[i][j-1] > 0 && dun[i+1][j] > 0 && dun[i][j-1] > 0) || (dun[i-1][j] > 0 && dun[i][j+1] > 0 && dun[i+1][j] > 0)))
                 {
                     numChests--;
-                    dun[i][j] = 15;
+//                    dun[i][j] = 15;
                     Chest chest = new Chest(((double)i + 0.5), j + 0.5, player, textbox);
                     chest.randomizeChest();
                     Chest.chests.add(chest);

@@ -116,9 +116,7 @@ public class Entity
   public Weapon getEquippedWeapon()
   {
     Weapon w = equippedItems.getWeapon();
-    if (w != null)
-        return w;
-    return 0;
+    return w;
   }
   
   public void changeEquippedWeapon(Weapon weap)
