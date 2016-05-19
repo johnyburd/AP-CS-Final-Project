@@ -2,6 +2,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import java.io.File;
 import javax.sound.sampled.*;
+
 public class Sound
 {
 	public static void playPlayerHit()
