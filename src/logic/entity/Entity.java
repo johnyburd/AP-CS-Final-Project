@@ -6,6 +6,7 @@ import src.logic.weapon.*;
 import src.logic.hero.*;
 
 import src.engine.Sprite;
+import src.engine.Player;
 
 import src.hud.TextBox;
 
