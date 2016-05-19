@@ -51,7 +51,7 @@ public class Chest
   {
     containedItem = new Equipment(arm);
     isOpened = false;
-    sprite = new Sprite(player, PATH, x, y, 0);
+    spriteChest = new Sprite(player, PATH, x, y, 0);
     Sprite.sprites.add(spriteChest);
     text = textbox;
   }
