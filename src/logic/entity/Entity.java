@@ -108,12 +108,13 @@ public class Entity
 
   public int getTotalArmorClass()
   {
-    Armor arm = null;
+    /*Armor arm = null;
     if(equippedItems != null)
       arm = equippedItems.getArmor();
     if(arm != null)
       return arm.getArmorClass();
-    return 0;
+    return 0;*/
+    return 2;
   }
 
   //expressed as a percentage in the form xx.xx%
