@@ -17,7 +17,7 @@ public class Entity
   private TextBox textbox;
 
   private final String PATH = "res/sprites/baddie.png";
-  private Sprite sprite;
+  private Sprite spriteObj;
 
   public Entity(double spd, double hA, int hlth, int hD, Equipment equip, double xPos, double yPos, TextBox t, Player p)
   {
@@ -29,7 +29,8 @@ public class Entity
     x = xPos;
     y = yPos;
     textbox = t;
-    sprite = new Sprite(p, PATH, x, y, 0);
+    spriteObj = new Sprite(p, PATH, x, y, 0);
+    Sprite.sprite.add(spriteObj);
   }
   
   public Sprite getSprite()
