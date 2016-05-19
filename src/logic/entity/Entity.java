@@ -226,8 +226,9 @@ public class Entity
     pDmg -= mDef;
     if(pDmg < 0)
       pDmg = 0;
+      System.out.println("The enemy's health is " + this.getHealth());
     this.setHealth(this.getHealth() - pDmg);
-    
+    System.out.println("The enemy's health is " + this.getHealth());
     //damage the weapon appropriately
     if(mDef > 0)
     { 
