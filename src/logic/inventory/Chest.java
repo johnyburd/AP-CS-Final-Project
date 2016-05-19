@@ -144,7 +144,8 @@ public class Chest
           while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
           if(keyboard.yKeyDown())
           {
-            containedItem = p.getEquippedSword();
+            Equipment equip = new Equipment(p.getEquippedWeapon());
+            containedItem = equip;
             p.changeEquippedWeapon(temp.getWeapon());
           }
         }
@@ -154,7 +155,8 @@ public class Chest
           while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
           if(keyboard.yKeyDown())
           {
-            containedItem = p.getEquippedArmor();
+            Equipment equip = new Equipment(p.getEquippedArmor());
+            containedItem = equip;
             p.changeEquippedArmor(temp.getArmor());
           }
         }
@@ -164,8 +166,9 @@ public class Chest
           while(!keyboard.yKeyDown() && !keyboard.nKeyDown());
           if(keyboard.yKeyDown())
           {
-            containedItem = p.getEquippedShield();
-            p.changeEquippedWeapon(temp.getShield());
+            Equipment equip = new Equipment(p.getEquippedShield());
+            containedItem = equip;
+            p.changeEquippedShield(temp.getShield());
           }
         }
       }
