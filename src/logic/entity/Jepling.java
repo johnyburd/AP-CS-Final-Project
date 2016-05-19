@@ -6,9 +6,10 @@ import src.logic.armor.*;
 
 public class Jepling extends Entity
 {
+  Textbox textbo;
   public Jepling()
   {
-    super(1.0, 88.88, 250, 25, new Equipment(), 25, 25);
+    super(1.0, 88.88, 250, 25, new Equipment(), 25, 25, textbo);
   }
   
   public int getTotalDamage()
