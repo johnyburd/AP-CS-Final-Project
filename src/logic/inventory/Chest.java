@@ -25,14 +25,15 @@ public class Chest
   public static ArrayList<Chest> chests = new ArrayList<Chest>();
 
   private final String PATH = "res/sprites/longChest.png";
-  private Sprite sprite;
+  private Sprite spriteChest;
   
   //choose this one if it is random or if it is going to pregened to contain health
   public Chest(double x, double y, Player player, TextBox textbox)
   {
     containedItem = null;
     isOpened = false;
-    sprite = new Sprite(player, PATH, x, y, 0);
+    spriteChest = new Sprite(player, PATH, x, y, 0);
+    Sprite.sprites.add(spriteChest);
     text = textbox;
   }
   
@@ -41,7 +42,8 @@ public class Chest
   {
     containedItem = new Equipment(weap);
     isOpened = false;
-    sprite = new Sprite(player, PATH, x, y, 0);
+    spriteChest = new Sprite(player, PATH, x, y, 0);
+    Sprite.sprites.add(spriteChest);
     text = textbox;
   }
   
@@ -50,6 +52,7 @@ public class Chest
     containedItem = new Equipment(arm);
     isOpened = false;
     sprite = new Sprite(player, PATH, x, y, 0);
+    Sprite.sprites.add(spriteChest);
     text = textbox;
   }
   
@@ -57,13 +60,14 @@ public class Chest
   {
     containedItem = new Equipment(shi);
     isOpened = false;
-    sprite = new Sprite(player, PATH, x, y, 0);
+    spriteChest = new Sprite(player, PATH, x, y, 0);
+    Sprite.sprites.add(spriteChest);
     text = textbox;
   }
   
   public Sprite getSprite()
   {
-    return sprite;
+    return spriteChest;
   }
   
   public void setIsOpened()
