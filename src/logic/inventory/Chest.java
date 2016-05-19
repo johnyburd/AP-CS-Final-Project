@@ -17,6 +17,8 @@ import java.util.Scanner;
 
 public class Chest
 {
+  private double xCoord;
+  private double yCoord
   private Equipment containedItem;
   private boolean isOpened, isLocked = false;
   private TextBox text;
@@ -35,6 +37,8 @@ public class Chest
     spriteChest = new Sprite(player, PATH, x, y, 0);
     Sprite.sprites.add(spriteChest);
     text = textbox;
+    xCoord = x;
+    yCoord = y;
   }
   
   //call these three if it contains predefined equipment;
@@ -45,6 +49,8 @@ public class Chest
     spriteChest = new Sprite(player, PATH, x, y, 0);
     Sprite.sprites.add(spriteChest);
     text = textbox;
+    xCoord = x;
+    yCoord = y;
   }
   
   public Chest(int x, int y, Armor arm, Player player, TextBox textbox)
@@ -54,6 +60,8 @@ public class Chest
     spriteChest = new Sprite(player, PATH, x, y, 0);
     Sprite.sprites.add(spriteChest);
     text = textbox;
+    xCoord = x;
+    yCoord = y;
   }
   
   public Chest(int x, int y, Shield shi, Player player, TextBox textbox)
@@ -63,6 +71,8 @@ public class Chest
     spriteChest = new Sprite(player, PATH, x, y, 0);
     Sprite.sprites.add(spriteChest);
     text = textbox;
+    xCoord = x;
+    yCoord = y;
   }
   
   public Sprite getSprite()
@@ -103,6 +113,11 @@ public class Chest
   public boolean getIsLocked()
   {
     return isLocked;
+  }
+
+  public bolean equals(Chest other)
+  {
+    return (spriteChest.xCoord - other.xCoord == 0) && (spriteChest.yCoord - other.yCoord == 0);
   }
   
   public void randomizeChest()
