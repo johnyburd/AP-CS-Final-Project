@@ -10,8 +10,9 @@ public class Entity
   private double speed, hitAccuracy;
   private int health, hitDamage, x, y;
   private Equipment equippedItems;
+  private TextBox textbox;
 
-  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos)
+  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos, TextBox t)
   {
     speed = spd;
     hitAccuracy = hA;
@@ -20,6 +21,7 @@ public class Entity
     equippedItems = equip;
     x = xPos;
     y = yPos;
+    textbox = t;
   }
   
   public void updateXCoord(int newX)
@@ -167,8 +169,10 @@ public class Entity
       weap.setDurability(weap.getDurability() - 3);
     
     if(weap.doesWeaponBreak())
+    {  
       p.changeEquippedWeapon(Weapon.weaponArray[0]);
-      
+      textbox.addMessage("Your sword broke! Now you're just punching things!");
+    }  
     if(this.getEquippedArmor() != null)  
       if(this.getEquippedArmor().getDurability() <= 0)
         this.changeEquippedArmor(null);
