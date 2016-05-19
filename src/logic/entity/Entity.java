@@ -31,7 +31,7 @@ public class Entity
     y = yPos;
     textbox = t;
     spriteObj = new Sprite(p, PATH, x, y, 0);
-    Sprite.sprite.add(spriteObj);
+    Sprite.sprites.add(spriteObj);
   }
   
   public Sprite getSprite()
