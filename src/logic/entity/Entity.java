@@ -135,7 +135,9 @@ public class Entity
   
   public Armor getEquippedArmor()
   {
-    return equippedItems.getArmor();
+    if(equippedItems != null)
+      return equippedItems.getArmor();
+    return null;
   }
 
   public void changeEquippedArmor(Armor arm)
