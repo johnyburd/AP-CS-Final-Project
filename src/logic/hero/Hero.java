@@ -4,26 +4,24 @@ import src.logic.inventory.Equipment;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
 import src.logic.entity.*;
+
 import src.engine.Player;
+
+import src.hud.TextBox;
 
 public class Hero
 {
   private int health;
   private final double reach = 1.5;
   private Equipment equippedItems;
+  private TextBox textbox;
  
  //for actual gameplay
- public Hero(Weapon weap)
+ public Hero(Weapon weap, TextBox t)
  {
    health = 100;
    equippedItems = new Equipment(weap, null, null);
- }
- 
- //test constructor
- public Hero(Weapon weapon, Armor armor, Shield shield)
- {
-   health = 100;
-   equippedItems = new Equipment(weapon, armor, shield);
+   textbox = t;
  }
  
  public Equipment getEquippedItems()
@@ -157,11 +155,18 @@ public class Hero
       weap.setDurability(weap.getDurability() - 3);
     if(weap.doesWeaponBreak())
       e.changeEquippedWeapon(null);
-      
     //this section sees if the ARMOR breaks
     
     if(this.getEquippedArmor() != null && this.getEquippedArmor().getDurability() <= 0)
+    {
       this.changeEquippedArmor(null);
+      textbox.addMessage("Your armor broke!");
+    }
+    if(this.hasShield() && this.getEquippedShield().getDurability() <= 0)
+    {
+      this.changeEquippedShield(null);
+      textbox.addmessage("Your shield broke!");
+    }
   }
   
   public void onPlayerAttack(Entity e)
