@@ -138,7 +138,7 @@ public class Hud
         int width = buffImg.getWidth();
         int height = buffImg.getHeight();
 
-        if (keyboard.qKeyDown())
+        if (keyboard.qKeyDown() && hero.hasShield())
             engine.blitImage(buffImg, 0, Engine.SCREEN_HEIGHT-height);
     }
 

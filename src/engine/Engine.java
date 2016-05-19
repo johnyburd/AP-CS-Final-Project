@@ -100,7 +100,7 @@ public class Engine extends JFrame implements Runnable
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
 
-        hero = new Hero(Weapon.weaponArray[0], textbox);
+        hero = new Hero(Weapon.weaponArray[1], textbox);
         hud = new Hud(this, keyboard, hero, textbox);
 
 
