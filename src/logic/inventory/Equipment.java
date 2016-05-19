@@ -108,4 +108,33 @@ public class Equipment
 			str += "There is nothing equipped.";
         return str;
 	}
+	
+	public static Equipment randomMonsterSword(int level)
+	{
+		int b = 3 - level;
+		int a = (int)(Math.random() * (Weapon.weaponArray.length - b));
+		Weapon weap = Weapon.weaponArray[a];
+		return new Equipment(weap);
+	}
+	
+	public static Equipment randomMonsterArmor(int level)
+	{
+		int b = 3 - level;
+		int a = (int)(Math.random() * (Armor.armorArray.length - b));
+		Armor arm = Armor.armorArray[a];
+		return new Equipment(arm);
+	}
+	
+	public static Equipment randomMonsterEquipment(int level)
+	{
+		int d = (int)(Math.random() * 2);
+		int c = (int)(Math.random() * 101);
+		if((c * level) >= 90)
+		{
+			if(d == 0)
+				return randomMonsterArmor(level);
+			else if(d == 1)
+				return randomMonsterSword(level);
+		}
+	}
 }
