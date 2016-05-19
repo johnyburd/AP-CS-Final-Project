@@ -100,9 +100,10 @@ public class Hero
   {
     Armor arm = equippedItems.getArmor();
     Shield shi = equippedItems.getShield();
+    int ac = 0;
     if(ac != null)
-      int ac = arm.getArmorClass();
-    if(shi != null shi.isRaised() == true)
+      ac = arm.getArmorClass();
+    if(shi != null && shi.isRaised() == true)
     {
       ac += shi.getArmorClass();
     }
