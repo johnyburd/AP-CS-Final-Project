@@ -5,6 +5,8 @@ import src.logic.armor.*;
 import src.logic.weapon.*;
 import src.logic.hero.*;
 
+import src.engine.Sprite;
+
 import src.hud.TextBox;
 
 public class Entity
@@ -17,7 +19,7 @@ public class Entity
   private final String PATH = "res/sprites/baddie.png";
   private Sprite sprite;
 
-  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, double xPos, double yPos, TextBox t)
+  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, double xPos, double yPos, TextBox t, Player p)
   {
     speed = spd;
     hitAccuracy = hA;
@@ -27,6 +29,12 @@ public class Entity
     x = xPos;
     y = yPos;
     textbox = t;
+    sprite = new Sprite(p, PATH, x, y, 0);
+  }
+  
+  public Sprite getSprite()
+  {
+    return sprite;
   }
   
   public void updateXCoord(int newX)
