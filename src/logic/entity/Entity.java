@@ -220,7 +220,9 @@ public class Entity
     int armDmg = 0;
     
     if(arm != null)
-      armDmg = mDef - pDmg;
+      armDmg = pDmg - mDef;
+    if(armDmg < 0)
+      armDmg = mDef;
     pDmg -= mDef;
     if(pDmg < 0)
       pDmg = 0;
@@ -228,10 +230,15 @@ public class Entity
     
     //damage the weapon appropriately
     if(mDef > 0)
+    { 
       weap.setDurability(weap.getDurability() - mDef);
+      textbox.addMessage("Your weapon took " + mDef + " damage.");
+    }
     else
+    {
       weap.setDurability(weap.getDurability() - 3);
-    
+      textbox.add("Your weapon took 3 damage");
+    }
     if(weap.doesWeaponBreak())
     {  
       p.changeEquippedWeapon(Weapon.weaponArray[0]);
