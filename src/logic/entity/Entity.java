@@ -8,6 +8,7 @@ import src.logic.hero.*;
 import src.engine.Sprite;
 import src.engine.Player;
 import src.engine.Engine;
+import src.sound.Sound;
 
 import src.hud.TextBox;
 
@@ -58,9 +59,9 @@ public class Entity
     else if (dist(x, y+ speed) < dist(x,y) && Engine.dungeon[(int)x][(int)(y+speed)] == 0)
         updateYCoord(y+ speed);
 
-    // hit
-  //  if (Math.sqrt(dist(x,y)) < 2 && monsterHitSuccessful())
-    //    Engine.staticHero.onPlayerHit(this);
+     //hit
+    if (Math.sqrt(dist(x,y)) < 2 && monsterHitSuccessful())
+        Engine.staticHero.onPlayerHit(this);
 
 
   }
