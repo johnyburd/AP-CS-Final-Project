@@ -195,6 +195,7 @@ public class Entity
   // this is what happens when the monster gets hit
   public void onMonsterHit(Hero p)
   {
+    Sound.playEnemyGrunt();
     //these two lines will shorten the code
     Armor arm = this.getEquippedArmor();
     Weapon weap = p.getEquippedWeapon();
@@ -205,7 +206,7 @@ public class Entity
     int mDmg = 0;
     int armDmg = 0;
     
-    if(this.getEquippedArmor() != null)
+    if(arm != null)
       armDmg = pDmg - mDef;
     pDmg -= armDmg;
     this.setHealth(this.getHealth() - pDmg);
