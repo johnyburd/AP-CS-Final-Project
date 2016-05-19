@@ -11,6 +11,8 @@ import src.engine.Sprite;
 
 import src.hud.TextBox;
 
+import java.util.Scanner;
+
 public class Chest
 {
   private Equipment containedItem;
@@ -128,7 +130,53 @@ public class Chest
       }
       else
       {
+        Scanner kb = new Scanner(System.in);
+        Equipment temp = new Equipment(containedItem);
         text.addMessage("You found " + containedItem.toString());
+        text.addMessage("Do you wish to exchange your current item for this?");
+        text.addMessage("Enter y or n");
+        String st = containedItem.toString();
+        if(st.indexOf("Sword") != -1 || st.toString().indexOf("sword") != -1)
+        {
+          do
+          {
+            String str = kb.nextString();
+          }
+          while(str != "y" && str != "n");
+          if(str = "y")
+          {
+            containedItem = p.getEquippedSword();
+            p.changeEquippedWeapon(temp.getWeapon());
+          }
+        }
+        
+        else if(st.indexOf("armor") != -1 || st.indexOf("mail") != -1)
+        {
+          do
+          {
+            String str = kb.nextString();
+          }
+          while(str != "y" && str != "n");
+          if(str = "y")
+          {
+            containedItem = p.getEquippedArmor();
+            p.changeEquippedArmor(temp.getArmor());
+          }
+        }
+        
+        else if(st.indexOf("Shield") != -1)
+        {
+          do
+          {
+            String str = kb.nextString();
+          }
+          while(str != "y" && str != "n");
+          if(str = "y")
+          {
+            containedItem = p.getEquippedShield();
+            p.changeEquippedWeapon(temp.getShield());
+          }
+        }
       }
   }
   
