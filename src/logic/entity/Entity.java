@@ -97,7 +97,7 @@ public class Entity
   public int getTotalDamage()
   {
     int dmg = getHitDamage();
-    Weapon weap;
+    Weapon weap = null;
     if(equippedItems != null)
       weap = equippedItems.getWeapon();
     if(weap != null)
