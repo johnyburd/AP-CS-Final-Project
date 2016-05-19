@@ -197,7 +197,6 @@ public class DungeonGenerator
                     if (chest == null)
                         System.out.println("NULL");
                     //chests.add(chest);
-                    Sprite.sprites.add(chest.getSprite());
                     System.out.println("chest added");
                 }
             }
