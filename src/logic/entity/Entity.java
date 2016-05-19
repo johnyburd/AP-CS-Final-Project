@@ -14,7 +14,7 @@ public class Entity
   private Equipment equippedItems;
   private TextBox textbox;
 
-  private final String PATH = "res/sprites/baddie.png"
+  private final String PATH = "res/sprites/baddie.png";
   private Sprite sprite;
 
   public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos, TextBox t)
