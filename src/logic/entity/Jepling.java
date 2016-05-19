@@ -11,7 +11,7 @@ import src.engine.Sprite;
 public class Jepling extends Entity
 {
   private TextBox textbo;
-  private Player play
+  private Player play;
   public Jepling()
   {
     super(1.0, 88.88, 250, 25, new Equipment(), 25, 25, null, play);
