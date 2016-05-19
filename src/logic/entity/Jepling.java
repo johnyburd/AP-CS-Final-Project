@@ -15,7 +15,7 @@ public class Jepling extends Entity
   private Sprite JepSprite;
   public Jepling()
   {
-    super(1.0, 88.88, 250, 25, new Equipment(), 25, 25, null, play);
+    super(1.0, 88.88, 250, 25, new Equipment(), 25, 25, null, null);
   }
   
   public int getTotalDamage()
