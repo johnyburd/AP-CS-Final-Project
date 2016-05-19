@@ -17,6 +17,14 @@ public class Equipment
 		theShield = null;
 	}
 	
+	//copy constructor
+	public Equipment(Equipment other)
+	{
+		primaryWeapon = other.primaryWeapon;
+		theArmor = other.theArmor;
+		theShield = other.theShield;
+	}
+	
 	// This constructor is for monsters only, as they cannot weild shields ever
 	public Equipment(Weapon weap, Armor arm)
 	{
