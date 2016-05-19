@@ -23,8 +23,9 @@ public class DungeonGenerator
     private static int[][] dun; //geon
 
     private Player player;
+    private TextBox textbox;
 
-    public DungeonGenerator(int size, Player p)
+    public DungeonGenerator(int size, Player p, TextBox t)
     {
         dun = new int[size][size];
 
@@ -33,6 +34,7 @@ public class DungeonGenerator
 
         player = p;
 
+        textbox = t;
     }
     public int[][] getNewDungeon()
     {
@@ -152,7 +154,7 @@ public class DungeonGenerator
         return result;
     }
     
-    private void setRandomChest(int numChests, TextBox textbox)
+    private void setRandomChest(int numChests)
     {
         for(int i = 0; i < dun.length; i++)
             for(int j = 0; j < dun[i].length; j++)

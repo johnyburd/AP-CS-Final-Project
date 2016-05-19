@@ -76,6 +76,8 @@ public class Engine extends JFrame implements Runnable
     {
 
         thread = new Thread(this);
+
+        textbox = new TextBox();
         buffImg = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)buffImg.getRaster().getDataBuffer()).getData();
 
@@ -87,11 +89,10 @@ public class Engine extends JFrame implements Runnable
         // to store images qued
         blitImageList = new ArrayList<BlitImage>();
 
-        dungeonMaster = new DungeonGenerator(15, player);
+        dungeonMaster = new DungeonGenerator(15, player, textbox);
         dungeon = dungeonMaster.getNewDungeon();
         player.updateDungeon(dungeon); // player requires dungeon
 
-        textbox = new TextBox();
         //textbox.addMessage("looks super good");
         //textbox.addMessage("testing");
         //textbox.addMessage("the only problem is that it wraps too early.  if that's hard to fix, don't bother");
