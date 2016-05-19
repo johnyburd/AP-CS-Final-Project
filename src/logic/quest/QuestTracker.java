@@ -22,7 +22,6 @@
 		
 		public static void giveSidequest(Hero p)
 		{
-			System.out.println("Come here for a quest!");
 			System.out.println("You are to collect a dozen eggs if you want to escape.");
 			System.out.println("It is dangerous to go alone, take this.");
 			p.changeEquippedWeapon(Weapon.weaponArray[1]);
@@ -48,13 +47,12 @@
 		{
 			if(gotEggs == 12)
 			{
-				System.out.println("Congratulations! You collected all the eggs and now can escape the dungeon!");
+				System.out.println("You collected all the eggs and now can escape the dungeon!");
 				sideQuest = true;
 			}
 			else
 			{
-				System.out.println("You have not collected all the eggs!");
-				System.out.println("I cannot make my omele- I mean you cannot escape yet!");
+				System.out.println("You have not collected all the eggs!")
 			}
 		}
 		
@@ -68,7 +66,7 @@
 			}
 			else
 			{
-				System.out.println("You have not completed the side quest yet");
+				System.out.println("You have not completed the quest yet");
 				
 			}
 		}	
