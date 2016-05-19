@@ -118,7 +118,7 @@ public class Hud
         int drawWidth = PAD;
         int drawHeight = (Engine.SCREEN_HEIGHT - height) - PAD;
 
-        engine.blitImage(weaponImg, weaponImg.getWidth(), weaponImg.getHeight());
+        engine.blitImage(weaponImg, Engine.SCREEN_WIDTH - weaponImg.getWidth(),Engine.SCREEN_HEIGHT - weaponImg.getHeight());
         engine.blitImage(buffImg, drawWidth, drawHeight);
 
         // draw armor
