@@ -209,7 +209,7 @@ public class DungeonGenerator
             for(int j = 0; j < dun[i].length; j++)
             {
                 int a = (int)(Math.random() * 100);
-                if((a < 500 && numBaddies > 0 && dun[i][j] == 0 ))
+                if((a < 200 && numBaddies > 0 && dun[i][j] == 0 ))
                 {
                     numBaddies--;
                    // dun[i][j] = 15
