@@ -62,7 +62,7 @@ public class Entity
         updateYCoord(y+ speed);
 
      //hit
-    if (Math.sqrt(dist(x,y)) < 2)
+    if (Math.sqrt(dist(x,y)) < 0.6)
         //Engine.staticHero.onPlayerHit(this);
         onMonsterAttack(Engine.staticHero);
 
