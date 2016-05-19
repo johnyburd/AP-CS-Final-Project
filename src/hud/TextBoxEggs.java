@@ -28,11 +28,11 @@ public class TextBoxEggs
 	
 	public TextBoxEggs()
 	{
-		textboxEggs = new BufferedImage(400, 200, BufferedImage.TYPE_INT_ARGB);
+		textboxEggs = new BufferedImage(80, 50, BufferedImage.TYPE_INT_ARGB);
 		graphics = textboxEggs.getGraphics();
 
 		graphics.setColor(Color.LIGHT_GRAY);
-		graphics.fillRect(0, 0, 400, 200);
+		graphics.fillRect(0, 0, 80, 50);
 		graphics.setColor(Color.BLACK);
     		please = (Graphics2D) graphics;
 		please.drawImage(textboxEggs, null , 0,0 );
