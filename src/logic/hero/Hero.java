@@ -120,14 +120,17 @@ public class Hero
     Sound.playPlayerHit();
     int pac = this.getTotalArmorClass();
     int mac = e.getTotalDamage();
+    
     int playerDmg = 0;
     int armorDmg = 0;
     int shieldDmg = 0;
+    
     if(mac > pac)
     { 
       playerDmg = mac - pac;
       mac -= pac;
     }
+    
     if(this.hasShield() && this.getEquippedShield().isRaised())
       {
         if(this.hasArmor())
@@ -145,14 +148,19 @@ public class Hero
     {
       armorDmg = mac;
     }
+    
     this.setHealth(this.getHealth() - playerDmg);
+    
     if(this.hasArmor())
       this.getEquippedArmor().setDurability(this.getEquippedArmor().getDurability() - armorDmg);
+    
     if(this.hasShield())
       this.getEquippedShield().setDurability(this.getEquippedShield().getDurability() - shieldDmg);
+    
     //this part here assigns damage to the weapon then sees if it breaks
     int armclass = this.getTotalArmorClass();
     Weapon weap = e.getEquippedWeapon();
+    
     if(weap != null)
     {
       if(armclass > 0)
@@ -168,6 +176,7 @@ public class Hero
       this.changeEquippedArmor(null);
       textbox.addMessage("Your armor broke!");
     }
+    
     if(this.hasShield() && this.getEquippedShield().getDurability() <= 0)
     {
       this.changeEquippedShield(null);
