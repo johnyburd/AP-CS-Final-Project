@@ -171,7 +171,7 @@ public class Entity
     if(weap.doesWeaponBreak())
     {  
       p.changeEquippedWeapon(Weapon.weaponArray[0]);
-      textbox.addMessage("Your sword broke! Now you're just punching things!");
+      textbox.addMessage("Your sword broke! You begin bashing monsters with your bare hands!");
     }  
     if(this.getEquippedArmor() != null)  
       if(this.getEquippedArmor().getDurability() <= 0)
