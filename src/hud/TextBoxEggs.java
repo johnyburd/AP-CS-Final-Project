@@ -8,7 +8,7 @@ import java.awt.image.BufferedImageFilter;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
-import src.logic.quest.QuestTracker
+import src.logic.quest.QuestTracker;
 
 
 
