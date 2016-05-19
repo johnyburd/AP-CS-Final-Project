@@ -76,7 +76,7 @@ public class DungeonGenerator
                 }
                 else
                     dun[i][j] = 0;
-        dun[dun.length/2][14] = 7;
+        dun[dun.length/2][14] = 6;
         setRandomChest(4);
         spawnBaddies(6, level);
         return dun;
