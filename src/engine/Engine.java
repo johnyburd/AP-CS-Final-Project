@@ -101,11 +101,10 @@ public class Engine extends JFrame implements Runnable
         
         Sound.playPlayerHit();
 
-
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
 
-        hero = new Hero(Weapon.weaponArray[0]);
+        hero = new Hero(Weapon.weaponArray[0], textbox);
         hud = new Hud(this, keyboard, hero, textbox);
 
 
