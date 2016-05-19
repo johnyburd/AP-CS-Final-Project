@@ -165,7 +165,7 @@ public class Hero
     if(this.hasShield() && this.getEquippedShield().getDurability() <= 0)
     {
       this.changeEquippedShield(null);
-      textbox.addmessage("Your shield broke!");
+      textbox.addMessage("Your shield broke!");
     }
   }
   
