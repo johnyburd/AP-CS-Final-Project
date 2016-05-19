@@ -128,6 +128,10 @@ public class Hud
     {
         BufferedImage buffImg = hudTextures.get(8);
 
+        BufferedImage counter = new TextBoxEggs().getBufferedImage();
+
+        engine.blitImage(counter, PAD, PAD);
+
         int height = buffImg.getHeight();
         engine.blitImage(buffImg, PAD, height/2 + PAD);
     }
