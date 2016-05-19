@@ -18,7 +18,7 @@ public class TextBoxEggs
 	public Graphics graphics;
 	public Graphics2D please;
 	public static int x = 0;
-	public int y = 195;
+	public int y = 15;
 	public ArrayList<String> list = new ArrayList<String>();
 	public boolean isChanged = false;
 	public int eggs = 0;
