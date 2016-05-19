@@ -186,7 +186,7 @@ public class Entity
   public boolean monsterHitSuccessful()
   {
     double prob = Math.random() * 100;
-    return prob >= this.getHitAccuracy();
+    return prob < this.getHitAccuracy();
   }
 
   public void setEquippedWeapon(Weapon weap)
