@@ -216,7 +216,6 @@ public class DungeonGenerator
                     Entity monster = new Entity(0.045, 50.0, 10*dungeonLevel, 7 + dungeonLevel, Equipment.randomMonsterEquipment(dungeonLevel), (double)(i+0.5), (double)(j+0.5), textbox);
                     if (monster == null)
                         System.out.println("NULL");
-                    Sprite.sprites.add(monster.getSprite());
                     System.out.println("monster added");
                 }
             }
