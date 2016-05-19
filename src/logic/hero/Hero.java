@@ -115,6 +115,7 @@ public class Hero
   //this is called when the player gets hit
   public void onPlayerHit(Entity e)
   {
+    Sound.playPlayerHit();
     int pac = this.getTotalArmorClass();
     int mac = e.getTotalDamage();
     int playerDmg = 0;
@@ -150,13 +151,15 @@ public class Hero
     //this part here assigns damage to the weapon then sees if it breaks
     int armclass = this.getTotalArmorClass();
     Weapon weap = e.getEquippedWeapon();
-    if(armclass > 0)
-      weap.setDurability(weap.getDurability() - armclass);
-    else
-      weap.setDurability(weap.getDurability() - 3);
-    if(weap.doesWeaponBreak())
-      e.changeEquippedWeapon(null);
-    //this section sees if the ARMOR breaks
+    if(weap != null)
+    {
+      if(armclass > 0)
+        weap.setDurability(weap.getDurability() - armclass);
+      else
+        weap.setDurability(weap.getDurability() - 3);
+      if(weap.doesWeaponBreak())
+        e.changeEquippedWeapon(null);
+    }//this section sees if the ARMOR breaks
     
     if(this.getEquippedArmor() != null && this.getEquippedArmor().getDurability() <= 0)
     {
