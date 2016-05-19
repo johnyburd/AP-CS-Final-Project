@@ -220,8 +220,10 @@ public class Entity
     int armDmg = 0;
     
     if(arm != null)
-      armDmg = pDmg - mDef;
-    pDmg -= armDmg;
+      armDmg = mDef - pDmg;
+    pDmg -= mDef;
+    if(pDmg < 0)
+      pDmg = 0;
     this.setHealth(this.getHealth() - pDmg);
     
     //damage the weapon appropriately
