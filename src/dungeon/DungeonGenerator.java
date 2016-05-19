@@ -152,7 +152,7 @@ public class DungeonGenerator
         return result;
     }
     
-    private void setRandomChest(int numChests)
+    private void setRandomChest(int numChests, TextBox textbox)
     {
         for(int i = 0; i < dun.length; i++)
             for(int j = 0; j < dun[i].length; j++)
@@ -162,7 +162,7 @@ public class DungeonGenerator
                 {
                     numChests--;
                    // dun[i][j] = 15;
-                    Chest chest = new Chest(((double)i + 0.5), j + 0.5, player, new TextBox());
+                    Chest chest = new Chest(((double)i + 0.5), j + 0.5, player, textbox);
                     chest.randomizeChest();
                     if (chest == null)
                         System.out.println("NULL");
