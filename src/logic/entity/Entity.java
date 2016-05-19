@@ -121,7 +121,9 @@ public class Entity
 
   public Weapon getEquippedWeapon()
   {
-    Weapon w = equippedItems.getWeapon();
+    Weapon w = null;
+    if(equippedItems != null)
+      w = equippedItems.getWeapon();
     return w;
   }
   
