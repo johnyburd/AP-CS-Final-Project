@@ -22,10 +22,10 @@
 		//Just prints out things for now rather than putting up a textbox
 	
 		
-		public static void giveSidequest(Hero p)
+		public static void giveSidequest(Hero p, TextBox textbox)
 		{
-			System.out.println("You are to collect a dozen eggs if you want to escape.");
-			System.out.println("It is dangerous to go alone, take this.");
+			textbox.addMessage("You are to collect a dozen eggs if you want to escape.");
+			textbox.addMessage("It is dangerous to go alone, take this.");
 			p.changeEquippedWeapon(Weapon.weaponArray[1]);
 		}
 		
@@ -45,22 +45,22 @@
 		
 		
 		
-		public static void completeSidequest()
+		public static void completeSidequest(TextBox textbox)
 		{
 			if(gotEggs == 12)
 			{
-				System.out.println("You collected all the eggs and now can escape the dungeon!");
+				textbox.addMessage("You collected all the eggs and now can escape the dungeon!");
 				sideQuest = true;
 			}
 			else
 			{
-				System.out.println("You have not collected all the eggs!");
+				textbox.addMessage("You have not collected all the eggs!");
 			}
 		}
 		
 		
 		
-		public static void openTheDoor()
+		public static void openTheDoor(TextBox textbox)
 		{
 			if(sideQuest == true)
 			{
@@ -68,7 +68,7 @@
 			}
 			else
 			{
-				System.out.println("You have not completed the quest yet");
+				textbox.addMessage("You have not completed the quest yet");
 				
 			}
 		}	
