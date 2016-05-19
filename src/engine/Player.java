@@ -131,7 +131,7 @@ public class Player
         {
             if (dungeon[(int)(newX + MAX_DIST)][(int)y] == 0 && dungeon[(int)newX][(int)y] == 0)
                 x = newX;
-            if (dungeon[(int)(newX + MAX_DIST)][(int)y] > 14 && dungeon[(int)newX][(int)y] > 14)
+            if (dungeon[(int)(newX + MAX_DIST)][(int)y] > 14 && dungeon[(int)newX][(int)y] == 0)
                 x = newX;
         }
         else
