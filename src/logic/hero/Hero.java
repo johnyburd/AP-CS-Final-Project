@@ -98,15 +98,14 @@ public class Hero
   
   public int getTotalArmorClass()
   {
-  //  Armor arm = equippedItems.getArmor();
-   // Shield shi = equippedItems.getShield();
-  //  int ac = arm.getArmorClass();
-  //  if(shi.isRaised() == true)
-  //  {
-  //    ac += shi.getArmorClass();
-  //  }
-    //return ac;
-    return 100;
+    Armor arm = equippedItems.getArmor();
+    Shield shi = equippedItems.getShield();
+    int ac = arm.getArmorClass();
+    if(shi.isRaised() == true)
+    {
+      ac += shi.getArmorClass();
+    }
+    return ac;
   }
   
   public double getTotalReach()
