@@ -16,7 +16,7 @@ public class Sprite implements Comparable<Sprite>
     private int width, height;
     public int[] pixels;
 
-    private double x, y;
+    public double x, y;
 
     private double distance;
 

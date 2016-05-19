@@ -1,7 +1,9 @@
 package src.engine;
 
+
 import src.logic.inventory.Chest;
 import src.logic.hero.Hero;
+import src.logic.entity.Entity;
 
 public class Player
 {
@@ -46,6 +48,15 @@ public class Player
                 if ((int)c.xCoord == (int)this.getX() && (int)c.yCoord == (int)this.getY())
                     c.onOpenChest(hero, this);
         }
+        if (k.wKeyDown())
+        {
+            for (Entity e : Entity.entities)
+            {
+                if (Math.sqrt(e.dist(e.x,e.y)) < 1)
+                    hero.onPlayerAttack(e);
+            }
+        }
+
 
         if (k.qKeyDown())
         {

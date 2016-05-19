@@ -7,18 +7,24 @@ import src.logic.hero.*;
 
 import src.engine.Sprite;
 import src.engine.Player;
+import src.engine.Engine;
 
 import src.hud.TextBox;
 
+import java.util.ArrayList;
+
 public class Entity
 {
-  private double speed, hitAccuracy, x, y;
+  public double speed, hitAccuracy, x, y;
   private int health, hitDamage;
   private Equipment equippedItems;
   private TextBox textbox;
 
+  public static ArrayList<Entity> entities = new ArrayList<Entity>();
+
   private final String PATH = "res/sprites/baddie.png";
   private Sprite spriteObj;
+  private Player player;
 
   public Entity(double spd, double hA, int hlth, int hD, Equipment equip, double xPos, double yPos, TextBox t, Player p)
   {
@@ -32,21 +38,47 @@ public class Entity
     textbox = t;
     spriteObj = new Sprite(p, PATH, x, y, 0);
     Sprite.sprites.add(spriteObj);
+    player = p;
   }
-  
+
   public Sprite getSprite()
   {
     return spriteObj;
   }
+  public void updateEntity()
+  {
+    // movenment
+    if (dist(x - speed, y) < dist(x,y) && Engine.dungeon[(int)(x-speed)][(int)y] == 0)
+        updateXCoord(x - speed);
+
+    else if (dist(x + speed, y) < dist(x,y) && Engine.dungeon[(int)(x+speed)][(int)y] == 0)
+        updateXCoord(x + speed);
+    if (dist(x, y - speed) < dist(x,y) && Engine.dungeon[(int)x][(int)(y-speed)] == 0)
+        updateYCoord(y-speed);
+    else if (dist(x, y+ speed) < dist(x,y) && Engine.dungeon[(int)x][(int)(y+speed)] == 0)
+        updateYCoord(y+ speed);
+
+    // hit
+  //  if (Math.sqrt(dist(x,y)) < 2 && monsterHitSuccessful())
+    //    Engine.staticHero.onPlayerHit(this);
+
+
+  }
+  public double dist(double x, double y)
+  {
+    return Math.pow(x-player.getX(),2) + Math.pow(y - player.getY(),2);
+    }
   
-  public void updateXCoord(int newX)
+  public void updateXCoord(double newX)
   {
     x = newX;
+    spriteObj.x = newX;
   }
   
-  public void updateYCoord(int newY)
+  public void updateYCoord(double newY)
   {
     y = newY;
+    spriteObj.y = newY;
   }
   
   public double getXCoord()
@@ -83,7 +115,10 @@ public class Entity
 
   public Weapon getEquippedWeapon()
   {
-    return equippedItems.getWeapon();
+    Weapon w = equippedItems.getWeapon();
+    if (w != null)
+        return w;
+    return 0;
   }
   
   public void changeEquippedWeapon(Weapon weap)

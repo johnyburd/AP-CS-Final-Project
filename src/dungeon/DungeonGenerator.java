@@ -76,7 +76,7 @@ public class DungeonGenerator
                 }
                 else
                     dun[i][j] = 0;
-        dun[dun.length/2][0] = 7;
+        dun[dun.length/2][0] = 4;
         setRandomChest(4);
         spawnBaddies(6, level);
         return dun;
@@ -196,9 +196,7 @@ public class DungeonGenerator
                     dun[i][j] = 15;
                     Chest chest = new Chest(((double)i + 0.5), j + 0.5, player, textbox);
                     chest.randomizeChest();
-                    if (chest == null)
-                        System.out.println("NULL");
-                    //chests.add(chest);
+                    Chest.chests.add(chest);
                     System.out.println("chest added");
                 }
             }
@@ -214,9 +212,8 @@ public class DungeonGenerator
                 {
                     numBaddies--;
                    // dun[i][j] = 15
-                    Entity monster = new Entity(0.045, 50.0, 10*dungeonLevel, 7 + dungeonLevel, Equipment.randomMonsterEquipment(dungeonLevel), (double)(i+0.5), (double)(j+0.5), textbox, player);
-                    if (monster == null)
-                        System.out.println("NULL");
+                    Entity monster = new Entity(0.0045, 50.0, 10*dungeonLevel, 7 + dungeonLevel, Equipment.randomMonsterEquipment(dungeonLevel), (double)(i+0.5), (double)(j+0.5), textbox, player);
+                    Entity.entities.add(monster);
                     System.out.println("monster added");
                 }
             }

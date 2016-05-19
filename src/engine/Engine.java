@@ -9,6 +9,7 @@ import src.dungeon.DungeonGenerator;
 import src.logic.hero.Hero;
 import src.logic.weapon.Weapon;
 import src.logic.armor.*;
+import src.logic.entity.Entity;
 
 import src.sound.Sound;
 
@@ -40,6 +41,7 @@ public class Engine extends JFrame implements Runnable
     public static Keyboard staticKeyboard;
     private Raycaster raycaster;
     private Hud hud;
+    public static Hero staticHero;
 
     private ArrayList<BlitImage> blitImageList;
 
@@ -80,6 +82,8 @@ public class Engine extends JFrame implements Runnable
 
         thread = new Thread(this);
 
+        hero = new Hero(Weapon.weaponArray[1], textbox);
+        staticHero = hero;
         keyboard = new Keyboard();
         Engine.staticKeyboard = keyboard;
 
@@ -87,7 +91,7 @@ public class Engine extends JFrame implements Runnable
         buffImg = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)buffImg.getRaster().getDataBuffer()).getData();
 
-        player = new Player(2,7.5,1,0,0,-0.66, dungeon);
+        player = new Player(2,7.5,1,0,0,-0.66, dungeon, hero);
         addKeyListener(keyboard);
 
         // to store images qued
@@ -100,8 +104,8 @@ public class Engine extends JFrame implements Runnable
         raycaster = new Raycaster(dungeon, dungeonHeight, dungeonWidth, this, player);
 
 
-        hero = new Hero(Weapon.weaponArray[1], textbox);
         hud = new Hud(this, keyboard, hero, textbox);
+        //textbox.addMessage("test");
 
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -188,6 +192,11 @@ public class Engine extends JFrame implements Runnable
                 raycaster.refresh(pixels);
                 player.update(dungeon, keyboard);
                 difference--;
+
+                for ( Entity e : Entity.entities)
+                {
+                    e.updateEntity();
+                }
             }
             blit();
 
