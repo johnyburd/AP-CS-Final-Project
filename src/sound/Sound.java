@@ -4,12 +4,12 @@ import java.io.File;
 import javax.sound.sampled.*;
 
 public class Sound
-{
+{//sounds
 	public static void playPlayerHit()
 	{
 		try 
    	 	{
-    		File file = new File("playerhit.wav");
+    		File file = new File("/res/sounds/playerhit.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file));
@@ -28,7 +28,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file2 = new File("footsteps.wav");
+    		File file2 = new File("/res/sounds/footsteps.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file2));
@@ -47,7 +47,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file3 = new File("enemygrunt.wav");
+    		File file3 = new File("/res/sounds/enemygrunt.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file3));
@@ -66,7 +66,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file4 = new File("enemyhit.wav");
+    		File file4 = new File("/res/sounds/enemyhit.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file4));
@@ -85,7 +85,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file5 = new File("gameover.wav");
+    		File file5 = new File("/res/soundsgameover.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file5));
@@ -104,7 +104,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file6 = new File("gamewon.wav");
+    		File file6 = new File("/res/sounds/gamewon.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file6));
@@ -123,7 +123,7 @@ public class Sound
 	{
 		try 
    	 	{
-    		File file7 = new File("smilezoneenter.wav");
+    		File file7 = new File("/res/sounds/smilezoneenter.wav");
          
      	   	Clip clip = AudioSystem.getClip();
         	clip.open(AudioSystem.getAudioInputStream(file7));
