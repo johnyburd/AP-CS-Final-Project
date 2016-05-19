@@ -5,6 +5,8 @@ import src.logic.armor.*;
 import src.logic.weapon.*;
 import src.logic.hero.*;
 
+import src.hud.TextBox;
+
 public class Entity
 {
   private double speed, hitAccuracy;
