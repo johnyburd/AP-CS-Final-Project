@@ -52,7 +52,7 @@
 			}
 			else
 			{
-				System.out.println("You have not collected all the eggs!")
+				System.out.println("You have not collected all the eggs!");
 			}
 		}
 		
