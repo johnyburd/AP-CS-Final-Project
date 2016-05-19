@@ -12,7 +12,7 @@ public class Jepling extends Entity
 {
   private TextBox textbo;
   private Player play;
-  private Sprite JepSprite
+  private Sprite JepSprite;
   public Jepling()
   {
     super(1.0, 88.88, 250, 25, new Equipment(), 25, 25, null, play);
