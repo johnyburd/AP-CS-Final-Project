@@ -21,7 +21,7 @@ public class TextBoxEggs
 	public ArrayList<String> list = new ArrayList<String>();
 	public boolean isChanged = false;
 	public int eggs = 0;
-	public String eggsGot = ""
+	public String eggsGot = "";
 	//Max is 195 
 	//Min is 15
 	//Max x is 385
