@@ -8,6 +8,7 @@ import java.awt.image.BufferedImageFilter;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
+import src.logic.quest.QuestTracker
 
 
 
@@ -43,7 +44,8 @@ public class TextBoxEggs
 	{
 	  eggs++;
 	  eggsGot = eggs + "";
-		isChanged = true;
+	  isChanged = true;
+	  QuestTracker.getEgg();
 	}
   	
   	public BufferedImage getBufferedImage()
