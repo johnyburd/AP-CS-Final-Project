@@ -106,12 +106,12 @@ public class Engine extends JFrame implements Runnable
 
 
         hud = new Hud(this, keyboard, hero, textbox);
-        textbox.addMessage("test");
+        //textbox.addMessage("Hello and welcome to the dungeon!");
 
 
         setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         setResizable(false);
-        setTitle("Final Project Game");
+        setTitle("Dungeons and Jepling");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.black);
        // setLocationRelativeTo(null);

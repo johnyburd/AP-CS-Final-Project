@@ -144,6 +144,9 @@ public class Chest
   
   public void onOpenChest(Hero p, Player play)
   {
+    if(isOpened)
+        text.addMessage("You've already looted this chest");
+    else
     if(isLocked != true)
       if(containedItem == null)
       { 
@@ -160,31 +163,49 @@ public class Chest
         String st = containedItem.toString();
         if(st.indexOf("Sword") != -1 || st.toString().indexOf("sword") != -1)
         {
-          if(keyboard.yKeyDown())
-          {
-            Equipment equip = new Equipment(p.getEquippedWeapon());
-            containedItem = equip;
-            p.changeEquippedWeapon(temp.getWeapon());
-          }
+          //do
+          //{
+            if (Engine.staticKeyboard.yKeyDown())
+            {
+                Equipment equip = new Equipment(p.getEquippedWeapon());
+                containedItem = equip;
+                p.changeEquippedWeapon(temp.getWeapon());
+                //break;
+            }
+            else if (Engine.staticKeyboard.nKeyDown())
+                ;//break;
+          //}while (!keyboard.yKeyDown() && !keyboard.nKeyDown());
         }
         
         else if(st.indexOf("armor") != -1 || st.indexOf("mail") != -1)
         {
-          if(keyboard.yKeyDown())
+          //while(true)
+          {
+            if (Engine.staticKeyboard.yKeyDown())
           {
             Equipment equip = new Equipment(p.getEquippedArmor());
             containedItem = equip;
             p.changeEquippedArmor(temp.getArmor());
+            //break;
+            }
+            else if (keyboard.nKeyDown())
+                ;//break;
           }
         }
         
         else if(st.indexOf("Shield") != -1)
         {
-          if(keyboard.yKeyDown())
-          {
-            Equipment equip = new Equipment(p.getEquippedShield());
-            containedItem = equip;
-            p.changeEquippedShield(temp.getShield());
+            while (true)
+            {
+                if(Engine.staticKeyboard.yKeyDown())
+                {
+                    Equipment equip = new Equipment(p.getEquippedShield());
+                    containedItem = equip;
+                    p.changeEquippedShield(temp.getShield());
+                   // break;
+                }
+                else if (keyboard.nKeyDown());
+                    ;//break;
           }
         }
       }

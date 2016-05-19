@@ -8,6 +8,7 @@ public class Keyboard implements KeyListener
     // keep track left, right, forward, back in that order
     private boolean[] keysStatus;
     private int[] keycodes;
+    public static boolean disabled = false;
 
     public Keyboard()
     {
@@ -33,6 +34,7 @@ public class Keyboard implements KeyListener
         for (int i = 0; i < keycodes.length; i++)
             if (e.getKeyCode() == keycodes[i])
             {
+                if(!Keyboard.disabled)
                 keysStatus[i] = true;
             }
     }

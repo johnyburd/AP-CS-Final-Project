@@ -213,7 +213,7 @@ public class DungeonGenerator
                 {
                     numBaddies--;
                    // dun[i][j] = 15
-                    Entity monster = new Entity(0.0045, 50.0, 10*dungeonLevel, 7 + dungeonLevel, Equipment.randomMonsterEquipment(dungeonLevel), (double)(i+0.5), (double)(j+0.5), textbox, player);
+                    Entity monster = new Entity(0.0045, 3.0, 10*dungeonLevel, 7 + dungeonLevel, Equipment.randomMonsterEquipment(dungeonLevel), (double)(i+0.5), (double)(j+0.5), textbox, player);
                     Entity.entities.add(monster);
                     System.out.println("monster added");
                 }

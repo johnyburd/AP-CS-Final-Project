@@ -59,6 +59,7 @@ public class Hud
             hudTextures.add(ImageIO.read(new File("res/hud/fist.png")));
             hudTextures.add(ImageIO.read(new File("res/hud/sword0.png"))); // 10
             hudTextures.add(ImageIO.read(new File("res/hud/sword1.png")));
+            hudTextures.add(ImageIO.read(new File("res/hud/gameover.png")));
         }
         catch (IOException ioe)
         {
@@ -68,6 +69,11 @@ public class Hud
 
     public void updateHud()
     {
+        if (hero.getHealth() < 0)
+        {
+            engine.blitImage(hudTextures.get(12), 0,0);
+            Keyboard.disabled = true;
+        }
         updateTextBox();
         updateShield();
         updateEquipment();
