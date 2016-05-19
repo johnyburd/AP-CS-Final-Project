@@ -7,6 +7,7 @@ import src.dungeon.Wall;
 import src.logic.inventory.*;
 import src.engine.Player;
 import src.engine.Sprite;
+import src.logic.entity.Entity;
 
 import java.util.ArrayList;
 import java.util.Random;
