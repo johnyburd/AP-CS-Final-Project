@@ -15,7 +15,6 @@ public class Texture
     public static ArrayList<Texture> textures = new ArrayList<Texture>() {{
     add(new Texture("res/walls/greywall1.png", 64));
     add(new Texture("res/walls/greywall2.png", 64));
-    add(new Texture("res/walls/greywall3.png", 64));
     add(new Texture("res/walls/brownwall1.png", 64));
     add(new Texture("res/walls/brownwall2.png", 64));
     add(new Texture("res/walls/redwall1.png", 64));

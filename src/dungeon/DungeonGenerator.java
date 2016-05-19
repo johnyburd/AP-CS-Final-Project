@@ -36,16 +36,43 @@ public class DungeonGenerator
 
         textbox = t;
     }
-    public int[][] getNewDungeon()
+    public int[][] getNewDungeon(int level)
     {
+        int[] texs = new int[3];
         this.mazeGen();
+        // convert maze into usable format of the engine
         for (int i = 0; i < dun.length; i++)
             for (int j = 0; j < dun[i].length; j++)
                 if (dun[i][j] == 0)
+                {
+                    switch (level)
+                    {
+                        case 1:
+                        {
+                            texs[0] = 1;
+                            texs[1] = 2;
+                            //texs[2] = 3;
+                            break;
+                        }
+                        case 2:
+                        {
+                            texs[0] = 3;
+                            texs[1] = 4;
+                            break;
+                        }
+                        case 3:
+                        {
+                            texs[0] = 5;
+                            texs[1] = 6;
+                            break;
+                        }
+                    }
+                    int rand =(int)(Math.random()*3);
                     if (i < dun.length/2)
-                        dun[i][j] = 4;
+                        dun[i][j] = texs[0];
                     else
-                        dun[i][j] = 2;
+                        dun[i][j] = texs[1];
+                }
                 else
                     dun[i][j] = 0;
         setRandomChest(10);

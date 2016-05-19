@@ -92,7 +92,7 @@ public class Engine extends JFrame implements Runnable
         blitImageList = new ArrayList<BlitImage>();
 
         dungeonMaster = new DungeonGenerator(15, player, textbox);
-        dungeon = dungeonMaster.getNewDungeon();
+        dungeon = dungeonMaster.getNewDungeon(1);
         player.updateDungeon(dungeon); // player requires dungeon
 
         //textbox.addMessage("looks super good");
