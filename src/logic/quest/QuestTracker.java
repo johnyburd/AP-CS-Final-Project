@@ -9,6 +9,8 @@
  import src.logic.weapon.*;
  import src.logic.hero.*;
  
+ import src.hud.TextBox;
+ 
 	public class QuestTracker
 	{
 		static int gotEggs = 0;
