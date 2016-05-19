@@ -101,7 +101,7 @@ public class Hero
     Armor arm = equippedItems.getArmor();
     Shield shi = equippedItems.getShield();
     int ac = 0;
-    if(ac != null)
+    if(arm != null)
       ac = arm.getArmorClass();
     if(shi != null && shi.isRaised() == true)
     {
