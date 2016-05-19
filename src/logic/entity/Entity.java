@@ -13,9 +13,11 @@ public class Entity
   private int health, hitDamage, x, y;
   private Equipment equippedItems;
   private TextBox textbox;
+
+  private final String PATH = "res/sprites/baddie.png"
   private Sprite sprite;
 
-  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos, TextBox t, Sprite spri)
+  public Entity(double spd, double hA, int hlth, int hD, Equipment equip, int xPos, int yPos, TextBox t)
   {
     speed = spd;
     hitAccuracy = hA;
@@ -25,7 +27,6 @@ public class Entity
     x = xPos;
     y = yPos;
     textbox = t;
-    sprite = spri;
   }
   
   public void updateXCoord(int newX)
