@@ -1,5 +1,7 @@
 package src.engine;
 
+import src.logic.inventory.Chest;
+import src.logic.hero.Hero;
 
 public class Player
 {
@@ -21,8 +23,9 @@ public class Player
     // distance from the wall
     private final double MAX_DIST = 0.1;
 
+    private Hero hero;
 
-    public Player(double xc, double yc, double xf, double yf, double xv, double yv, int[][] d)
+    public Player(double xc, double yc, double xf, double yf, double xv, double yv, int[][] d, Hero h)
     {
         x = xc;
         y = yc;
@@ -31,11 +34,18 @@ public class Player
         xCameraPlane = xv;
         yCameraPlane = yv;
         dungeon = d;
+        hero = h;
     }
 
 
     public void update(int[][] dungeon, Keyboard k)
     {
+        if (k.eKeyDown())
+        {
+            for (Chest c : Chest.chests)
+                if ((int)c.xCoord == (int)this.getX() && (int)c.yCoord == (int)this.getY())
+                    c.onOpenChest(hero, this);
+        }
 
         if (k.qKeyDown())
         {
@@ -131,21 +141,24 @@ public class Player
         {
             if (dungeon[(int)(newX + MAX_DIST)][(int)y] == 0 && dungeon[(int)newX][(int)y] == 0)
                 x = newX;
-            if (dungeon[(int)(newX + MAX_DIST)][(int)y] > 14 && dungeon[(int)newX][(int)y] > 14)
+            if (dungeon[(int)(newX+MAX_DIST)][(int)y] == 15)
+                //System.out.println("true");
                 x = newX;
         }
         else
         {
             if (dungeon[(int)(newX - MAX_DIST)][(int)y] == 0 && dungeon[(int)newX][(int)y] == 0)
                 x = newX;
-            if (dungeon[(int)(newX - MAX_DIST)][(int)y] > 14 && dungeon[(int)newX][(int)y] > 14)
+            if (dungeon[(int)newX][(int)(y - MAX_DIST)] == 15)
+                //System.out.println("true");
                 x = newX;
         }
         if (newY > y)
         {
             if (dungeon[(int)x][(int)(newY + MAX_DIST)] == 0 && dungeon[(int)x][(int)newY] == 0)
                 y = newY;
-            if (dungeon[(int)x][(int)(newY + MAX_DIST)] > 14 && dungeon[(int)x][(int)newY] > 14)
+            if (dungeon[(int)x][(int)(newY+MAX_DIST)] == 15)
+                //System.out.println("true");
                 y = newY;
         }
         else
@@ -153,7 +166,8 @@ public class Player
 
             if (dungeon[(int)x][(int)(newY - MAX_DIST)] == 0 && dungeon[(int)x][(int)newY] == 0)
                 y = newY;
-            if (dungeon[(int)x][(int)(newY - MAX_DIST)] > 14 && dungeon[(int)x][(int)newY] == 0)
+            if (dungeon[(int)x][(int)(newY-MAX_DIST)] == 15)
+                //System.out.println("true");
                 y = newY;
         }
     }
