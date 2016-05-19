@@ -201,4 +201,24 @@ public class DungeonGenerator
                 }
             }
     }
+    
+    private void spawnBaddies(int numBaddies, int dungeonLevel)
+    {
+        for(int i = 0; i < dun.length; i++)
+            for(int j = 0; j < dun[i].length; j++)
+            {
+                int a = (int)(Math.random() * 100);
+                if((a < 500 && numBaddies > 0 && dun[i][j] == 0 ))
+                {
+                    numBaddies--;
+                   // dun[i][j] = 15;
+                   int b = (int)((Math.random()+1.5) * (level-1))
+                    Entity monster = new Entity(0.045, 50.0, 10*level, 7 + level, new Equipment(), ((double)i + 0.5), j + 0.5, textbox);
+                    if (monster == null)
+                        System.out.println("NULL");
+                    Sprite.sprites.add(monster.getSprite());
+                    System.out.println("monster added");
+                }
+            }
+    }
 }
